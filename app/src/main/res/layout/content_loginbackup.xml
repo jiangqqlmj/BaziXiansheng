@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_16dp">
+    <!-- 注册登录的布局-->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_60dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_input_phone_num"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@drawable/shape_container"
+            android:hint="手机号码" />
+
+        <Button
+            android:id="@+id/btn_get_verification"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_small"
+            android:text="验证码" />
+    </LinearLayout>
+
+    <EditText
+
+        android:id="@+id/et_input_verification"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_5dp"
+        android:background="@drawable/shape_container"
+        android:hint="输入验证码" />
+
+    <EditText
+        android:id="@+id/et_input_password"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_5dp"
+        android:background="@drawable/shape_container"
+        android:hint="输入密码"
+        android:inputType="numberPassword"
+        android:visibility="gone" />
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_5dp"
+        android:layout_marginTop="@dimen/dimen_5dp"
+        android:background="@drawable/shape_container"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimen_10dp"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/rb_guest"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="命主身份登录" />
+
+        <RadioButton
+            android:id="@+id/rb_augur"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:text="大师身份登录" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_btn_small"
+        android:text="密码登录"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_login_sign"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:background="@drawable/selector_btn_small"
+        android:text="登录" />
+</LinearLayout>

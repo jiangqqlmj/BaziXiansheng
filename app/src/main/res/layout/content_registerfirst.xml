@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container_content_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="102px"
+        android:text="欢迎加入"
+        android:textColor="@color/tv_brown"
+        android:textSize="50px" />
+
+    <EditText
+        android:id="@+id/register_input_phone_num"
+        android:layout_width="fill_parent"
+        android:layout_height="88px"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="248px"
+        android:background="@drawable/shape_container"
+        android:hint="手机号码"
+        android:padding="20px"
+        android:textColorHint="@color/hint_input_gray" />
+
+    <EditText
+        android:id="@+id/register_input_nick"
+        android:layout_width="fill_parent"
+        android:layout_height="88px"
+        android:layout_below="@+id/register_input_phone_num"
+        android:layout_margin="20px"
+        android:background="@drawable/shape_container"
+        android:hint="昵称"
+        android:padding="20px"
+        android:textColorHint="@color/hint_input_gray" />
+
+    <Button
+        android:id="@+id/btn_registerfirst_next"
+        android:layout_width="fill_parent"
+        android:layout_height="92px"
+        android:layout_below="@+id/register_input_nick"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:background="@drawable/selector_btn_small"
+        android:text="下一步"
+        android:textColor="@color/tv_white"
+        android:textSize="32px" />
+
+</RelativeLayout>

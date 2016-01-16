@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/item_augur_left_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="20px"
+            android:layout_marginTop="20px">
+
+
+            <ImageView
+                android:id="@+id/item_augur_left_imageview"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:scaleType="fitXY"
+                android:src="@drawable/augur_head" />
+
+            <ImageView
+                android:layout_width="150px"
+                android:layout_height="30px"
+                android:scaleType="fitXY"
+                android:src="@drawable/item_amuse_bg" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30px"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/head_amuse"
+                    android:layout_width="18px"
+                    android:layout_height="22px"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5px"
+                    android:layout_marginRight="5px"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/head_amuse" />
+
+                <!-- TextView中的宽度又开始的包裹内容改编成固定的宽度24dp-->
+                <TextView
+                    android:id="@+id/augur_tv_looker_num"
+                    android:layout_width="24dp"
+                    android:layout_height="30px"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@+id/head_amuse"
+                    android:text="2056"
+                    android:textColor="@color/bg_white"
+                    android:textSize="20px" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/item_augur_right_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/augur_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="海大师"
+                        android:textColor="#000"
+                        android:textSize="@dimen/dimen_16sp" />
+
+                    <ImageView
+                        android:id="@+id/augur_status"
+                        android:layout_width="94px"
+                        android:layout_height="33px"
+                        android:layout_margin="@dimen/dimen_5dp"
+                        android:src="@drawable/augur_status" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="准确度："
+                        android:textSize="@dimen/dimen_20dp" />
+
+                    <TextView
+                        android:id="@+id/augur_accuracy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="95%"
+                        android:textColor="@color/brown"
+                        android:textSize="@dimen/dimen_20dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="关注："
+                        android:textSize="@dimen/dimen_12dp" />
+
+                    <TextView
+                        android:id="@+id/augur_focus_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10005"
+                        android:textColor="@color/brown"
+                        android:textSize="@dimen/dimen_12dp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="草签："
+                        android:textSize="@dimen/dimen_20dp" />
+
+                    <TextView
+                        android:id="@+id/augur_init_divination"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2153"
+                        android:textColor="@color/brown"
+                        android:textSize="@dimen/dimen_20dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="金币："
+                        android:textSize="@dimen/dimen_12dp" />
+
+                    <TextView
+                        android:id="@+id/augur_gold_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="201555"
+                        android:textColor="@color/brown"
+                        android:textSize="@dimen/dimen_12dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="20px"
+        android:background="@color/tv_gray6" />
+
+</LinearLayout>

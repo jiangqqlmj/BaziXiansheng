@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_16dp">
+
+    <TextView
+        android:id="@+id/tv_chatlooker_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/point"
+        android:drawablePadding="@dimen/dimen_4dp"
+        android:text="华东段子手"
+        android:textColor="@color/tv_chatlooker_username"
+        android:textSize="@dimen/dimen_20sp" />
+
+    <TextView
+        android:id="@+id/tv_chatlooker_comment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_10dp"
+        android:text="独在异乡，讲的一手好段子"
+        android:textColor="@color/tv_chatlooker_comment"
+        android:textSize="@dimen/dimen_16sp" />
+
+</LinearLayout>

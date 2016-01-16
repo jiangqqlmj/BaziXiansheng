@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container_chatlooker_fragment"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_chatlooker"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_gray" />
+
+    </com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout>
+
+    <!-- 聊天框容器-->
+    <LinearLayout
+        android:id="@+id/chatlooker_container_input"
+        android:layout_width="fill_parent"
+        android:layout_height="97px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bg_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <!-- 对话大师-->
+        <LinearLayout
+            android:id="@+id/container_chatlooker_talkaugur"
+            android:layout_width="600px"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+
+            <ImageView
+                android:id="@+id/iv_chatlooker_voice"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:padding="15px"
+                android:src="@drawable/voice" />
+
+            <ImageView
+                android:id="@+id/iv_chatlooker_key"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:padding="15px"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/et_chatlooker_input"
+                android:layout_width="425px"
+                android:layout_height="65px"
+                android:background="@color/bg_gray"
+                android:drawableRight="@drawable/divinatetalk"
+                android:gravity="center_vertical"
+                android:hint="对话大师"
+                android:imeOptions="actionSend"
+                android:maxLines="2"
+                android:paddingLeft="22px"
+                android:paddingRight="22px"
+                android:textColor="@color/tv_gray9"
+                android:textSize="24px" />
+
+            <ImageView
+                android:id="@+id/iv_chatlooker_sendpic"
+                android:layout_width="96px"
+                android:layout_height="96px"
+                android:padding="28px"
+                android:src="@drawable/sendpic" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_chatlooker_talkall"
+            android:layout_width="600px"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/et_chatlooker_lookerinput"
+                android:layout_width="600px"
+                android:layout_height="64px"
+                android:layout_gravity="center"
+                android:background="@color/bg_gray"
+                android:drawableRight="@drawable/alltalk"
+                android:hint="围观评论"
+                android:imeOptions="actionSend"
+                android:maxLines="2"
+                android:paddingLeft="20px"
+                android:paddingRight="20px"
+                android:textColor="@color/tv_gray9"
+                android:textSize="24px" />
+
+        </LinearLayout>
+        <!--赠送礼物-->
+        <LinearLayout
+            android:layout_width="120px"
+            android:layout_height="97px"
+            android:background="@color/bg_red"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_chatlooker_givegift"
+                android:layout_width="48px"
+                android:layout_height="48px"
+                android:layout_gravity="center"
+                android:background="@drawable/selector_gift_bg"
+                android:src="@drawable/givegift" />
+        </LinearLayout>
+    </LinearLayout>
+    <!--以上是输入框 文字 语音-->
+
+    <!-- 赠送礼物-->
+    <LinearLayout
+        android:id="@+id/chatlooker_container_givegift"
+        android:layout_width="fill_parent"
+        android:layout_height="328px"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- 礼物1级-->
+        <LinearLayout
+            android:id="@+id/givegift_container_first"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_white"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="21px"
+                    android:layout_marginTop="20px"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_giftpop_hot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/shape_chatgift_right"
+                        android:gravity="center"
+                        android:paddingBottom="10px"
+                        android:paddingLeft="45px"
+                        android:paddingRight="28px"
+                        android:paddingTop="10px"
+                        android:text="热门"
+                        android:textColor="@color/tv_chatgold"
+                        android:textSize="24px" />
+
+                    <TextView
+                        android:id="@+id/tv_giftpop_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/shape_chatgift_right"
+                        android:gravity="center"
+                        android:paddingBottom="10px"
+                        android:paddingLeft="28px"
+                        android:paddingRight="45px"
+                        android:paddingTop="10px"
+                        android:text="全部"
+                        android:textColor="@color/tv_black"
+                        android:textSize="24px" />
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_chatgift_recharge"
+                    android:layout_width="150px"
+                    android:layout_height="54px"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15px"
+                    android:layout_marginTop="15px"
+                    android:background="@drawable/selector_btn_small"
+                    android:text="充值"
+                    android:textColor="@color/tv_white"
+                    android:textSize="24px" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_chatgift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20px" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/givegift_container_second"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/iv_back_givegift"
+                    android:layout_width="32px"
+                    android:layout_height="32px"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="22px"
+                    android:layout_marginTop="33px"
+                    android:src="@drawable/backgray" />
+
+                <TextView
+                    android:id="@+id/tv_gold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="20px"
+                    android:layout_toRightOf="@+id/iv_back_givegift"
+                    android:gravity="center_vertical"
+                    android:text="金币:"
+                    android:textColor="@color/tv_chatgray9"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/tv_goldnum_givegift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5px"
+                    android:layout_toRightOf="@+id/tv_gold"
+                    android:gravity="center_vertical"
+                    android:text="0"
+                    android:textColor="@color/tv_black"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tv_goldnum_givegift"
+                    android:gravity="center_vertical"
+                    android:text="个"
+                    android:textColor="@color/tv_black"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/tv_rechargebtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="40px"
+                    android:layout_marginTop="30px"
+                    android:gravity="center"
+                    android:text="充值"
+                    android:textColor="@color/tv_chatgold"
+                    android:textSize="24px" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="680px"
+                android:layout_height="190px"
+                android:layout_marginBottom="30px"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                android:layout_marginTop="42px"
+                android:background="@drawable/shape_container_gray"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_givegift_second_head"
+                        android:layout_width="100px"
+                        android:layout_height="100px"
+                        android:layout_marginBottom="45px"
+                        android:layout_marginLeft="50px"
+                        android:layout_marginRight="15px"
+                        android:layout_marginTop="45px"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/selfoshouzhua" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_givegift_second_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="2px"
+                            android:text="菩提抱抱树"
+                            android:textColor="@color/tv_chat_black3"
+                            android:textSize="28px" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_givegift_second_goldnum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="2px"
+                                android:text="1000"
+                                android:textColor="@color/tv_chatcontri_no"
+                                android:textSize="20px" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="2px"
+                                android:text="币"
+                                android:textColor="@color/tv_chatcontri_no"
+                                android:textSize="20px" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_givegift_second"
+                    android:layout_width="158px"
+                    android:layout_height="88px"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="40px"
+                    android:background="@drawable/selector_btn_small"
+                    android:gravity="center"
+                    android:text="赠送"
+                    android:textColor="@color/tv_white" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

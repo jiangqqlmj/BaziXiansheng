@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_white"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20px"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <!-- 将  ID中的augur换成home 没有augur的在前面加上home_-->
+
+
+        <RelativeLayout
+            android:id="@+id/item_home_left_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+
+            <ImageView
+                android:id="@+id/item_home_left_imageview"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:scaleType="fitXY"
+                android:src="@drawable/augur_head" />
+
+            <ImageView
+                android:layout_width="150px"
+                android:layout_height="30px"
+                android:scaleType="fitXY"
+                android:src="@drawable/item_amuse_bg" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30px"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/head_amuse"
+                    android:layout_width="18px"
+                    android:layout_height="22px"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5px"
+                    android:layout_marginRight="5px"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/head_amuse" />
+
+
+                <!-- TextView中的宽度又开始的包裹内容改编成固定的宽度24dp-->
+                <TextView
+                    android:id="@+id/home_tv_looker_num"
+                    android:layout_width="24dp"
+                    android:layout_height="30px"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@+id/head_amuse"
+                    android:text="2056"
+                    android:textColor="@color/bg_white"
+                    android:textSize="20px" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/item_home_right_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10px"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/home_augur_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="海大师"
+                    android:textColor="#000"
+                    android:textSize="32px" />
+
+                <ImageView
+                    android:id="@+id/home_augur_status"
+                    android:layout_width="94px"
+                    android:layout_height="33px"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="11px"
+                    android:src="@drawable/augur_status" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15px"
+                android:orientation="horizontal">
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="关注："
+                    android:textColor="@color/tv_gray6"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/home_focus_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10005"
+                    android:textColor="@color/brown"
+                    android:textSize="24px" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15px"
+                android:orientation="horizontal">
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="金币："
+                    android:textColor="@color/tv_gray6"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/home_gold_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="201555"
+                    android:textColor="@color/brown"
+                    android:textSize="24px" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="20px"
+        android:background="@color/tv_gray6" />
+</LinearLayout>

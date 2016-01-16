@@ -1,0 +1,271 @@
+<resources>
+
+    <declare-styleable name="Panel">
+
+        <!-- Defines panel animation duration in ms. -->
+        <attr name="animationDuration" format="integer" />
+        <!-- Defines panel position on the screen. -->
+        <attr name="position">
+
+            <!-- Panel placed at top of the screen. -->
+            <enum name="top" value="0" />
+            <!-- Panel placed at bottom of the screen. -->
+            <enum name="bottom" value="1" />
+            <!-- Panel placed at left of the screen. -->
+            <enum name="left" value="2" />
+            <!-- Panel placed at right of the screen. -->
+            <enum name="right" value="3" />
+        </attr>
+        <!-- Identifier for the child that represents the panel's handle. -->
+        <attr name="handle" format="reference" />
+        <!-- Identifier for the child that represents the panel's content. -->
+        <attr name="content" format="reference" />
+        <!-- Defines if flying gesture forces linear interpolator in animation. -->
+        <attr name="linearFlying" format="boolean" />
+        <!-- Defines size relative to parent (must be in form: nn%p). -->
+        <attr name="weight" format="fraction" />
+        <!-- Defines opened handle (drawable/color). -->
+        <attr name="openedHandle" format="reference|color" />
+        <!-- Defines closed handle (drawable/color). -->
+        <attr name="closedHandle" format="reference|color" />
+    </declare-styleable>
+    <declare-styleable name="SlidingMenu">
+
+        <!-- <attr name="mode"> -->
+        <!-- <enum name="left" value="0" /> -->
+        <!-- <enum name="right" value="1" /> -->
+        <!-- </attr> -->
+        <!-- <attr name="viewAbove" format="reference" /> -->
+        <!-- <attr name="viewBehind" format="reference" /> -->
+        <!-- <attr name="behindOffset" format="dimension" /> -->
+        <!-- <attr name="behindWidth" format="dimension" /> -->
+        <!-- <attr name="behindScrollScale" format="float" /> -->
+        <!-- <attr name="touchModeAbove"> -->
+        <!-- <enum name="margin" value="0" /> -->
+        <!-- <enum name="fullscreen" value="1" /> -->
+        <!-- </attr> -->
+        <!-- <attr name="touchModeBehind"> -->
+        <!-- <enum name="margin" value="0" /> -->
+        <!-- <enum name="fullscreen" value="1" /> -->
+        <!-- </attr> -->
+        <!-- <attr name="shadowDrawable" format="reference" /> -->
+        <!-- <attr name="shadowWidth" format="dimension" /> -->
+        <!-- <attr name="fadeEnabled" format="boolean" /> -->
+        <!-- <attr name="fadeDegree" format="float" /> -->
+        <!-- <attr name="selectorEnabled" format="boolean" /> -->
+        <!-- <attr name="selectorDrawable" format="reference" /> -->
+        <attr name="mode">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+        <attr name="viewAbove" format="reference" />
+        <attr name="viewBehind" format="reference" />
+        <attr name="behindOffset" format="dimension" />
+        <attr name="behindWidth" format="dimension" />
+        <attr name="behindScrollScale" format="float" />
+        <attr name="touchModeAbove">
+            <enum name="margin" value="0" />
+            <enum name="fullscreen" value="1" />
+        </attr>
+        <attr name="touchModeBehind">
+            <enum name="margin" value="0" />
+            <enum name="fullscreen" value="1" />
+        </attr>
+        <attr name="shadowDrawable" format="reference" />
+        <attr name="shadowWidth" format="dimension" />
+        <attr name="fadeEnabled" format="boolean" />
+        <attr name="fadeDegree" format="float" />
+        <attr name="selectorEnabled" format="boolean" />
+        <attr name="selectorDrawable" format="reference" />
+    </declare-styleable>
+
+    <!-- <declare-styleable name="SideBarMenu"> -->
+    <!-- <attr name="mode"> -->
+    <!-- <enum name="left" value="0" /> -->
+    <!-- <enum name="right" value="1" /> -->
+    <!-- </attr> -->
+    <!-- <attr name="viewAbove" format="reference" /> -->
+    <!-- <attr name="viewBehind" format="reference" /> -->
+    <!-- <attr name="behindOffset" format="dimension" /> -->
+    <!-- <attr name="behindWidth" format="dimension" /> -->
+    <!-- <attr name="behindScrollScale" format="float" /> -->
+    <!-- <attr name="touchModeAbove"> -->
+    <!-- <enum name="margin" value="0" /> -->
+    <!-- <enum name="fullscreen" value="1" /> -->
+    <!-- </attr> -->
+    <!-- <attr name="touchModeBehind"> -->
+    <!-- <enum name="margin" value="0" /> -->
+    <!-- <enum name="fullscreen" value="1" /> -->
+    <!-- </attr> -->
+    <!-- <attr name="shadowDrawable" format="reference" /> -->
+    <!-- <attr name="shadowWidth" format="dimension" /> -->
+    <!-- <attr name="fadeEnabled" format="boolean" /> -->
+    <!-- <attr name="fadeDegree" format="float" /> -->
+    <!-- <attr name="selectorEnabled" format="boolean" /> -->
+    <!-- <attr name="selectorDrawable" format="reference" /> -->
+    <!-- </declare-styleable> -->
+
+    <declare-styleable name="ViewPagerIndicator">
+
+        <!-- Style of the circle indicator. -->
+        <attr name="vpiCirclePageIndicatorStyle" format="reference" />
+        <!-- Style of the icon indicator's views. -->
+        <attr name="vpiIconPageIndicatorStyle" format="reference" />
+        <!-- Style of the line indicator. -->
+        <attr name="vpiLinePageIndicatorStyle" format="reference" />
+        <!-- Style of the title indicator. -->
+        <attr name="vpiTitlePageIndicatorStyle" format="reference" />
+        <!-- Style of the tab indicator's tabs. -->
+        <attr name="vpiTabPageIndicatorStyle" format="reference" />
+        <!-- Style of the underline indicator. -->
+        <attr name="vpiUnderlinePageIndicatorStyle" format="reference" />
+    </declare-styleable>
+
+    <attr name="centered" format="boolean" />
+    <attr name="selectedColor" format="color" />
+    <attr name="strokeWidth" format="dimension" />
+    <attr name="unselectedColor" format="color" />
+
+    <declare-styleable name="TitlePageIndicator">
+
+        <!-- Screen edge padding. -->
+        <attr name="clipPadding" format="dimension" />
+        <!-- Color of the footer line and indicator. -->
+        <attr name="footerColor" format="color" />
+        <!-- Height of the footer line. -->
+        <attr name="footerLineHeight" format="dimension" />
+        <!-- Style of the indicator. Default is triangle. -->
+        <attr name="footerIndicatorStyle">
+            <enum name="none" value="0" />
+            <enum name="triangle" value="1" />
+            <enum name="underline" value="2" />
+        </attr>
+        <!-- Height of the indicator above the footer line. -->
+        <attr name="footerIndicatorHeight" format="dimension" />
+        <!-- Left and right padding of the underline indicator. -->
+        <attr name="footerIndicatorUnderlinePadding" format="dimension" />
+        <!-- Padding between the bottom of the title and the footer. -->
+        <attr name="footerPadding" format="dimension" />
+        <!-- Position of the line. -->
+        <attr name="linePosition">
+            <enum name="bottom" value="0" />
+            <enum name="top" value="1" />
+        </attr>
+        <!-- Color of the selected title. -->
+        <attr name="selectedColor" />
+        <!-- Whether or not the selected item is displayed as bold. -->
+        <attr name="selectedBold" format="boolean" />
+        <!-- Color of regular titles. -->
+        <attr name="android:textColor" />
+        <!-- Size of title text. -->
+        <attr name="android:textSize" />
+        <!-- Padding between titles when bumping into each other. -->
+        <attr name="titlePadding" format="dimension" />
+        <!-- Padding between titles and the top of the View. -->
+        <attr name="topPadding" format="dimension" />
+        <!-- View background -->
+        <attr name="android:background" />
+    </declare-styleable>
+    <declare-styleable name="PagerSlidingTabStrip">
+        <attr name="indicatorColor" format="color" />
+        <attr name="underlineColor" format="color" />
+        <attr name="dividerColor" format="color" />
+        <attr name="indicatorHeight" format="dimension" />
+        <attr name="underlineHeight" format="dimension" />
+        <!--        <attr name="dividerPadding" format="dimension" />-->
+        <attr name="tabPaddingLeftRight" format="dimension" />
+        <attr name="scrollOffset" format="dimension" />
+        <!--        <attr name="tabBackground" format="reference" />-->
+        <attr name="shouldExpand" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="TouchListView">
+        <attr name="normal_height" format="dimension" />
+        <attr name="expanded_height" format="dimension" />
+        <attr name="grabber" format="reference" />
+        <attr name="dragndrop_background" format="color" />
+        <attr name="remove_mode">
+            <enum name="none" value="-1" />
+            <enum name="fling" value="0" />
+            <enum name="slide" value="1" />
+            <enum name="slideRight" value="1" />
+            <enum name="slideLeft" value="2" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="Switcher">
+
+        <!-- Defines switcher animation duration in ms. -->
+        <attr name="animationDuration" />
+        <!-- Defines switcher idle timeout in ms. -->
+        <attr name="idleTimeout" format="integer" />
+        <!-- Defines opened handle (drawable). -->
+        <attr name="decreaseButton" format="reference" />
+        <!-- Defines opened handle (drawable). -->
+        <attr name="increaseButton" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="ColorPicker">
+        <attr name="color_wheel_radius" format="dimension" />
+        <attr name="color_wheel_thickness" format="dimension" />
+        <attr name="color_center_radius" format="dimension" />
+        <attr name="color_center_halo_radius" format="dimension" />
+        <attr name="color_pointer_radius" format="dimension" />
+        <attr name="color_pointer_halo_radius" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="ColorBars">
+        <attr name="bar_thickness" format="dimension" />
+        <attr name="bar_length" format="dimension" />
+        <attr name="bar_pointer_radius" format="dimension" />
+        <attr name="bar_pointer_halo_radius" format="dimension" />
+        <attr name="bar_orientation_horizontal" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="SeekArc">
+        <attr name="thumb" format="reference" />
+        <attr name="thumbOffset" format="dimension" />
+        <attr name="max" format="integer" />
+        <attr name="progressWidth" format="dimension" />
+        <attr name="arcWidth" format="dimension" />
+        <attr name="progress" format="integer" />
+        <attr name="rotation" format="integer" />
+        <attr name="startAngle" format="integer" />
+        <attr name="sweepAngle" format="integer" />
+        <attr name="arcColor" format="color" />
+        <attr name="progressColor" format="color" />
+        <attr name="roundEdges" format="boolean" />
+        <attr name="touchInside" format="boolean" />
+        <attr name="clockwise" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="SeekArcTheme">
+        <attr name="seekArcStyle" format="reference"></attr>
+    </declare-styleable>
+
+    <!-- 这里新添加的 -->
+    <declare-styleable name="ProgressWheel">
+        <attr name="text" format="string" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="barColor" format="color" />
+        <attr name="rimColor" format="color" />
+        <attr name="rimWidth" format="dimension" />
+        <attr name="spinSpeed" format="dimension" />
+        <attr name="delayMillis" format="integer" />
+        <attr name="circleColor" format="color" />
+        <attr name="radius" format="dimension" />
+        <attr name="barWidth" format="dimension" />
+        <!--        <attr name="barLength" format="dimension" />-->
+        <attr name="contourColor" format="color" />
+        <attr name="contourSize" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="NumberPicker">
+        <attr name="normalTextColor" format="color" />
+        <attr name="normalTextSize" format="dimension" />
+        <attr name="selecredTextColor" format="color" />
+        <attr name="selecredTextSize" format="dimension" />
+        <attr name="unitHight" format="dimension" />
+        <attr name="itemNumber" format="integer" />
+        <attr name="lineColor" format="color" />
+        <attr name="maskHight" format="dimension" />
+        <attr name="noEmpty" format="boolean" />
+        <attr name="isEnable" format="boolean" />
+    </declare-styleable>
+
+</resources>

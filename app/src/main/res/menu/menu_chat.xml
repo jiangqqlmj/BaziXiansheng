@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ChatContainerActivity">
+
+    <item
+        android:id="@+id/action_bagua"
+        android:icon="@drawable/icon_bagua"
+        android:orderInCategory="80"
+        android:title="命盘"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_history"
+        android:icon="@drawable/icon_history"
+        android:orderInCategory="90"
+        android:title="测算历史"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/icon_share"
+        android:orderInCategory="100"
+        android:title="分享"
+        app:showAsAction="ifRoom" />
+
+</menu>

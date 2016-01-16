@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_gray"
+    android:orientation="vertical"
+    android:padding="20px"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20px"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.example.administrator.bazipaipan.utils.MyImageView
+                android:id="@+id/iv_edit_change_myhead"
+                android:layout_width="168px"
+                android:layout_height="160px"
+                android:layout_gravity="center"
+                android:src="@drawable/change_head"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp">
+            <EditText
+                android:id="@+id/et_edit_username"
+                android:layout_width="fill_parent"
+                android:layout_height="86px"
+                android:background="@color/bg_white"
+                android:gravity="center"
+                android:hint="输入用户名"
+                android:singleLine="true"
+                android:textColor="@color/tv_black" />
+            <ImageView
+                android:layout_width="13px"
+                android:layout_height="24px"
+                android:src="@drawable/jiantou"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="32px"
+                android:layout_marginRight="30px"
+                android:visibility="invisible"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp">
+            <TextView
+                android:id="@+id/tv_edit_sex"
+                android:layout_width="fill_parent"
+                android:layout_height="86px"
+                android:background="@color/bg_white"
+                android:gravity="center"
+                android:hint="性别"
+                android:singleLine="true"
+                android:textColor="@color/tv_black"
+                android:textSize="14sp"/>
+            <ImageView
+                android:layout_width="13px"
+                android:layout_height="24px"
+                android:src="@drawable/jiantou"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="32px"
+                android:layout_marginRight="30px"
+                />
+        </RelativeLayout>
+
+
+
+
+
+        <RadioGroup
+            android:id="@+id/rg_select_sex"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:background="@color/bg_gray"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <RadioButton
+                android:id="@+id/sex_boy"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_boy"
+                android:button="@null" />
+
+            <RadioButton
+                android:id="@+id/sex_girl"
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_girl"
+                android:button="@null" />
+        </RadioGroup>
+
+        <!--日期联动-->    <!--出生地联动-->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_1dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_editdata_birthday"
+                    android:layout_width="fill_parent"
+                    android:layout_height="86px"
+                    android:background="@color/bg_white"
+                    android:gravity="center"
+                    android:hint="出生日期"
+                    android:singleLine="true"
+                    android:textColor="@color/tv_black"
+                    android:textSize="14sp"/>
+                <ImageView
+                    android:layout_width="13px"
+                    android:layout_height="24px"
+                    android:src="@drawable/jiantou"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="32px"
+                    android:layout_marginRight="30px"
+                    />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_editdata_city"
+                    android:layout_width="fill_parent"
+                    android:layout_height="86px"
+                    android:background="@color/bg_white"
+                    android:gravity="center"
+                    android:hint="出生日期"
+                    android:singleLine="true"
+                    android:textColor="@color/tv_black"
+                    android:textSize="14sp"/>
+                <ImageView
+                    android:layout_width="13px"
+                    android:layout_height="24px"
+                    android:src="@drawable/jiantou"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="32px"
+                    android:layout_marginRight="30px"
+                    />
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/et_input_sign"
+            android:layout_width="fill_parent"
+            android:layout_height="108px"
+            android:layout_marginTop="20px"
+            android:background="@color/bg_white"
+            android:gravity="center"
+            android:hint="在这里输入个性签名"
+            android:maxLength="200"
+            android:maxLines="3"/>
+
+        <Button
+            android:id="@+id/btn_edit_updateinfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:background="@drawable/selector_btn_small"
+            android:text="保存修改" />
+
+    </LinearLayout>
+
+</ScrollView>

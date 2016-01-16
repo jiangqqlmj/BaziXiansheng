@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.example.administrator.bazipaipan.utils.MyImageView
+                android:id="@+id/iv_me_my_head"
+                android:layout_width="160px"
+                android:layout_height="160px"
+                android:layout_marginTop="40px"
+                android:clickable="true"
+                android:src="@drawable/my_head" />
+
+            <TextView
+                android:id="@+id/tv_me_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:text="王思聪"
+                android:textColor="@color/tv_black"
+                android:textSize="@dimen/dimen_20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我的金币："
+                    android:textColor="@color/tv_gray"
+                    android:textSize="@dimen/dimen_15sp" />
+
+                <TextView
+                    android:id="@+id/tv_me_my_goldnum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/tv_brown"
+                    android:textSize="@dimen/dimen_15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="个"
+                    android:textColor="@color/tv_brown"
+                    android:textSize="@dimen/dimen_15sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_me_recharge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:background="@drawable/selector_btn_small"
+                android:paddingLeft="@dimen/dimen_100dp"
+                android:paddingRight="@dimen/dimen_100dp"
+                android:text="充值"
+                android:textColor="@color/tv_white"
+                android:textSize="@dimen/dimen_20sp" />
+
+            <Button
+                android:id="@+id/btn_me_beaugur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_btn_small"
+                android:paddingLeft="@dimen/dimen_100dp"
+                android:paddingRight="@dimen/dimen_100dp"
+                android:text="成为大师"
+                android:textColor="@color/tv_white"
+                android:textSize="@dimen/dimen_20sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_50dp"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/container_myfocus"
+                android:layout_width="fill_parent"
+                android:layout_height="87px"
+                android:layout_gravity="center_vertical"
+                android:background="@color/bg_white"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40px"
+                        android:layout_height="32px"
+                        android:layout_marginLeft="23px"
+                        android:src="@drawable/myfocus" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="27px"
+                        android:gravity="center_vertical"
+                        android:padding="10px"
+                        android:text="我的关注"
+                        android:textColor="@color/tv_black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="22px"
+                    android:layout_height="22px"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20px"
+                    android:src="@drawable/getmore" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="100px"
+                android:background="#EFEEED" />
+
+            <RelativeLayout
+                android:id="@+id/container_editdata"
+                android:layout_width="fill_parent"
+                android:layout_height="87px"
+                android:layout_gravity="center_vertical"
+                android:background="@color/bg_white"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40px"
+                        android:layout_height="32px"
+                        android:layout_marginLeft="23px"
+                        android:src="@drawable/edit_data" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="27px"
+                        android:gravity="center_vertical"
+                        android:padding="10px"
+                        android:text="编辑资料"
+                        android:textColor="@color/tv_black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="22px"
+                    android:layout_height="22px"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20px"
+                    android:src="@drawable/getmore" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="100px"
+                android:background="#EFEEED" />
+
+            <RelativeLayout
+                android:id="@+id/container_setting"
+                android:layout_width="fill_parent"
+                android:layout_height="87px"
+                android:layout_gravity="center_vertical"
+                android:background="@color/bg_white"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40px"
+                        android:layout_height="32px"
+                        android:layout_marginLeft="23px"
+                        android:src="@drawable/mysetting" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="27px"
+                        android:gravity="center_vertical"
+                        android:padding="10px"
+                        android:text="设置"
+                        android:textColor="@color/tv_black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="22px"
+                    android:layout_height="22px"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20px"
+                    android:src="@drawable/getmore" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="100px"
+                android:background="#EFEEED" />
+
+
+            <RelativeLayout
+                android:id="@+id/container_tochat"
+                android:layout_width="fill_parent"
+                android:layout_height="87px"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="10px"
+                android:background="@color/bg_white"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40px"
+                        android:layout_height="32px"
+                        android:layout_marginLeft="23px"
+                        android:src="@drawable/user_calculate" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="27px"
+                        android:gravity="center_vertical"
+                        android:padding="10px"
+                        android:text="开始测算"
+                        android:textColor="@color/tv_black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="22px"
+                    android:layout_height="22px"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20px"
+                    android:src="@drawable/getmore" />
+
+            </RelativeLayout>
+
+
+            <!--<RelativeLayout
+                android:id="@+id/container_tochat"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/dimen_1dp"
+                android:background="@color/bg_white"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dimen_10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:drawableLeft="@drawable/myfocus"
+                        android:drawablePadding="@dimen/dimen_10dp"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/dimen_10dp"
+                        android:text="开始测算"
+                        android:textColor="@color/tv_black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="@dimen/dimen_16dp"
+                    android:src="@drawable/getmore" />
+
+            </RelativeLayout>-->
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10px"
+    android:layout_marginLeft="20px"
+    android:layout_marginRight="20px"
+    android:layout_marginTop="20px"
+    android:gravity="center"
+
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_bg_amuse_category"
+            android:layout_width="290px"
+            android:layout_height="290px"
+            android:scaleType="fitXY"
+            android:src="@drawable/amuse_first_pic" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30px"
+            android:scaleType="fitXY"
+            android:src="@drawable/item_amuse_bg" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30px"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/head_amuse"
+                android:layout_width="18px"
+                android:layout_height="22px"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5px"
+                android:layout_marginRight="5px"
+                android:scaleType="fitXY"
+                android:src="@drawable/head_amuse" />
+
+            <TextView
+                android:id="@+id/looker_num"
+                android:layout_width="wrap_content"
+                android:layout_height="30px"
+                android:layout_centerVertical="true"
+                android:layout_margin="3px"
+                android:layout_toRightOf="@+id/head_amuse"
+                android:text="2056"
+                android:textColor="@color/bg_white"
+                android:textSize="20px" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_amuse_title_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19px"
+        android:text="求安慰"
+        android:textColor="@color/tv_black"
+        android:textSize="28px" />
+
+
+</LinearLayout>

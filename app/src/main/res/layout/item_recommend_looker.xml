@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:background="@color/bg_white"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left">
+
+        <ImageView
+            android:id="@+id/iv_recommend_augur_head"
+            android:layout_width="186px"
+            android:layout_height="186px"
+            android:scaleType="fitXY"
+            android:src="@drawable/augur_head" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30px"
+            android:scaleType="fitXY"
+            android:src="@drawable/item_amuse_bg" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30px"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/head_amuse"
+                android:layout_width="18px"
+                android:layout_height="22px"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5px"
+                android:layout_marginRight="5px"
+                android:scaleType="fitXY"
+                android:src="@drawable/head_amuse" />
+
+            <!-- TextView中的宽度又开始的包裹内容改编成固定的宽度24dp-->
+            <TextView
+                android:id="@+id/tv_recommend_looker_num"
+                android:layout_width="24dp"
+                android:layout_height="30px"
+                android:layout_centerVertical="true"
+                android:layout_margin="3px"
+                android:layout_toRightOf="@+id/head_amuse"
+                android:text="2056"
+                android:textColor="@color/bg_white"
+                android:textSize="20px" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_recommend_looker_augur_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="10px"
+        android:text="王大师"
+        android:textColor="#000"
+        android:textSize="28px" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="10px"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关注数:"
+            android:textColor="@color/tv_gray6"
+            android:textSize="20px" />
+
+        <TextView
+            android:id="@+id/tv_recommend_looker_accuracy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="95%"
+            android:textColor="@color/tv_gray6"
+            android:textSize="20px" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="10px"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="金币："
+            android:textColor="@color/tv_gray6"
+            android:textSize="20px" />
+
+        <TextView
+            android:id="@+id/tv_recommend_looker_init_divination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2563"
+            android:textColor="@color/tv_gray6"
+            android:textSize="20px" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

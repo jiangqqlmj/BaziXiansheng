@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="88px"
+        android:background="@color/bg_brown"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/search_et"
+            android:layout_width="0dp"
+            android:layout_height="48px"
+            android:layout_margin="20px"
+            android:layout_weight="9"
+            android:background="@color/bg_search"
+            android:drawableLeft="@drawable/search_icon"
+            android:drawablePadding="20px"
+            android:hint="搜索大师"
+            android:imeOptions="actionSearch"
+            android:paddingLeft="10px"
+            android:textColor="@color/tv_black"
+            android:textColorHint="@color/tv_white"
+            android:textSize="24px" />
+
+        <TextView
+            android:id="@+id/cancel_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22px"
+            android:layout_weight="1"
+            android:padding="3px"
+            android:text="取消"
+            android:textColor="@color/tv_white"
+            android:textSize="24px" />
+
+    </LinearLayout>
+
+    <include layout="@layout/content_container_search" />
+</LinearLayout>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_pay"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="42px"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前账号"
+            android:textColor="@color/tv_black"
+            android:textSize="30px" />
+
+        <TextView
+            android:id="@+id/tv_currentpayuser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="WangXiansheng"
+            android:textColor="@color/tv_black"
+            android:textSize="30px" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="68px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订购商品"
+            android:textColor="@color/tv_black"
+            android:textSize="30px" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_currentpaygoods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/recharge_money"
+                android:drawablePadding="20px"
+                android:text="100"
+                android:textColor="@color/tv_brown"
+                android:textSize="28px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="币"
+                android:textColor="@color/tv_brown"
+                android:textSize="28px" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="68px"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="待支付金额"
+            android:textColor="@color/tv_black"
+            android:textSize="30px" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_needpaymoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="20px"
+                android:text="10"
+                android:textColor="@color/tv_brown"
+                android:textSize="28px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元"
+                android:textColor="@color/tv_brown"
+                android:textSize="28px" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="68px"
+        android:text="支付方式"
+        android:textColor="@color/tv_black"
+        android:textSize="30px" />
+
+    <RelativeLayout
+        android:id="@+id/paycontainer_weixin"
+        android:layout_width="fill_parent"
+        android:layout_height="103px"
+        android:layout_marginTop="23px"
+        android:background="@color/bg_white"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/weixinpay"
+            android:layout_width="83px"
+            android:layout_height="82px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20px"
+            android:src="@drawable/weixinpay" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="27px"
+            android:layout_toRightOf="@+id/weixinpay"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10px"
+                android:drawableRight="@drawable/recommentpay"
+                android:text="微信支付"
+                android:textColor="@color/tv_black"
+                android:textSize="30px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7px"
+                android:text="亿万用户的选择，更快更安全"
+                android:textColor="@color/tv_chatgray9"
+                android:textSize="20px" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/weixin_gou_iv"
+            android:layout_width="63px"
+            android:layout_height="63px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20px"
+            android:src="@drawable/paygou" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/paycontainer_zhifubao"
+        android:layout_width="fill_parent"
+        android:layout_height="103px"
+        android:layout_marginTop="1px"
+        android:background="@color/bg_white"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/zhifubaopay"
+            android:layout_width="83px"
+            android:layout_height="82px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20px"
+            android:src="@drawable/zhifubaopay" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="27px"
+            android:layout_toRightOf="@+id/zhifubaopay"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付宝支付"
+                android:textColor="@color/tv_black"
+                android:textSize="30px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7px"
+                android:text="可信赖的支付方式"
+                android:textColor="@color/tv_chatgray9"
+                android:textSize="20px" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/zhifubao_gou_iv"
+            android:layout_width="63px"
+            android:layout_height="63px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20px"
+            android:src="@drawable/paynogou" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/paynext_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="34px"
+        android:background="@drawable/selector_btn_small"
+        android:text="下一步" />
+
+</LinearLayout>

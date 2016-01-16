@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_0dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20px"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/container_inform"
+            android:layout_width="fill_parent"
+            android:layout_height="88px"
+            android:layout_gravity="center"
+            android:background="@color/bg_white"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40px"
+                    android:layout_height="38px"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="22px"
+                    android:layout_marginRight="38px"
+                    android:src="@drawable/inform" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="关注的人上线通知"
+                    android:textColor="@color/tv_black"
+                    android:textSize="28px" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/push_checkbox"
+                android:layout_width="102px"
+                android:layout_height="38px"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20px"
+                android:background="@drawable/s_slip_btn_bg"
+                android:button="@null" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="100px"
+            android:background="#c2c2c2" />
+
+        <RelativeLayout
+            android:id="@+id/container_clean_cash"
+            android:layout_width="fill_parent"
+            android:layout_height="88px"
+            android:background="@color/bg_white"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40px"
+                    android:layout_height="38px"
+                    android:layout_marginLeft="22px"
+                    android:layout_marginRight="38px"
+                    android:src="@drawable/clean_cash" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="清理缓存"
+                    android:textColor="@color/tv_black"
+                    android:textSize="28px" />
+            </LinearLayout>
+            <!--引入新控件  switchbtn-->
+            <TextView
+                android:id="@+id/cache_size_tv"
+                android:layout_width="102px"
+                android:layout_height="38px"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20px"
+                android:gravity="center"
+                android:paddingRight="@dimen/dimen_5dp"
+                android:text="0.0B"
+                android:textColor="@color/tv_black"
+                android:textSize="28px" />
+            <!--<ImageView
+                android:layout_width="12px"
+                android:layout_height="22px"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20px"
+                android:background="@drawable/getmore" />-->
+
+
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="100px"
+            android:background="#c2c2c2" />
+
+        <RelativeLayout
+            android:id="@+id/container_version_update"
+            android:layout_width="fill_parent"
+            android:layout_height="88px"
+            android:background="@color/bg_white"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40px"
+                    android:layout_height="38px"
+                    android:layout_marginLeft="22px"
+                    android:layout_marginRight="38px"
+                    android:src="@drawable/update" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="版本更新"
+                    android:textColor="@color/tv_black"
+                    android:textSize="28px" />
+            </LinearLayout>
+            <!--引入新控件  switchbtn-->
+            <ImageView
+                android:layout_width="12px"
+                android:layout_height="22px"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20px"
+                android:background="@drawable/getmore" />
+
+
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="100px"
+            android:background="#c2c2c2" />
+
+        <RelativeLayout
+            android:id="@+id/container_logout"
+            android:layout_width="fill_parent"
+            android:layout_height="88px"
+            android:background="@color/bg_white"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40px"
+                    android:layout_height="38px"
+                    android:layout_marginLeft="22px"
+                    android:layout_marginRight="38px"
+                    android:src="@drawable/logout" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="注销登陆"
+                    android:textColor="@color/tv_black"
+                    android:textSize="28px" />
+            </LinearLayout>
+            <!--引入新控件  switchbtn-->
+            <ImageView
+                android:layout_width="12px"
+                android:layout_height="22px"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20px"
+                android:background="@drawable/getmore" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/container_suggestion"
+            android:layout_width="fill_parent"
+            android:layout_height="88px"
+            android:layout_marginTop="20px"
+            android:background="@color/bg_white"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40px"
+                    android:layout_height="38px"
+                    android:layout_marginLeft="22px"
+                    android:layout_marginRight="38px"
+                    android:src="@drawable/suggestion" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="意见反馈"
+                    android:textColor="@color/tv_black"
+                    android:textSize="28px" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="12px"
+                android:layout_height="22px"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20px"
+                android:background="@drawable/getmore" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="100px"
+            android:background="#c2c2c2" />
+
+        <RelativeLayout
+            android:id="@+id/container_about"
+            android:layout_width="fill_parent"
+            android:layout_height="88px"
+            android:background="@color/bg_white"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40px"
+                    android:layout_height="38px"
+                    android:layout_marginLeft="22px"
+                    android:layout_marginRight="38px"
+                    android:src="@drawable/about" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="关于"
+                    android:textColor="@color/tv_black"
+                    android:textSize="28px" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="12px"
+                android:layout_height="22px"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20px"
+                android:background="@drawable/getmore" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,240 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_chat">
+    <!--测算过-->
+    <FrameLayout
+        android:id="@+id/fl_container_chatmain_history"
+        android:layout_width="fill_parent"
+        android:layout_height="120px"
+        android:visibility="visible">
+
+    </FrameLayout>
+    <!--聊天列表-->
+    <!--<com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:id="@+id/swipe_container_chat"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@color/bg_gray"-->
+    <!--android:orientation="vertical"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+    <!--tools:showIn="@layout/activity_chat">-->
+
+    <ListView
+        android:id="@+id/rv_chat_list"
+        android:layout_width="fill_parent"
+        android:layout_height="740px" />
+    <!--</com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout>-->
+    <!-- 以上 聊天列表-->
+
+    <!--围观区 -->
+
+    <LinearLayout
+        android:id="@+id/ll_container_allbottom"
+        android:layout_width="fill_parent"
+        android:layout_height="455px"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/chatmain_container_tablayout"
+            android:layout_width="fill_parent"
+            android:layout_height="82px"
+            android:background="@color/bg_white"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/chat_tabs"
+                android:layout_width="575px"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_white"
+                app:tabIndicatorColor="@color/bg_brown"
+                app:tabSelectedTextColor="@color/tv_black"
+                app:tabTextColor="@color/tv_black" />
+
+            <LinearLayout
+                android:id="@+id/chatmain_container_focusnum"
+                android:layout_width="145px"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_blue"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="7px">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/add_focus"
+                    android:drawablePadding="5px"
+                    android:text="关注"
+                    android:textColor="@color/tv_white"
+                    android:textSize="30px" />
+
+                <TextView
+                    android:id="@+id/tv_chatmain_focusnum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="100"
+                    android:textColor="@color/tv_chatblue"
+                    android:textSize="25px" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/chatmain_container_focusnum_sel"
+                android:layout_width="145px"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_chatgray"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="7px"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已关注"
+                    android:textColor="@color/tv_white"
+                    android:textSize="30px" />
+
+                <TextView
+                    android:id="@+id/tv_chatmain_focusnum_sel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="100"
+                    android:textColor="@color/tv_chatblue"
+                    android:textSize="25px" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!--可滑动的布局内容-->
+        <android.support.v4.view.ViewPager
+            android:id="@+id/chat_vp_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <!-- 以上围观区-->
+
+    <FrameLayout
+        android:id="@+id/fl_chatmain_giftpop"
+        android:layout_width="fill_parent"
+        android:layout_height="328px"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible">
+
+    </FrameLayout>
+
+    <!-- 聊天框容器-->
+    <LinearLayout
+        android:id="@+id/chatlooker_container_input"
+        android:layout_width="fill_parent"
+        android:layout_height="97px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bg_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <!-- 对话大师-->
+        <LinearLayout
+            android:id="@+id/container_chatlooker_talkaugur"
+            android:layout_width="600px"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+
+            <ImageView
+                android:id="@+id/iv_chatlooker_voice"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:padding="15px"
+                android:src="@drawable/voice" />
+
+            <ImageView
+                android:id="@+id/iv_chatlooker_key"
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:padding="15px"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/et_chatlooker_input"
+                android:layout_width="425px"
+                android:layout_height="65px"
+                android:background="@color/bg_gray"
+                android:drawableRight="@drawable/divinatetalk"
+                android:gravity="center_vertical"
+                android:hint="对话大师"
+                android:imeOptions="actionSend"
+                android:maxLines="2"
+                android:paddingLeft="22px"
+                android:paddingRight="22px"
+                android:textColor="@color/tv_gray9"
+                android:textSize="24px" />
+
+            <ImageView
+                android:id="@+id/iv_chatlooker_sendpic"
+                android:layout_width="96px"
+                android:layout_height="96px"
+                android:padding="28px"
+                android:src="@drawable/sendpic" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_chatlooker_talkall"
+            android:layout_width="600px"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/et_chatlooker_lookerinput"
+                android:layout_width="600px"
+                android:layout_height="64px"
+                android:layout_gravity="center"
+                android:background="@color/bg_gray"
+                android:drawableRight="@drawable/alltalk"
+                android:hint="围观评论"
+                android:imeOptions="actionSend"
+                android:maxLines="2"
+                android:paddingLeft="20px"
+                android:paddingRight="20px"
+                android:textColor="@color/tv_gray9"
+                android:textSize="24px" />
+
+        </LinearLayout>
+        <!--赠送礼物-->
+        <LinearLayout
+            android:layout_width="120px"
+            android:layout_height="97px"
+            android:background="@color/bg_red"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_chatlooker_givegift"
+                android:layout_width="48px"
+                android:layout_height="48px"
+                android:layout_gravity="center"
+                android:background="@drawable/selector_gift_bg"
+                android:src="@drawable/givegift" />
+        </LinearLayout>
+    </LinearLayout>
+    <!--以上是输入框 文字 语音-->
+
+</RelativeLayout>
+

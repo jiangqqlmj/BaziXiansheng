@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+    <!--水平方向 recycleView-->
+    <com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="220px"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_chatqueue"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+    </com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout>
+
+    <View
+        android:layout_width="680px"
+        android:layout_height="1px"
+        android:layout_gravity="clip_horizontal"
+        android:background="#E6DFDB" />
+    <!-- 排队说明-->
+    <RelativeLayout
+        android:id="@+id/rl_queue_intro"
+        android:layout_width="fill_parent"
+        android:layout_height="165px"
+        android:gravity="center_vertical"
+        android:paddingLeft="20px"
+        android:paddingRight="20px">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已有"
+                android:textColor="@color/tv_gray6"
+                android:textSize="28px" />
+
+            <TextView
+                android:id="@+id/tv_queue_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#cf181d"
+                android:textSize="28px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="人排队"
+                android:textColor="@color/tv_gray6"
+                android:textSize="28px" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_add_queue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_btn_small"
+            android:paddingBottom="18px"
+            android:paddingLeft="43px"
+            android:paddingRight="43px"
+            android:paddingTop="18px"
+            android:text="我也要排个队"
+            android:textColor="@color/tv_white"
+            android:textSize="28px" />
+    </RelativeLayout>
+
+</LinearLayout>
+
+

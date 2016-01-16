@@ -1,0 +1,459 @@
+package com.example.administrator.bazipaipan.me.view.fragment;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.administrator.bazipaipan.R;
+import com.example.administrator.bazipaipan.login.model.MyUser;
+import com.example.administrator.bazipaipan.me.MeContainerActivity;
+import com.example.administrator.bazipaipan.utils.changehead.Tools;
+import com.example.administrator.bazipaipan.utils.cityutils.CityPicker;
+import com.example.administrator.bazipaipan.widget.DateTimePickDialogUtil;
+import com.example.administrator.bazipaipan.widget.WheelView;
+
+import java.io.File;
+import java.util.Arrays;
+
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.UpdateListener;
+
+import static com.example.administrator.bazipaipan.R.id.btn_edit_updateinfo;
+
+/**
+ * Created by 王中阳 on 2015/12/16.
+ */
+public class EditInfoFragment extends Fragment implements View.OnClickListener {
+    public static final String TAG = "EditInfoFragment";
+    private MeContainerActivity mycontext;
+    //出生日期
+    private String initEndDateTime = "2000年1月1日 0:00"; // 初始化时间
+    //城市选择器
+    TextView tv_birthday, tv_city;
+    private View areaPopView;
+    private PopupWindow areaPopWindow;
+    private CityPicker cityPicker;
+    private String areaCode;
+    //点击更换头像
+    ImageView iv_head;
+    private String[] items = new String[]{"选择本地图片", "拍照"};
+    File tempFile;
+    /* 头像名称 */
+    private static final String IMAGE_FILE_NAME = "faceImage.jpg";
+    /* 请求码 */
+    private static final int IMAGE_REQUEST_CODE = 0;
+    private static final int CAMERA_REQUEST_CODE = 1;
+    private static final int RESULT_REQUEST_CODE = 2;
+    //取消  应该是系统返回的值
+    private static final int RESULT_CANCELED = 0;
+    //保存修改
+    Button btn_update;
+    String username, sex, birthday, city, sign;
+    //性别
+    TextView tv_edit_sex;
+    private static final String[] SEXS = new String[]{"男", "女"};
+    //用户名
+    private EditText et_username, et_sign;
+
+
+    public EditInfoFragment() {
+
+    }
+
+    public static EditInfoFragment newInstance() {
+        EditInfoFragment fragment = new EditInfoFragment();
+        return fragment;
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.mycontext = (MeContainerActivity) context;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initviews();
+        initPupupWindow();
+    }
+
+
+    private void initPupupWindow() {
+        areaPopView = mycontext.getLayoutInflater().inflate(R.layout.pop_layout, null);
+        areaPopWindow = new PopupWindow(areaPopView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
+        areaPopWindow.setBackgroundDrawable(new BitmapDrawable(getResources(), (Bitmap) null));
+        areaPopWindow.setOutsideTouchable(true);
+    }
+
+    private void initviews() {
+        //
+        et_sign = (EditText) mycontext.findViewById(R.id.et_input_sign);
+
+        et_username = (EditText) mycontext.findViewById(R.id.et_edit_username);
+        //
+        tv_edit_sex = (TextView) mycontext.findViewById(R.id.tv_edit_sex);
+        tv_edit_sex.setOnClickListener(this);
+        btn_update = (Button) mycontext.findViewById(btn_edit_updateinfo);
+        btn_update.setOnClickListener(this);
+        tv_birthday = (TextView) mycontext.findViewById(R.id.tv_editdata_birthday);
+        tv_birthday.setOnClickListener(this);
+        tv_city = (TextView) mycontext.findViewById(R.id.tv_editdata_city);
+        tv_city.setOnClickListener(this);
+        cityPicker = (CityPicker) mycontext.findViewById(R.id.citypicker);
+        iv_head = (ImageView) mycontext.findViewById(R.id.iv_edit_change_myhead);
+        //非网络头像处理
+        String user_type = (String) BmobUser.getObjectByKey(mycontext, "type");
+        if (user_type.equals("1")) {
+            iv_head.setImageResource(R.drawable.guest_head_me);
+        } else {
+            iv_head.setImageResource(R.drawable.augur_head_me);
+        }
+        //从网络中获取头像进行替换
+        iv_head.setOnClickListener(this);
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.content_edit_data, null);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            //sex
+            case R.id.tv_edit_sex:
+                View outerView = LayoutInflater.from(mycontext).inflate(R.layout.wheel_view, null);
+                WheelView wv = (WheelView) outerView.findViewById(R.id.wheel_view_wv);
+                wv.setOffset(1);
+                wv.setItems(Arrays.asList(SEXS));
+                wv.setSeletion(2);
+                wv.setOnWheelViewListener(new WheelView.OnWheelViewListener() {
+                    @Override
+                    public void onSelected(int selectedIndex, String item) {
+                        Log.e("datas", "selectedIndex" + selectedIndex + "   item" + item);
+                        if (selectedIndex == 1) {
+                            tv_edit_sex.setText("男");
+                        } else if (selectedIndex == 2) {
+                            tv_edit_sex.setText("女");
+                        } else {
+                            tv_edit_sex.setText("女");
+                        }
+                    }
+
+                });
+
+                new AlertDialog.Builder(mycontext)
+                        .setTitle("选择性别")
+                        .setView(outerView)
+                        .setPositiveButton("OK", null)
+                        .show();
+
+                break;
+            //出生日期
+            case R.id.tv_editdata_birthday:
+                DateTimePickDialogUtil dateTimePicKDialog = new DateTimePickDialogUtil(
+                        mycontext, initEndDateTime);
+                dateTimePicKDialog.dateTimePicKDialog(tv_birthday);
+                break;
+            //选择城市
+            case R.id.tv_editdata_city:
+                showPopWindow(v);
+                break;
+            //换头像
+            case R.id.iv_edit_change_myhead:
+                showDialog();
+                break;
+
+            //保存修改（更新user数据） 只能根据object id修改
+            case R.id.btn_edit_updateinfo:
+                final MyUser newuser = new MyUser();
+                username = et_username.getText().toString();
+                sex = tv_edit_sex.getText().toString();
+                birthday = tv_birthday.getText().toString();
+                city = tv_city.getText().toString();
+                sign = et_sign.getText().toString();
+                final BmobUser bmobuser = BmobUser.getCurrentUser(mycontext,
+                        MyUser.class);
+                newuser.setUsername(username);
+                newuser.setSex(sex);
+                newuser.setBirthday(birthday);
+                newuser.setCity(city);
+                newuser.setSign(sign);
+                //更新
+                newuser.update(mycontext, bmobuser.getObjectId(), new UpdateListener() {
+
+                    @Override
+                    public void onSuccess() {
+                        // TODO Auto-generated method stub
+                        Log.i("bmob", "更新成功：");
+                        mycontext.toast("修改成功");
+                    }
+
+                    @Override
+                    public void onFailure(int code, String msg) {
+                        // TODO Auto-generated method stub
+                        Log.i("bmob", "更新失败：" + msg);
+                        mycontext.toast("修改失败");
+                    }
+                });
+                break;
+        }
+    }
+
+    //以下是换头像方法
+
+    /**
+     * 显示换头像的dialog
+     */
+    private void showDialog() {
+
+        new AlertDialog.Builder(mycontext)
+                .setTitle("设置头像")
+                .setItems(items, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case 0:
+                                Intent intentFromGallery = new Intent();
+                                intentFromGallery.setType("image/*"); // 设置文件类型
+                                intentFromGallery
+                                        .setAction(Intent.ACTION_GET_CONTENT);
+                                startActivityForResult(intentFromGallery,
+                                        IMAGE_REQUEST_CODE);
+                                break;
+                            case 1:
+
+                                Intent intentFromCapture = new Intent(
+                                        MediaStore.ACTION_IMAGE_CAPTURE);
+                                // 判断存储卡是否可以用，可用进行存储
+                                if (Tools.hasSdcard()) {
+
+                                    intentFromCapture.putExtra(
+                                            MediaStore.EXTRA_OUTPUT,
+                                            Uri.fromFile(new File(Environment
+                                                    .getExternalStorageDirectory(),
+                                                    IMAGE_FILE_NAME)));
+                                }
+                                //虚拟机上拍照会崩溃
+                                startActivityForResult(intentFromCapture,
+                                        CAMERA_REQUEST_CODE);
+                                break;
+                        }
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //结果码不等于取消时候
+        if (resultCode != RESULT_CANCELED) {
+//            Bitmap mBitmap = (Bitmap) data.getExtras().get("data");
+//            mBitmap = BitmapUtil.getBitmap(mBitmap, 50);
+//            File localimg = new File(Environment.getExternalStorageDirectory().getAbsoluteFile(), "srcs");
+//            if (!localimg.exists()) {
+//                localimg.mkdirs();
+//            }
+//            File iconfile = new File(localimg.getAbsolutePath() + "/usericon.jpg");
+//            if (iconfile.exists()) {
+//                iconfile.delete();
+//            }
+//            OutputStream out = null;
+//            try {
+//                out = new FileOutputStream(iconfile);
+//            } catch (FileNotFoundException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//            //2bitmap压缩
+//            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+//            final MyUser myUser = new MyUser();
+//            new BmobFile(iconfile).upload(mycontext,
+//                    new UploadFileListener() {
+//
+//                        @Override
+//                        public void onSuccess() {
+//                            // TODO Auto-generated method stub
+//                            myUser.update(mycontext,
+//                                    BmobUser.getCurrentUser(mycontext)
+//                                            .getObjectId(),
+//                                    new UpdateListener() {
+//
+//                                        @Override
+//                                        public void onSuccess() {
+//                                            // TODO Auto-generated method
+//                                            mycontext.toast("更新头像成功");
+////                                            iv_head.setImageBitmap(bitmap1);
+//                                        }
+//
+//                                        @Override
+//                                        public void onFailure(int arg0,
+//                                                              String arg1) {
+//                                            // TODO Auto-generated method
+//                                            mycontext.toast("头像更新失败");
+//                                        }
+//                                    });
+//
+//                        }
+//
+//                        @Override
+//                        public void onFailure(int arg0, String arg1) {
+//                            // TODO Auto-generated method stub
+//                            mycontext.toast("UploadFile 失败");
+//                        }
+//                    });
+
+            //判断条件
+            switch (requestCode) {
+                case IMAGE_REQUEST_CODE:
+                    startPhotoZoom(data.getData());
+                    break;
+                case CAMERA_REQUEST_CODE:
+                    if (Tools.hasSdcard()) {
+                        //文件
+                        tempFile = new File(
+                                Environment.getExternalStorageDirectory()
+                                        + IMAGE_FILE_NAME);
+                        //临时文件
+                        startPhotoZoom(Uri.fromFile(tempFile));
+                    } else {
+                        Toast.makeText(mycontext, "未找到存储卡，无法存储照片！",
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                    break;
+                case RESULT_REQUEST_CODE:
+                    if (data != null) {
+                        getImageToView(data);
+                    }
+                    break;
+            }
+        }
+    }
+
+    /**
+     * 裁剪图片方法实现
+     *
+     * @param uri
+     */
+
+    public void startPhotoZoom(Uri uri) {
+
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(uri, "image/*");
+        // 设置裁剪
+        intent.putExtra("crop", "true");
+        // aspectX aspectY 是宽高的比例
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        // outputX outputY 是裁剪图片宽高
+        intent.putExtra("outputX", 320);
+        intent.putExtra("outputY", 320);
+        intent.putExtra("return-data", true);
+        //把文件压缩保存到本地sdcard
+        startActivityForResult(intent, 2);
+    }
+
+    /**
+     * 保存裁剪之后的图片数据
+     */
+    private void getImageToView(Intent data) {
+        Bundle extras = data.getExtras();
+        if (extras != null) {
+            Bitmap photo = extras.getParcelable("data");
+            Drawable drawable = new BitmapDrawable(photo);
+            //faceImage是头像
+            iv_head.setImageDrawable(drawable);
+            //保存到服务器
+
+        }
+    }
+
+    //    以上是修改头像方法
+
+    private void showPopWindow(View view) {
+        if (areaPopWindow == null) {
+            initPupupWindow();
+        }
+        cityPicker = (CityPicker) areaPopView.findViewById(R.id.citypicker);
+        areaPopView.findViewById(R.id.tv_ok).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                areaCode = cityPicker.getCity_code_string();
+                tv_city.setText(cityPicker.getCity_string());
+
+                Log.i(TAG, "地区码：" + areaCode + "，地区名：" + cityPicker.getCity_string());
+                dismissPopWindow();
+            }
+        });
+        areaPopView.findViewById(R.id.tv_cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismissPopWindow();
+            }
+        });
+
+        areaPopWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+    }
+
+    public void dismissPopWindow() {
+        if (areaPopWindow != null && areaPopWindow.isShowing()) {
+            areaPopWindow.dismiss();
+        }
+    }
+}

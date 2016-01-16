@@ -1,0 +1,93 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/bg_brown</item>
+        <item name="colorPrimaryDark">@color/brown</item>
+        <!--下方 更改checkbox color-->
+        <item name="colorAccent">@color/bg_brown</item>
+        <item name="android:listDivider">@color/listDivider</item>
+        <item name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
+    </style>
+
+    <!--优化标题栏的显示-->
+    <style name="Sn1.Widget.ActionMode" parent="@android:style/Theme.Holo">
+        <item name="android:actionModeBackground">@color/bg_brown</item>
+        <item name="android:actionModeCloseDrawable">@drawable/back</item>
+        <item name="android:actionModeCloseButtonStyle">@null</item>
+        <item name="android:actionBarStyle">@style/Sn1.Widget.ActionBar.None</item>
+    </style>
+
+    <style name="Sn1.Widget.ActionBar.None" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:displayOptions"></item>
+        <item name="android:height">37dp</item>
+        <!--<item name="android:textStyle">@style/text_title_white</item>-->
+    </style>
+
+    <!--标题menu的文字设置-->
+    <style name="MenuTextStyle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+
+    <!--    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">-->
+    <!-- Customize your theme here. -->
+    <!--</style>-->
+
+    <!--仿iphone switchbtn-->
+    <style name="SwitchButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <!--进度条相关-->
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/linearlayout_corner_round</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!--所有页面公共部分抽取-->
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <!-- appbar相关-->
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <!-- actionbar的标题文字样式-->
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <!--首页tabview切换之自定义效果-->
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/MyCustomTabText</item>
+        <item name="tabSelectedTextColor">@color/bill_tab_selected</item>
+        <item name="tabIndicatorColor">@android:color/white</item>
+        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+    </style>
+    <!--tablayout自定义字体-->
+    <style name="MyCustomTabText" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+</resources>

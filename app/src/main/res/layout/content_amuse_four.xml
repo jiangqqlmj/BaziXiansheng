@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:background="#C48D4D"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="31px"
+            android:src="@drawable/back" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="52px"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:text="评论"
+                android:textColor="#ffffff"
+                android:textSize="22sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fv_amuse"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+
+    </com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:background="@color/tv_gray" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="99px"
+            android:layout_gravity="bottom"
+            android:background="@color/bg_white"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/et_my_comment"
+                android:layout_width="571px"
+                android:layout_height="66px"
+                android:layout_marginBottom="17px"
+                android:layout_marginLeft="20px"
+                android:layout_marginTop="14px"
+                android:background="@drawable/shape_container"
+                android:hint="我来评论两句....."
+                android:imeOptions="actionSend"
+                android:maxLines="2"
+                android:paddingLeft="20px"
+                android:singleLine="true"
+
+                android:textColor="@color/tv_gray"
+                android:textColorHint="@color/bg_gray"
+                android:textSize="24px" />
+
+            <ImageView
+                android:id="@+id/iv_share_btn"
+                android:layout_width="48px"
+                android:layout_height="48px"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="33px"
+                android:clickable="true"
+                android:src="@drawable/share" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

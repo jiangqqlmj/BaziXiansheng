@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3349ef</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#f26c4f</color>
+    <color name="colorLine">#100964</color>
+    <color name="bill_detail_car">#5867f0</color>
+    <color name="bill_detail_left">#313131</color>
+    <color name="bill_detail_right_hint">#a0a0a0</color>
+    <color name="phone_line">#c9c9c9</color>
+    <color name="dialog_bg">#222222</color>
+    <color name="bill_tab_selected">#adb3f7</color>
+
+
+    <color name="dividerColor">#dedede</color>
+    <color name="dividerColorNew">#3349ef</color>
+    <color name="divider_setting">#c9c9c9</color>
+    <color name="listDivider">#313131</color>
+    <color name="colorBg">#f5f5f5</color>
+    <color name="colorBgNew">#eeeeee</color>
+    <color name="setting_bg">#222222</color>
+    <color name="item_line">#c9c9c9</color>
+    <color name="item_line_nav">#535353</color>
+
+    <color name="progressbar">#566da9</color>
+
+    <color name="red">#FFC93437</color>
+    <color name="black">#000000</color>
+    <color name="blue">#FF375BF1</color>
+    <color name="tv_blue">#3349ef</color>
+    <color name="switch_btn">#3349ee</color>
+    <color name="tv_gray">#A0A0A0</color>
+    <color name="tv_white">#ffffff</color>
+    <color name="tv_black">#3E3A39</color>
+    <color name="tv_residue">#1b1b1b</color>
+    <color name="item_tv_black">#313131</color>
+    <color name="btn_tv_white">#fefefe</color>
+    <color name="tv_green">#19d252</color>
+    <color name="tv_red">#FF0000</color>
+    <color name="yellow">#FFF7D23E</color>
+    <color name="green">#FF34A350</color>
+    <color name="white">#ffffff</color>
+
+    <color name="charging_success">#19d252</color>
+    <color name="charging_fail">#f26c4f</color>
+
+    <!--新色值-->
+    <color name="brown">#C48D4D</color>
+
+</resources>

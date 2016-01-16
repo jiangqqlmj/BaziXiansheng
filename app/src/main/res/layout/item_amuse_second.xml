@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/container_amsue_second"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="40px"
+        android:alpha="0.9"
+        android:background="@color/bg_green"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_amuse_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="65px"
+            android:ellipsize="end"
+            android:padding="@dimen/dimen_5dp"
+            android:singleLine="true"
+            android:text="国民老公的八字是什么样的？"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/dimen_22sp" />
+
+
+        <TextView
+            android:id="@+id/tv_introduce_amuse_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30px"
+            android:ellipsize="end"
+            android:padding="@dimen/dimen_5dp"
+            android:singleLine="true"
+            android:text="这位单生汪，上辈子是平西王府二公子，风流倜傥，气宇轩昂。"
+            android:textColor="@color/bg_gray"
+            android:textSize="@dimen/dimen_12sp" />
+
+        <!--
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:layout_marginTop="43px"
+            android:background="@color/bg_white" />
+        -->
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20px"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:layout_marginTop="34px"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_comment_num_amuse_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableLeft="@drawable/comment"
+                    android:drawablePadding="9px"
+                    android:gravity="center"
+                    android:text="256"
+                    android:textColor="@color/bg_white"
+                    android:textSize="@dimen/dimen_12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/dimen_0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/looker_num_amuse_second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/head_amuse"
+                    android:drawablePadding="11px"
+                    android:gravity="center"
+                    android:text="2563"
+                    android:textColor="@color/bg_white"
+                    android:textSize="@dimen/dimen_12sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="人围观过"
+                    android:textColor="@color/bg_white"
+                    android:textSize="@dimen/dimen_12sp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

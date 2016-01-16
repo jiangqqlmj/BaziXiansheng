@@ -1,0 +1,160 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container_content_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+    <!-- 注册登录的布局-->
+
+    <ImageView
+        android:id="@+id/login_cancel"
+        android:layout_width="28px"
+        android:layout_height="28px"
+        android:layout_margin="32px"
+        android:src="@drawable/login_cancel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="170px"
+        android:text="欢迎拜访八字先生"
+        android:textColor="#c48d4d"
+        android:textSize="50px" />
+
+
+    <EditText
+        android:id="@+id/et_input_phone_num"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="336px"
+        android:background="@drawable/shape_container"
+        android:hint="手机号码"
+        android:numeric="integer"
+        android:padding="20px"
+        android:singleLine="true"
+        android:textColorHint="@color/hint_input_gray" />
+
+    <Button
+        android:id="@+id/btn_get_verification"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/selector_btn_small"
+        android:text="验证码"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/container_login_verification"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_input_phone_num"
+        android:layout_margin="20px"
+        android:background="@drawable/shape_container"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_input_verification"
+            android:layout_width="0dp"
+            android:layout_height="88px"
+            android:layout_below="@+id/register_input_phone_num"
+            android:layout_weight="2.5"
+            android:background="@null"
+            android:hint="验证码"
+            android:numeric="integer"
+            android:padding="20px"
+            android:singleLine="true"
+            android:textColorHint="@color/hint_input_gray" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="40px"
+            android:layout_gravity="center_vertical"
+            android:background="#dcdcdc"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/getverification_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20px"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="获取验证码"
+            android:textColor="@color/tv_brown"
+            android:textSize="28px" />
+
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/et_input_password"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_5dp"
+        android:background="@drawable/shape_container"
+        android:hint="输入密码"
+        android:inputType="numberPassword"
+        android:visibility="gone" />
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_5dp"
+        android:layout_marginTop="@dimen/dimen_5dp"
+        android:background="@drawable/shape_container"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimen_10dp"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/rb_guest"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="命主身份登录" />
+
+        <RadioButton
+            android:id="@+id/rb_augur"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:text="大师身份登录" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_btn_small"
+        android:text="密码登录"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_login_sign"
+        android:layout_width="fill_parent"
+        android:layout_height="92px"
+        android:layout_below="@+id/container_login_verification"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:background="@drawable/selector_btn_small"
+        android:text="登录"
+        android:textColor="@color/tv_white"
+        android:textSize="32px" />
+
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_login_sign"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38px"
+        android:text="注册命主"
+        android:textColor="#c48d4d"
+        android:textSize="28px"
+        android:visibility="gone" />
+</RelativeLayout>

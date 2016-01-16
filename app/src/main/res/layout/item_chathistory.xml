@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10px"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.example.administrator.bazipaipan.utils.MyImageView
+        android:id="@+id/iv_chathistory_head"
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@drawable/augur_head" />
+
+</LinearLayout>

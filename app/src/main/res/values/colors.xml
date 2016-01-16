@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--syq-->
+    <color name="colorPrimary">#C48D4D</color>
+    <color name="colorPrimaryDark">#C48D4D</color>
+    <color name="listDivider">#313131</color>
+    <!-- 八字-->
+    <color name="brown">#C48D4D</color>
+    <color name="bg_brown">#C48D4D</color>
+    <color name="bg_search">#9a611f</color>
+    <color name="bg_red">#CF181D</color>
+    <color name="bg_gray">#EFEEEC</color>
+    <color name="bg_pay">#EFEEED</color>
+    <color name="bg_white">#FFFFFF</color>
+    <color name="bg_purple">#9195C2</color>
+    <color name="bg_black">#030305</color>
+    <color name="bg_green">#8FC4A6</color>
+
+
+    <color name="tv_black">#000000</color>
+    <color name="hint_input_gray">#c4c4c4</color>
+    <color name="tv_blue">#244C7D</color>
+    <color name="tv_gray">#929292</color>
+    <color name="tv_grayc3">#c3c3c3</color>
+    <color name="tv_gray6">#666666</color>
+    <color name="tv_brown">#C48D4D</color>
+    <color name="tv_recharge">#cc9966</color>
+    <color name="tv_white">#ffffff</color>
+    <color name="button_tv">#ffffff</color>
+    <!-- chat-->
+    <color name="bg_blue">#214778</color>
+    <color name="tv_chatblue">#4272b0</color>
+    <color name="tv_chatgold">#c48d4d</color>
+    <color name="tv_chatlooker_username">#333333</color>
+    <color name="tv_chat_black3">#333333</color>
+    <color name="tv_chatlooker_comment">#666666</color>
+    <color name="tv_chatcontri_no">#666666</color>
+    <color name="tv_tintblack">#666666</color>
+    <color name="tv_chatgray">#999999</color>
+    <color name="tv_chatgray9">#999999</color>
+    <color name="tv_gray9">#999999</color>
+    <color name="bg_chatgray">#999999</color>
+    <color name="bg_alpha_tophistory">#000000</color>
+
+
+</resources>

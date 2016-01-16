@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="88px"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_suggestion"
+        android:layout_width="fill_parent"
+        android:layout_height="260px"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="20px"
+        android:background="@drawable/shape_container"
+        android:gravity="start"
+        android:hint="请详细写下您的建议和感想吧"
+        android:padding="25px"
+        android:textColor="@color/tv_black"
+        android:textSize="28px" />
+
+    <EditText
+        android:id="@+id/et_contactway"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="20px"
+        android:background="@drawable/shape_container"
+        android:gravity="start"
+        android:hint="手机/QQ或邮箱(选填)"
+        android:padding="25px"
+        android:textColor="@color/tv_black"
+        android:textSize="28px" />
+
+    <Button
+        android:id="@+id/btn_suggestion_commit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20px"
+        android:background="@drawable/selector_btn_small"
+        android:text="提交"
+        android:textColor="@color/button_tv"
+        android:textSize="28px" />
+
+
+</LinearLayout>

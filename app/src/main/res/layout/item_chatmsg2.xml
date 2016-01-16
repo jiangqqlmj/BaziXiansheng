@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center|right"
+    android:orientation="horizontal"
+
+    android:padding="@dimen/dimen_16dp">
+
+
+    <TextView
+        android:id="@+id/tv_chatmsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20px"
+        android:text="华东段子手"
+        android:textColor="@color/tv_chatlooker_username"
+        android:textSize="@dimen/dimen_20sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.example.administrator.bazipaipan.utils.MyImageView
+            android:id="@+id/iv_useravator"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:src="@drawable/augur_head" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10px"
+            android:gravity="center"
+            android:text="jason"
+            android:textColor="@color/tv_black" />
+    </LinearLayout>
+
+</LinearLayout>

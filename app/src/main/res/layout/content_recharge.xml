@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:background="@color/bg_white"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="70px"
+            android:layout_height="70px"
+            android:layout_marginBottom="13px"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="20px"
+            android:scaleType="centerCrop"
+            android:src="@drawable/recharge_ton" />
+
+        <TextView
+            android:id="@+id/current_gold_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:padding="@dimen/dimen_5dp"
+            android:text="50"
+            android:textSize="28px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="个金币"
+            android:textSize="28px" />
+
+    </LinearLayout>
+
+    <!--<FrameLayout-->
+    <!--android:id="@+id/fl_contaienr_recharge"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"></FrameLayout>-->
+
+    <com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20px"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_recharge"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_white" />
+
+    </com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout>
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/one_hundred"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="@dimen/dimen_85dp"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_marginTop="@dimen/dimen_20dp"-->
+    <!--android:background="@color/bg_white"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/dimen_5dp">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10dp"-->
+    <!--android:layout_marginTop="@dimen/dimen_10dp"-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:src="@drawable/recharge_money" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_marginLeft="@dimen/dimen_50dp"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/dimen_12dp"-->
+    <!--android:text="1200 金币"-->
+    <!--android:textColor="@color/tv_black"-->
+    <!--android:textSize="@dimen/dimen_20sp" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:drawableLeft="@drawable/yang"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/dimen_10dp"-->
+    <!--android:text="100元"-->
+    <!--android:textColor="@color/tv_recharge"-->
+    <!--android:textSize="@dimen/dimen_20sp" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/fifty"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="@dimen/dimen_85dp"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_marginTop="@dimen/dimen_1dp"-->
+    <!--android:background="@color/bg_white"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/dimen_5dp">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10dp"-->
+    <!--android:layout_marginTop="@dimen/dimen_10dp"-->
+    <!--android:src="@drawable/recharge_money" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_marginLeft="@dimen/dimen_50dp"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/dimen_12dp"-->
+    <!--android:text="550 金币"-->
+    <!--android:textColor="@color/tv_black"-->
+    <!--android:textSize="@dimen/dimen_20sp" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:drawableLeft="@drawable/yang"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/dimen_10dp"-->
+    <!--android:text="50元"-->
+    <!--android:textColor="@color/tv_recharge"-->
+    <!--android:textSize="@dimen/dimen_20sp" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/twenty"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="@dimen/dimen_85dp"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_marginTop="@dimen/dimen_1dp"-->
+    <!--android:background="@color/bg_white"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/dimen_5dp">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10dp"-->
+    <!--android:layout_marginTop="@dimen/dimen_10dp"-->
+    <!--android:src="@drawable/recharge_money" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_marginLeft="@dimen/dimen_50dp"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/dimen_12dp"-->
+    <!--android:text="210 金币"-->
+    <!--android:textColor="@color/tv_black"-->
+    <!--android:textSize="@dimen/dimen_20sp" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:drawableLeft="@drawable/yang"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/dimen_10dp"-->
+    <!--android:text="20元"-->
+    <!--android:textColor="@color/tv_recharge"-->
+    <!--android:textSize="@dimen/dimen_20sp" />-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/ten"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="@dimen/dimen_85dp"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_marginTop="@dimen/dimen_1dp"-->
+    <!--android:background="@color/bg_white"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/dimen_5dp">-->
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10dp"-->
+    <!--android:layout_marginTop="@dimen/dimen_10dp"-->
+    <!--android:src="@drawable/recharge_money" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_marginLeft="@dimen/dimen_50dp"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/dimen_12dp"-->
+    <!--android:text="100 金币"-->
+    <!--android:textColor="@color/tv_black"-->
+    <!--android:textSize="@dimen/dimen_20sp" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:drawableLeft="@drawable/yang"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/dimen_10dp"-->
+    <!--android:text="10元"-->
+    <!--android:textColor="@color/tv_recharge"-->
+    <!--android:textSize="@dimen/dimen_20sp" />-->
+
+    <!--</RelativeLayout>-->
+
+</LinearLayout>

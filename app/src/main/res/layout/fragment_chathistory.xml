@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_container_chathistory"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="#99000000"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <!--水平方向 recycleView-->
+    <!--    <com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/swipe_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_200dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+    <TextView
+        android:id="@+id/tv_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:text="已算过:"
+        android:textColor="@color/tv_white"
+        android:textSize="28px" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_chathistory"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+    <!--</com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout>-->
+
+</LinearLayout>
+
+

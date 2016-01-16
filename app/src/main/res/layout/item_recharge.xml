@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1px"
+    android:orientation="vertical"
+    android:padding="10px">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="90px"
+        android:background="@color/bg_white"
+        android:gravity="center_vertical">
+
+
+        <ImageView
+            android:id="@+id/iv_recharge_money"
+            android:layout_width="26px"
+            android:layout_height="27px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="37px"
+            android:scaleType="fitXY"
+            android:src="@drawable/recharge_money" />
+
+        <TextView
+            android:id="@+id/tv_coinnum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40px"
+            android:layout_toRightOf="@+id/iv_recharge_money"
+            android:gravity="center_vertical"
+            android:text="1200 金币"
+            android:textColor="@color/tv_black"
+            android:textSize="28px" />
+
+        <TextView
+            android:id="@+id/tv_rechargenum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="20px"
+            android:drawableLeft="@drawable/yang"
+            android:gravity="center_vertical"
+            android:text="100元"
+            android:textColor="@color/tv_recharge"
+            android:textSize="28px" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="20px"
+        android:background="@color/tv_gray9" />
+
+</LinearLayout>

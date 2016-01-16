@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_16dp">
+
+    <com.example.administrator.bazipaipan.utils.MyImageView
+        android:id="@+id/iv_chatqueue_head"
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:src="@drawable/augur_head" />
+
+    <TextView
+        android:id="@+id/tv_chatqueue_username"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5px"
+        android:gravity="center"
+        android:text="海大师"
+        android:textColor="@color/tv_brown"
+        android:textSize="20px" />
+
+</LinearLayout>
