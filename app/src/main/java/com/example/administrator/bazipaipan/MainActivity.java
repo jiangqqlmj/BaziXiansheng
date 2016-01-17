@@ -38,7 +38,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import cn.bmob.v3.Bmob;
 
-public class MainActivity extends MyActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
     private String content[];
     private int img[];
@@ -73,7 +73,7 @@ public class MainActivity extends MyActivity implements View.OnClickListener, Vi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mymain);
         mycontext = this;
         showmenu = true;
         Bmob.initialize(this, "f93db7bdfd1f0c1657b956588038115f");
@@ -144,7 +144,7 @@ public class MainActivity extends MyActivity implements View.OnClickListener, Vi
                 Intent intent = new Intent();
                 intent.setClass(mycontext, MeContainerActivity.class);
                 if (position == 0) {
-                    intent.putExtra(MyActivity.PAGETO, RechargeFragment.TAG);
+                    intent.putExtra(BaseActivity.PAGETO, RechargeFragment.TAG);
                     startActivity(intent);
                 } else if (position == 1) {
                     changeItem(3);

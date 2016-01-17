@@ -25,7 +25,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.amuse.view.activity.activity.AmuseContainerActivity;
 import com.example.administrator.bazipaipan.amuse.view.activity.adapter.AmuseCommentAdapter;
@@ -220,7 +220,7 @@ public class AmuseCommentFragment extends Fragment implements AugurAdapter.IClic
             case R.id.tv_comment_num:
                 Intent intent = new Intent(mycontext, AmuseContainerActivity.class);
                 //还需要传递关联关系
-                intent.putExtra(MyActivity.PAGETO, AmuseCommentDetailFragment.TAG);
+                intent.putExtra(BaseActivity.PAGETO, AmuseCommentDetailFragment.TAG);
                 mycontext.startActivity(intent);
                 break;
 

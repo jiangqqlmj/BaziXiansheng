@@ -13,6 +13,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -98,6 +99,57 @@ public class EditInfoFragment extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
         initviews();
         initPupupWindow();
+        initDatas();
+    }
+
+    //为控件赋初值
+    private void initDatas() {
+        //BmobUser中的特定属性
+        int gold_num;
+        String username = (String) BmobUser.getObjectByKey(mycontext, "username");
+        //MyUser中的扩展属性
+        String user_type = (String) BmobUser.getObjectByKey(mycontext, "type");
+        String sex = (String) BmobUser.getObjectByKey(mycontext, "sex");
+        String city = (String) BmobUser.getObjectByKey(mycontext, "city");
+        String sign = (String) BmobUser.getObjectByKey(mycontext, "sign");
+        String birthday = (String) BmobUser.getObjectByKey(mycontext, "birthday");
+//        BmobFile avatar = (BmobFile) BmobUser.getObjectByKey(mycontext, "avatar");
+
+        if (BmobUser.getObjectByKey(mycontext, "goldNum") != null) {
+            gold_num = (int) BmobUser.getObjectByKey(mycontext, "goldNum");
+        } else {
+            gold_num = 0;
+        }
+        if (TextUtils.isEmpty(username)) {
+            et_username.setText("");  //电话号码
+        } else {
+            et_username.setText(username);  //电话号码
+        }
+        //根据用户类别判断：
+//        if (avatar != null) {
+//
+//        }
+        if (TextUtils.isEmpty(sex + "")) {
+            tv_edit_sex.setText("男");
+        } else {
+            tv_edit_sex.setText(sex + "");
+        }
+        if (TextUtils.isEmpty(birthday + "")) {
+            tv_birthday.setText(initEndDateTime);
+        } else {
+            tv_birthday.setText(birthday + "");
+        }
+        if (TextUtils.isEmpty(city + "")) {
+            tv_city.setText("北京");
+        } else {
+            tv_city.setText(city + "");
+        }
+        if (TextUtils.isEmpty(sign + "")) {
+            et_sign.setText("");
+        } else {
+            et_sign.setText(city + "");
+        }
+
     }
 
 

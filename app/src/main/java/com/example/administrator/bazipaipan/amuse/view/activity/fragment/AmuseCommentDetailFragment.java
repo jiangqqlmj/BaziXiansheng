@@ -189,7 +189,6 @@ public class AmuseCommentDetailFragment extends Fragment implements AmuseAdapter
 //            Intent intent = new Intent(mycontext, AmuseContainerActivity.class);
 //            ChatComment bean = list.get(position);
 //            intent.putExtra(AmuseCommentDetailFragment.EXTRAL_DATA, bean);
-//            intent.putExtra(MyActivity.PAGETO, AmuseDetailFragment.TAG);
 //            mycontext.startActivity(intent);
 //        }
     }

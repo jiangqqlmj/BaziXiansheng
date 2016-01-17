@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/title_back_left"
+            android:layout_marginLeft="31px"
             android:src="@drawable/back" />
 
         <TextView
@@ -29,12 +29,13 @@
             android:padding="5dp"
             android:text="详情页"
             android:textColor="#ffffff"
-            android:textSize="@dimen/title_tv" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_comment_num"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50px"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20px"

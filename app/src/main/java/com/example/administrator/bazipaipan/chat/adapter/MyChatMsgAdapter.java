@@ -46,7 +46,7 @@ public class MyChatMsgAdapter extends BaseAdapter {
         TextMessageBody body = (TextMessageBody) message.getBody();
         if (message.direct == EMMessage.Direct.RECEIVE) {//接收方
             if (message.getType() == EMMessage.Type.TXT) {
-                convertView = LayoutInflater.from(mcontext).inflate(R.layout.item_chatlooker, null);
+                convertView = LayoutInflater.from(mcontext).inflate(R.layout.item_chatmsg, null);
                 username = (TextView) convertView.findViewById(R.id.tv_chatusername);
                 username.setText(message.getFrom());
             }
@@ -54,7 +54,7 @@ public class MyChatMsgAdapter extends BaseAdapter {
             if (message.getType() == EMMessage.Type.TXT) {
                 convertView = LayoutInflater.from(mcontext).inflate(R.layout.item_chatmsg2, null);
                 username = (TextView) convertView.findViewById(R.id.tv_chatusername);
-                username.setText(message.getFrom());
+//                username.setText(message.getFrom());
             }
         }
         msg = (TextView) convertView.findViewById(R.id.tv_chatmsg);

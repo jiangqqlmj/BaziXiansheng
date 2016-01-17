@@ -7,16 +7,13 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:layout_gravity="center"
             android:background="@color/bg_brown"
-            android:gravity="center"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:titleTextAppearance="@style/Toolbar.TitleText">
 
@@ -26,11 +23,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:text="个人中心"
                 android:textColor="#FFF"
-                android:textSize="@dimen/title_tv"
-                android:visibility="gone" />
-
+                android:textSize="34px"
+                android:visibility="invisible" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

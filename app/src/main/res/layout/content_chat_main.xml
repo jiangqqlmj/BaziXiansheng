@@ -15,23 +15,11 @@
         android:visibility="visible">
 
     </FrameLayout>
-    <!--聊天列表-->
-    <!--<com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:id="@+id/swipe_container_chat"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:background="@color/bg_gray"-->
-    <!--android:orientation="vertical"-->
-    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
-    <!--tools:showIn="@layout/activity_chat">-->
 
     <ListView
         android:id="@+id/rv_chat_list"
         android:layout_width="fill_parent"
         android:layout_height="740px" />
-    <!--</com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout>-->
     <!-- 以上 聊天列表-->
 
     <!--围观区 -->

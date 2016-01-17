@@ -7,13 +7,12 @@
 
 
     <LinearLayout
-        android:id="@+id/container_amsue_second"
+        android:id="@+id/container_amuse_second"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20px"
         android:layout_marginRight="20px"
         android:layout_marginTop="40px"
-        android:alpha="0.9"
         android:background="@color/bg_green"
         android:orientation="vertical">
 

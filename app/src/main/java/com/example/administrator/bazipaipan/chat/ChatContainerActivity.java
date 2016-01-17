@@ -32,14 +32,16 @@ import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMConversation;
 import com.easemob.chat.EMMessage;
 import com.easemob.chat.TextMessageBody;
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
+import com.example.administrator.bazipaipan.augur.fragment.AugurFragment;
 import com.example.administrator.bazipaipan.chat.adapter.MyChatMsgAdapter;
 import com.example.administrator.bazipaipan.chat.fragment.ChatContributeFragment;
 import com.example.administrator.bazipaipan.chat.fragment.ChatHistoryFragment;
 import com.example.administrator.bazipaipan.chat.fragment.ChatLookerFragment;
 import com.example.administrator.bazipaipan.chat.fragment.ChatQueueFragment;
 import com.example.administrator.bazipaipan.chat.model.MyChatMsg;
+import com.example.administrator.bazipaipan.utils.BmobUtils;
 import com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout;
 
 import java.util.ArrayList;
@@ -50,7 +52,7 @@ import butterknife.ButterKnife;
 /**
  * Created by 王中阳 on 2015/12/25.
  */
-public class ChatContainerActivity extends MyActivity implements TabLayout.OnTabSelectedListener, View.OnClickListener, TextView.OnEditorActionListener {
+public class ChatContainerActivity extends BaseActivity implements TabLayout.OnTabSelectedListener, View.OnClickListener, TextView.OnEditorActionListener {
     public static final String TAG = "ChatContainerActivity";
     private ChatContainerActivity mycontext;
     //自定义测试
@@ -89,23 +91,28 @@ public class ChatContainerActivity extends MyActivity implements TabLayout.OnTab
     String tochatusername = "1452678871898";
     NewMessageBroadcastReceiver msgReceiver;
     boolean isfirst;
+    //聊天输入框
+    LinearLayout chatlooker_container_input;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
+        setContentView(R.layout.activity_mychat);
         ButterKnife.inject(this);
         mycontext = this;
         initviews();
         //群聊的groupid
 //        tochatusername = this.getIntent().getStringExtra(AugurFragment.AUGURID);
         conversation = EMChatManager.getInstance().getConversation("1452678871898");
+        // 清空会话
+//        EMChatManager.getInstance().clearConversation("1452678871898");
+
         updateUI();
-//        if (BmobUtils.getCurrentUser(mycontext).getType().equals("2")) {//大师  发给顾客
-//            tochatusername = conversation.getUserName();  //谁发给我，我发给谁
-//        } else {//非大师 发给大师
-//            tochatusername = this.getIntent().getStringExtra(AugurFragment.AUGURID);
-//        }
+        if (BmobUtils.getCurrentUser(mycontext).getType().equals("2")) {//大师  发给顾客
+            tochatusername = conversation.getUserName();  //谁发给我，我发给谁
+        } else {//非大师 发给大师
+            tochatusername = this.getIntent().getStringExtra(AugurFragment.AUGURID);
+        }
         //只有注册了广播才能接收到新消息，目前离线消息，在线消息都是走接收消息的广播（离线消息目前无法监听，在登录以后，接收消息广播会执行一次拿到所有的离线消息）
         msgReceiver = new NewMessageBroadcastReceiver();
         IntentFilter intentFilter = new IntentFilter(EMChatManager.getInstance().getNewMessageBroadcastAction());
@@ -119,7 +126,6 @@ public class ChatContainerActivity extends MyActivity implements TabLayout.OnTab
         public void onReceive(Context context, Intent intent) {
             // 注销广播
             abortBroadcast();
-
             // 消息id（每条消息都会生成唯一的一个id，目前是SDK生成）
             String msgId = intent.getStringExtra("msgid");
             //发送方
@@ -189,6 +195,8 @@ public class ChatContainerActivity extends MyActivity implements TabLayout.OnTab
     //---------以上是actionbar
 
     private void initviews() {
+        //输入框
+        chatlooker_container_input = (LinearLayout) findViewById(R.id.chatlooker_container_input);
         //单聊
         et_chatlooker_input = (EditText) findViewById(R.id.et_chatlooker_input);
         et_chatlooker_input.setOnEditorActionListener(this);
@@ -257,12 +265,18 @@ public class ChatContainerActivity extends MyActivity implements TabLayout.OnTab
         switch (i) {
             case 0:
                 chatLookerFragment.onRefresh();
+                //键盘消失
+                chatlooker_container_input.setVisibility(View.VISIBLE);
                 break;
             case 1:
                 chatQueueFragment.onRefresh();
+                //键盘消失
+                chatlooker_container_input.setVisibility(View.GONE);
                 break;
             case 2:
                 chatContributeFragment.onRefresh();
+                //键盘消失
+                chatlooker_container_input.setVisibility(View.GONE);
                 break;
         }
     }

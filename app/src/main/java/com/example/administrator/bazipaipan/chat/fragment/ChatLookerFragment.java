@@ -24,7 +24,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.chat.ChatContainerActivity;
 import com.example.administrator.bazipaipan.chat.adapter.ChatGiftAdapter;
@@ -350,7 +350,7 @@ public class ChatLookerFragment extends Fragment implements ChatLookerAdapter.IC
     private void comRecharge() {
         Intent intent = new Intent();
         intent.setClass(getActivity(), MeContainerActivity.class);
-        intent.putExtra(MyActivity.PAGETO, RechargeFragment.TAG);
+        intent.putExtra(BaseActivity.PAGETO, RechargeFragment.TAG);
         mycontext.startActivity(intent);
     }
 

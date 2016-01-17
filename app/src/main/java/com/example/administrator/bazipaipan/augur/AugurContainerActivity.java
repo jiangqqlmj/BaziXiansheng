@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.amuse.view.activity.fragment.AmuseCommentDetailFragment;
 import com.example.administrator.bazipaipan.amuse.view.activity.fragment.AmuseCommentFragment;
@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
  * 1首页4个模块 以mainactivity为容器
  * 2 4个模块各自创建 activitycontainer作为容器
  */
-public class AugurContainerActivity extends MyActivity {
+public class AugurContainerActivity extends BaseActivity {
     public static final String TAG = "AmuseContainerActivity";
     AmuseDetailFragment amuseDetailFragment;
     //标题栏

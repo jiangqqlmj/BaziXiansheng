@@ -17,7 +17,7 @@ import com.easemob.EMValueCallBack;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupInfo;
 import com.easemob.chat.EMGroupManager;
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.chat.ChatContainerActivity;
 import com.example.administrator.bazipaipan.login.model.MyUser;
@@ -37,7 +37,7 @@ import cn.bmob.v3.listener.FindListener;
  * Created by 王中阳 on 2015/12/16.
  * 搜索user表 username 先写适配器 type 2  userback
  */
-public class SearchContainerActivity extends MyActivity implements MyUserAdapter.IClickListener, SwipeRefreshLayout.OnRefreshListener, TextView.OnEditorActionListener {
+public class SearchContainerActivity extends BaseActivity implements MyUserAdapter.IClickListener, SwipeRefreshLayout.OnRefreshListener, TextView.OnEditorActionListener {
     public static final String TAG = "SearchContainerActivity";
     //2view对象
     private RecyclerView recyclerView;

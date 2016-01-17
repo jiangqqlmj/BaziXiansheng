@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.administrator.bazipaipan.MainActivity;
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.amuse.view.activity.activity.AmuseContainerActivity;
 import com.example.administrator.bazipaipan.amuse.view.activity.adapter.AmuseAdapter;
@@ -156,7 +156,7 @@ public class AmuseFragment extends Fragment implements AmuseAdapter.IClickListen
             Intent intent = new Intent(mycontext, AmuseContainerActivity.class);
             AmuseCategory bean = list.get(position);
 //            intent.putExtra(AmuseFragment.EXTRAL_DATA, bean);
-            intent.putExtra(MyActivity.PAGETO, AmuseDetailFragment.TAG);
+            intent.putExtra(BaseActivity.PAGETO, AmuseDetailFragment.TAG);
             mycontext.startActivity(intent);
         }
     }

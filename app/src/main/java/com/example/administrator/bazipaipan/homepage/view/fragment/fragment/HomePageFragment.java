@@ -1,7 +1,7 @@
 package com.example.administrator.bazipaipan.homepage.view.fragment.fragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,8 +27,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.MainActivity;
-import com.example.administrator.bazipaipan.MyActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.amuse.view.activity.activity.AmuseContainerActivity;
 import com.example.administrator.bazipaipan.amuse.view.activity.fragment.AmuseCommentFragment;
@@ -99,9 +99,9 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
     ImageView btn_nonet;
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        this.mycontext = (MainActivity) context;
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.mycontext = (MainActivity) activity;
     }
 
     @Override
@@ -129,7 +129,7 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_amusenews_list);
         recyclerView.setLayoutManager(new FullyLinearLayoutManager(recyclerView.getContext()));
         //子布局装饰
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         //适配器未装填内容
         mAdapter = new NewsAmuseAdapter(mycontext, this);
         recyclerView.setAdapter(mAdapter);
@@ -253,7 +253,7 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
             AmuseDetail bean = list.get(position);
             //还需要传递关联关系
             intent.putExtra(AmuseFragment.EXTRAL_DATA, bean);
-            intent.putExtra(MyActivity.PAGETO, AmuseCommentFragment.TAG);
+            intent.putExtra(BaseActivity.PAGETO, AmuseCommentFragment.TAG);
             mycontext.startActivity(intent);
         }
     }
@@ -328,7 +328,7 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
             //跳转到江湖
             case R.id.container_toamuse:
                 Intent intentamuse = new Intent(mycontext, MainActivity.class);
-                intentamuse.putExtra(MyActivity.PAGETO, AmuseFragment.TAG);
+                intentamuse.putExtra(BaseActivity.PAGETO, AmuseFragment.TAG);
                 mycontext.startActivity(intentamuse);
                 mycontext.finish();
                 break;
@@ -555,7 +555,7 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
     //跳转到命盘
     public void toMingpan() {
         Intent intent = new Intent(mycontext, HomepageContainerActivity.class);
-        intent.putExtra(MyActivity.PAGETO, MingpanFragment.TAG);
+        intent.putExtra(BaseActivity.PAGETO, MingpanFragment.TAG);
         mycontext.startActivity(intent);
     }
 

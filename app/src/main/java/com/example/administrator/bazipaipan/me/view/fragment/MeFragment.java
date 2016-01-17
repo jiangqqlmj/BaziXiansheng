@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.administrator.bazipaipan.MainActivity;
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.augur.model.Augur;
 import com.example.administrator.bazipaipan.chat.ChatContainerActivity;
@@ -231,19 +231,19 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.btn_me_recharge:
                 intent.setClass(getActivity(), MeContainerActivity.class);
-                intent.putExtra(MyActivity.PAGETO, RechargeFragment.TAG);
+                intent.putExtra(BaseActivity.PAGETO, RechargeFragment.TAG);
                 break;
             case R.id.container_myfocus:
                 intent.setClass(getActivity(), MeContainerActivity.class);
-                intent.putExtra(MyActivity.PAGETO, MyFocusFragment.TAG);
+                intent.putExtra(BaseActivity.PAGETO, MyFocusFragment.TAG);
                 break;
             case R.id.container_editdata:
                 intent.setClass(getActivity(), MeContainerActivity.class);
-                intent.putExtra(MyActivity.PAGETO, EditInfoFragment.TAG);
+                intent.putExtra(BaseActivity.PAGETO, EditInfoFragment.TAG);
                 break;
             case R.id.container_setting:
                 intent.setClass(getActivity(), MeContainerActivity.class);
-                intent.putExtra(MyActivity.PAGETO, SettingFragment.TAG);
+                intent.putExtra(BaseActivity.PAGETO, SettingFragment.TAG);
                 break;
             //大师身份聊天
             case R.id.container_tochat:

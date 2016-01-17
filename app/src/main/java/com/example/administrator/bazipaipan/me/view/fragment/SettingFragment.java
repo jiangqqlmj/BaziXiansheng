@@ -1,6 +1,6 @@
 package com.example.administrator.bazipaipan.me.view.fragment;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.bmob.BmobPro;
 import com.easemob.chat.EMChatManager;
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.login.LoginContainerActivity;
 import com.example.administrator.bazipaipan.me.MeContainerActivity;
@@ -56,9 +56,9 @@ public class SettingFragment extends Fragment implements View.OnClickListener, c
 
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        this.mycontext = (MeContainerActivity) context;
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.mycontext = (MeContainerActivity) activity;
     }
 
     @Override
@@ -161,7 +161,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, c
             case R.id.container_suggestion:
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), MeContainerActivity.class);
-                intent.putExtra(MyActivity.PAGETO, SuggestionFragment.TAG);
+                intent.putExtra(BaseActivity.PAGETO, SuggestionFragment.TAG);
                 mycontext.startActivity(intent);
                 break;
             //关于
