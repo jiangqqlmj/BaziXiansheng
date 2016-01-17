@@ -18,13 +18,11 @@ import com.easemob.EMValueCallBack;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupInfo;
 import com.easemob.chat.EMGroupManager;
-import com.easemob.exceptions.EaseMobException;
 import com.example.administrator.bazipaipan.MainActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.augur.adapter.AugurAdapter;
 import com.example.administrator.bazipaipan.augur.model.Augur;
-import com.example.administrator.bazipaipan.chat.ChatContainerActivity;
-import com.example.administrator.bazipaipan.utils.BmobUtils;
+import com.example.administrator.bazipaipan.chat.huanxin.activity.ChatActivity;
 import com.example.administrator.bazipaipan.widget.DividerItemDecoration;
 import com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout;
 
@@ -53,6 +51,10 @@ public class AugurFragment extends Fragment implements AugurAdapter.IClickListen
     private VerticalSwipeRefreshLayout mSwipeLayout;
     //6数据传递  item跳转
     public static final String EXTRAL_DATA = "extral_data";
+
+    public static final int CHATTYPE_SINGLE = 1;
+    public static final int CHATTYPE_GROUP = 2;
+    public static final int CHATTYPE_CHATROOM = 3;
 
     @Override
     public void onAttach(Context context) {
@@ -181,16 +183,17 @@ public class AugurFragment extends Fragment implements AugurAdapter.IClickListen
         if (list != null && list.size() > 0) {
             //如果没有创建房间则不能跳转
             EMGroupInfo bean = list.get(position);
-            //添加一个标记位，在activity中据此做switch case的区分(多个数据引入bundle)
-            Intent intent = new Intent(mycontext, ChatContainerActivity.class);
+            Intent intent = new Intent(mycontext, ChatActivity.class);
             //进入到群组
-            try {
-                EMGroupManager.getInstance().joinGroup(bean.getGroupId());//需异步处理
-                intent.putExtra(AUGURID, bean.getGroupId());
-                BmobUtils.log("聊天跳转" + EMGroupManager.getInstance().getGroup(bean.getGroupId()).getOwner());
-            } catch (EaseMobException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                EMGroupManager.getInstance().joinGroup(bean.getGroupId());//需异步处理
+            intent.putExtra("groupId", bean.getGroupId());
+            intent.putExtra("chatType", CHATTYPE_GROUP);
+//            BmobUtils.log("聊天跳转" + EMGroupManager.getInstance().getGroup(bean.getGroupId()).getOwner());
+//            }
+//            catch (EaseMobException e) {
+//                e.printStackTrace();
+//            }
             mycontext.startActivity(intent);
 
 //            if (bean.getAugur_pointer().getIsCreatedGroup() != null && bean.getAugur_pointer().getIsCreatedGroup().equals("2")) {

@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2013-2014 EaseMob Technologies. All rights reserved.
- * <p/>
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -90,11 +90,9 @@ import com.example.administrator.bazipaipan.chat.huanxin.adapter.ExpressionPager
 import com.example.administrator.bazipaipan.chat.huanxin.adapter.MessageAdapter;
 import com.example.administrator.bazipaipan.chat.huanxin.adapter.VoicePlayClickListener;
 import com.example.administrator.bazipaipan.chat.huanxin.applib.controller.HXSDKHelper;
-import com.example.administrator.bazipaipan.chat.huanxin.domain.RobotUser;
 import com.example.administrator.bazipaipan.chat.huanxin.utils.CommonUtils;
 import com.example.administrator.bazipaipan.chat.huanxin.utils.ImageUtils;
 import com.example.administrator.bazipaipan.chat.huanxin.utils.SmileUtils;
-import com.example.administrator.bazipaipan.chat.huanxin.utils.UserUtils;
 import com.example.administrator.bazipaipan.chat.huanxin.widget.ExpandGridView;
 import com.example.administrator.bazipaipan.chat.huanxin.widget.PasteEditText;
 
@@ -104,7 +102,6 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 聊天页面只有一个
@@ -377,24 +374,24 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
         wakeLock = ((PowerManager) getSystemService(Context.POWER_SERVICE)).newWakeLock(
                 PowerManager.SCREEN_DIM_WAKE_LOCK, "demo");
         // 判断单聊还是群聊
-        chatType = getIntent().getIntExtra("chatType", CHATTYPE_SINGLE);
+        chatType = getIntent().getIntExtra("chatType", CHATTYPE_GROUP);
 
         if (chatType == CHATTYPE_SINGLE) { // 单聊
             toChatUsername = getIntent().getStringExtra("userId");
-            //
-            Map<String, RobotUser> robotMap = ((DemoHXSDKHelper) HXSDKHelper.getInstance()).getRobotList();
-            if (robotMap != null && robotMap.containsKey(toChatUsername)) {
-                isRobot = true;
-                String nick = robotMap.get(toChatUsername).getNick();
-                if (!TextUtils.isEmpty(nick)) {
-                    ((TextView) findViewById(R.id.name)).setText(nick);
-                } else {
-                    ((TextView) findViewById(R.id.name)).setText(toChatUsername);
-                }
-            } else {
-                //设置昵称
-                UserUtils.setUserNick(toChatUsername, (TextView) findViewById(R.id.name));
-            }
+            //环信小助手
+//            Map<String, RobotUser> robotMap = ((DemoHXSDKHelper) HXSDKHelper.getInstance()).getRobotList();
+//            if (robotMap != null && robotMap.containsKey(toChatUsername)) {
+//                isRobot = true;
+//                String nick = robotMap.get(toChatUsername).getNick();
+//                if (!TextUtils.isEmpty(nick)) {
+//                    ((TextView) findViewById(R.id.name)).setText(nick);
+//                } else {
+//                    ((TextView) findViewById(R.id.name)).setText(toChatUsername);
+//                }
+//            } else {
+//                //设置昵称
+//                UserUtils.setUserNick(toChatUsername, (TextView) findViewById(R.id.name));
+//            }
         } else {
             // 群聊 群聊的接收方是groupid  不是某个人
             findViewById(R.id.container_to_group).setVisibility(View.VISIBLE);
@@ -428,6 +425,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
     //初始化 回话
     protected void onConversationInit() {
         if (chatType == CHATTYPE_SINGLE) {
+            //这行单聊的空针
             conversation = EMChatManager.getInstance().getConversationByType(toChatUsername, EMConversationType.Chat);
         } else if (chatType == CHATTYPE_GROUP) {
             conversation = EMChatManager.getInstance().getConversationByType(toChatUsername, EMConversationType.GroupChat);
@@ -763,7 +761,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 
     /**
      * 事件监听
-     * <p/>
+     * <p>
      * see {@link EMNotifierEvent}
      */
     @Override

@@ -1,4 +1,4 @@
-/**
+package com.example.administrator.bazipaipan.chat.huanxin; /**
  * Copyright (C) 2013-2014 EaseMob Technologies. All rights reserved.
  * <p/>
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,14 +11,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.administrator.bazipaipan.chat.huanxin;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -40,7 +38,6 @@ import com.example.administrator.bazipaipan.chat.huanxin.activity.ChatActivity;
 import com.example.administrator.bazipaipan.chat.huanxin.applib.controller.HXSDKHelper;
 import com.example.administrator.bazipaipan.chat.huanxin.applib.model.HXNotifier;
 import com.example.administrator.bazipaipan.chat.huanxin.applib.model.HXSDKModel;
-import com.example.administrator.bazipaipan.chat.huanxin.domain.RobotUser;
 import com.example.administrator.bazipaipan.chat.huanxin.domain.User;
 import com.example.administrator.bazipaipan.chat.huanxin.utils.CommonUtils;
 
@@ -72,7 +69,7 @@ public class DemoHXSDKHelper extends HXSDKHelper {
     /**
      * robot list in cache
      */
-    private Map<String, RobotUser> robotList;
+//    private Map<String, RobotUser> robotList;
 //    private CallReceiver callReceiver;
 
     private UserProfileManager userProManager;
@@ -299,17 +296,19 @@ public class DemoHXSDKHelper extends HXSDKHelper {
                 if (message.getType() == Type.TXT) {
                     ticker = ticker.replaceAll("\\[.{2,3}\\]", "[表情]");
                 }
-                Map<String, RobotUser> robotMap = ((DemoHXSDKHelper) HXSDKHelper.getInstance()).getRobotList();
-                if (robotMap != null && robotMap.containsKey(message.getFrom())) {
-                    String nick = robotMap.get(message.getFrom()).getNick();
-                    if (!TextUtils.isEmpty(nick)) {
-                        return nick + ": " + ticker;
-                    } else {
-                        return message.getFrom() + ": " + ticker;
-                    }
-                } else {
-                    return message.getFrom() + ": " + ticker;
-                }
+                //通知栏消息  可能有用
+//                Map<String, RobotUser> robotMap = ((DemoHXSDKHelper) HXSDKHelper.getInstance()).getRobotList();
+//                if (robotMap != null && robotMap.containsKey(message.getFrom())) {
+//                    String nick = robotMap.get(message.getFrom()).getNick();
+//                    if (!TextUtils.isEmpty(nick)) {
+//                        return nick + ": " + ticker;
+//                    } else {
+//                        return message.getFrom() + ": " + ticker;
+//                    }
+//                } else {
+//                    return message.getFrom() + ": " + ticker;
+//                }
+                return "demohxsdkhelper 通知栏消息";
             }
 
             @Override
@@ -426,12 +425,12 @@ public class DemoHXSDKHelper extends HXSDKHelper {
         return contactList;
     }
 
-    public Map<String, RobotUser> getRobotList() {
-        if (getHXId() != null && robotList == null) {
-            robotList = ((DemoHXSDKModel) getModel()).getRobotList();
-        }
-        return robotList;
-    }
+//	public Map<String, RobotUser> getRobotList() {
+//		if (getHXId() != null && robotList == null) {
+//			robotList = ((DemoHXSDKModel) getModel()).getRobotList();
+//		}
+//		return robotList;
+//	}
 
 
     public boolean isRobotMenuMessage(EMMessage message) {
@@ -460,9 +459,9 @@ public class DemoHXSDKHelper extends HXSDKHelper {
     }
 
 
-    public void setRobotList(Map<String, RobotUser> robotList) {
-        this.robotList = robotList;
-    }
+//    public void setRobotList(Map<String, RobotUser> robotList){
+//    	this.robotList = robotList;
+//    }
 
     /**
      * 设置好友user list到内存中
@@ -490,7 +489,7 @@ public class DemoHXSDKHelper extends HXSDKHelper {
             public void onSuccess() {
                 // TODO Auto-generated method stub
                 setContactList(null);
-                setRobotList(null);
+//                setRobotList(null);
                 getUserProfileManager().reset();
                 getModel().closeDB();
                 if (callback != null) {

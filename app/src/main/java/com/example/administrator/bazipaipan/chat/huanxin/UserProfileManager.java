@@ -108,7 +108,7 @@ public class UserProfileManager {
         return isSyncingContactInfosWithServer;
     }
 
-    synchronized void reset() {
+    public synchronized void reset() {
         isSyncingContactInfosWithServer = false;
         currentUser = null;
         HXPreferenceUtils.getInstance().removeCurrentUserInfo();

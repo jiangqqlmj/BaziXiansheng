@@ -22,11 +22,22 @@ import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupManager;
 import com.easemob.exceptions.EaseMobException;
 import com.example.administrator.bazipaipan.MainActivity;
+import com.example.administrator.bazipaipan.MyApplication;
 import com.example.administrator.bazipaipan.R;
+import com.example.administrator.bazipaipan.chat.huanxin.Constant;
+import com.example.administrator.bazipaipan.chat.huanxin.DemoHXSDKHelper;
+import com.example.administrator.bazipaipan.chat.huanxin.applib.controller.HXSDKHelper;
+import com.example.administrator.bazipaipan.chat.huanxin.db.UserDao;
+import com.example.administrator.bazipaipan.chat.huanxin.domain.User;
 import com.example.administrator.bazipaipan.chat.receiver.MyGroupChangeListener;
 import com.example.administrator.bazipaipan.login.LoginContainerActivity;
 import com.example.administrator.bazipaipan.login.model.MyUser;
 import com.example.administrator.bazipaipan.utils.BmobUtils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -334,8 +345,21 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             public void onSuccess() {
                 mycontext.runOnUiThread(new Runnable() {
                     public void run() {
+                        // 登陆成功，保存用户名密码
+                        MyApplication.getInstance().setUserName(bmobObjectId);
+                        MyApplication.getInstance().setPassword(password);
+                        // ** 第一次登录或者之前logout后再登录，加载所有本地群和回话
+                        // ** manually load all local groups and
                         EMGroupManager.getInstance().loadAllGroups();
                         EMChatManager.getInstance().loadAllConversations();
+                        // 处理好友和群组
+                        initializeContacts();
+                        // 更新当前用户的nickname 此方法的作用是在ios离线推送时能够显示用户nick
+                        boolean updatenick = EMChatManager.getInstance().updateCurrentUserNick(
+                                MyApplication.currentUserNick.trim());
+                        if (!updatenick) {
+                            Log.e("LoginActivity", "update current user nick fail");
+                        }
                         Log.d("main", "登陆聊天服务器成功！");
                         mycontext.toast("环信登录成功");
                         //大师身份登录创建聊天室
@@ -405,6 +429,41 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 Log.d("main", "登陆聊天服务器失败！");
             }
         });
+    }
+
+    // 处理好友和群组
+    private void initializeContacts() {
+        Map<String, User> userlist = new HashMap<String, User>();
+        // 添加user"申请与通知"
+        User newFriends = new User();
+        newFriends.setUsername(Constant.NEW_FRIENDS_USERNAME);
+        String strChat = getResources().getString(
+                R.string.Application_and_notify);
+        newFriends.setNick(strChat);
+
+        userlist.put(Constant.NEW_FRIENDS_USERNAME, newFriends);
+        // 添加"群聊"
+        User groupUser = new User();
+        String strGroup = getResources().getString(R.string.group_chat);
+        groupUser.setUsername(Constant.GROUP_USERNAME);
+        groupUser.setNick(strGroup);
+        groupUser.setHeader("");
+        userlist.put(Constant.GROUP_USERNAME, groupUser);
+
+        // 添加"Robot"
+        User robotUser = new User();
+        String strRobot = getResources().getString(R.string.robot_chat);
+        robotUser.setUsername(Constant.CHAT_ROBOT);
+        robotUser.setNick(strRobot);
+        robotUser.setHeader("");
+        userlist.put(Constant.CHAT_ROBOT, robotUser);
+
+        // 存入内存
+        ((DemoHXSDKHelper) HXSDKHelper.getInstance()).setContactList(userlist);
+        // 存入db
+        UserDao dao = new UserDao(mycontext);
+        List<User> users = new ArrayList<User>(userlist.values());
+        dao.saveContactList(users);
     }
 
 }

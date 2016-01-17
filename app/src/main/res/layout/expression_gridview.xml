@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <com.easemob.chatuidemo.widget.ExpandGridView
+    <com.example.administrator.bazipaipan.chat.huanxin.widget.ExpandGridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

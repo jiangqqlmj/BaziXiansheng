@@ -294,7 +294,7 @@
     <string name="toast_updatephoto_success">update photo success!</string>
     <string name="toast_updatephoto_fail">update photo fail!</string>
     <!-- 八字-->
-    <string name="app_name">八字排盘</string>
+    <string name="app_name">八字先生</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
