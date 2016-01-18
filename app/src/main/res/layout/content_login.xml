@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/login_cancel"
-        android:layout_width="28px"
-        android:layout_height="28px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="32px"
         android:src="@drawable/login_cancel" />
 
@@ -23,7 +23,7 @@
         android:textSize="50px" />
 
 
-    <EditText
+    <com.example.administrator.bazipaipan.widget.ClearEditText
         android:id="@+id/et_input_phone_num"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -31,6 +31,8 @@
         android:layout_marginRight="20px"
         android:layout_marginTop="336px"
         android:background="@drawable/shape_container"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:hint="手机号码"
         android:numeric="integer"
         android:padding="20px"
@@ -55,7 +57,7 @@
         android:background="@drawable/shape_container"
         android:orientation="horizontal">
 
-        <EditText
+        <com.example.administrator.bazipaipan.widget.ClearEditText
             android:id="@+id/et_input_verification"
             android:layout_width="0dp"
             android:layout_height="88px"

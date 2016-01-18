@@ -1,11 +1,16 @@
 package com.example.administrator.bazipaipan.utils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
+import com.easemob.chat.EMChatManager;
+import com.example.administrator.bazipaipan.login.LoginContainerActivity;
 import com.example.administrator.bazipaipan.login.model.MyUser;
 import com.example.administrator.bazipaipan.me.view.model.Recharge;
 
@@ -23,6 +28,32 @@ import cn.bmob.v3.listener.UpdateListener;
  * Created by 王中阳 on 2015/12/31.
  */
 public class BmobUtils {
+    //确认注销
+    public static void onCancelPressed(final Activity context) {
+        new AlertDialog.Builder(context).setTitle("确认注销吗？")
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 点击“确认”后的操作
+                        EMChatManager.getInstance().logout();//环信注销登陆
+                        BmobUser.logOut(context);   //清除缓存用户对象
+                        Intent intent = new Intent(context, LoginContainerActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  //注意本行的FLAG设置
+                        context.startActivity(intent);
+                        context.finish();
+
+                    }
+                })
+                .setNegativeButton("返回", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 点击“返回”后的操作,这里不设置没有任何操作
+                    }
+                }).show();
+    }
+
     //缓存
     public static void setCache(BmobQuery<Recharge> query, Context context, BmobObject bmobObject) {
         //判断是否有缓存，该方法必须放在查询条件（如果有的话）都设置完之后再来调用才有效，就像这里一样。

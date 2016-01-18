@@ -55,7 +55,6 @@ public class MyApplication extends Application {
         if (processAppName == null || !processAppName.equalsIgnoreCase("com.example.administrator.bazipaipan")) {
             Log.e(TAG, "enter the service process!");
             //"com.easemob.chatuidemo"为demo的包名，换到自己项目中要改成自己包名
-
             // 则此application::onCreate 是被service 调用的，直接返回
             return;
         }
@@ -84,9 +83,9 @@ public class MyApplication extends Application {
             try {
                 if (info.pid == pid) {
                     CharSequence c = pm.getApplicationLabel(pm.getApplicationInfo(info.processName, PackageManager.GET_META_DATA));
-                    // Log.d("Process", "Id: "+ info.pid +" ProcessName: "+
-                    // info.processName +"  Label: "+c.toString());
-                    // processName = c.toString();
+                    Log.d("Process", "Id: " + info.pid + " ProcessName: " +
+                            info.processName + "  Label: " + c.toString());
+                    processName = c.toString();
                     processName = info.processName;
                     return processName;
                 }

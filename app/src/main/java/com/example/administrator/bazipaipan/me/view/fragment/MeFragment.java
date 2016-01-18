@@ -15,8 +15,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.administrator.bazipaipan.MainActivity;
 import com.example.administrator.bazipaipan.BaseActivity;
+import com.example.administrator.bazipaipan.MainActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.augur.model.Augur;
 import com.example.administrator.bazipaipan.chat.ChatContainerActivity;
@@ -176,8 +176,12 @@ public class MeFragment extends Fragment implements View.OnClickListener {
             }
         });
         user_head = (ImageView) mycontext.findViewById(R.id.iv_me_my_head);
-        //网络中请求
-        BmobUtils.getCurrentUser(mycontext).getAvatar().loadImageThumbnail(mycontext, user_head, 160, 160, 100);
+        //网络中请求 空针
+        if (BmobUtils.getCurrentUser(mycontext).getAvatar() != null) {
+            BmobUtils.getCurrentUser(mycontext).getAvatar().loadImageThumbnail(mycontext, user_head, 160, 160, 100);
+        } else {
+            user_head.setImageResource(R.drawable.augur_head);
+        }
         tv_user_name = (TextView) mycontext.findViewById(R.id.tv_me_user_name);
         tv_gold_num = (TextView) mycontext.findViewById(R.id.tv_me_my_goldnum);
         btn_recharge = (Button) mycontext.findViewById(R.id.btn_me_recharge);

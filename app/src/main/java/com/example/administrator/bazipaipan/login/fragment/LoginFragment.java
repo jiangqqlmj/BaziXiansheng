@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +33,6 @@ import com.example.administrator.bazipaipan.chat.huanxin.domain.User;
 import com.example.administrator.bazipaipan.chat.receiver.MyGroupChangeListener;
 import com.example.administrator.bazipaipan.login.LoginContainerActivity;
 import com.example.administrator.bazipaipan.login.model.MyUser;
-import com.example.administrator.bazipaipan.utils.BmobUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,6 +69,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private String groupName, desc;
     //验证码
     private TextView getverification_login;
+    //关闭
+    private ImageView login_cancel;
 
     public LoginFragment() {
 
@@ -103,6 +105,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
 
     private void initviews() {
+        login_cancel = (ImageView) mycontext.findViewById(R.id.login_cancel);
 //        EditText input_phone, input_password, input_verification;
 //        Button btn_getverification;
 //        RadioButton rb_guest, rb_augur;
@@ -119,7 +122,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         btn_login.setOnClickListener(this);
         btn_login_sign = (Button) mycontext.findViewById(R.id.btn_login_sign);
         btn_login_sign.setOnClickListener(this);
-
     }
 
     //关闭登录
@@ -136,7 +138,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         password = "123123";  //暂时写死
         //假类型，暂时测试
         user_type = "1";
+        if (phone_num.equals("")) {
+            mycontext.toast("请输入手机号");
+            return;
+        } else if (verification.equals("")) {
+            mycontext.toast("请输入验证码");
+        }
         switch (v.getId()) {
+            //关闭按钮
+            case R.id.login_cancel:
+                mycontext.finish();
+                break;
 
             //验证码一键登录
             case R.id.btn_login_sign:
@@ -151,7 +163,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                         Log.i("smile", "用户登陆成功");
                         mycontext.toast("用户登录成功");
                         mycontext.startActivity(new Intent(mycontext, MainActivity.class));
-
                         bmobObjectId = BmobUser.getCurrentUser(mycontext, MyUser.class).getObjectId();
                         groupName = bmobObjectId + "房间";
                         desc = "八字先生聊天室: " + bmobObjectId;
@@ -185,8 +196,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                         // TODO Auto-generated method stub
                         mycontext.toast("错误码：" + code + ",错误原因：" + msg);
                     }
-
-
                 });
                 break;
 
@@ -370,21 +379,21 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                             //needApprovalRequired:如果创建的公开群用需要户自由加入，就传false。否则需要申请，等群主批准后才能加入，传true
                             //2000为最大的群聊人数
                             //不重复创建房间
-                            if (BmobUser.getCurrentUser(mycontext, MyUser.class).getIsCreatedGroup() == null) {
-                                //更新信息
-                                MyUser myUser = new MyUser();
-                                myUser.setIsCreatedGroup("1");
-                                myUser.update(mycontext, BmobUser.getCurrentUser(mycontext, MyUser.class).getObjectId(), new UpdateListener() {
-                                    @Override
-                                    public void onSuccess() {
-                                        BmobUtils.log("login 更新 setIsCreatedGroup(1)");
-                                    }
-
-                                    @Override
-                                    public void onFailure(int i, String s) {
-                                    }
-                                });
-                            }
+//                            if (BmobUser.getCurrentUser(mycontext, MyUser.class).getIsCreatedGroup() == null) {
+//                                //更新信息
+//                                MyUser myUser = new MyUser();
+//                                myUser.setIsCreatedGroup("1");
+//                                myUser.update(mycontext, BmobUser.getCurrentUser(mycontext, MyUser.class).getObjectId(), new UpdateListener() {
+//                                    @Override
+//                                    public void onSuccess() {
+//                                        BmobUtils.log("login 更新 setIsCreatedGroup(1)");
+//                                    }
+//
+//                                    @Override
+//                                    public void onFailure(int i, String s) {
+//                                    }
+//                                });
+//                            }
                             Log.e("data", BmobUser.getCurrentUser(mycontext, MyUser.class).getIsCreatedGroup() + "isCreatedGroup");
                             if (BmobUser.getCurrentUser(mycontext, MyUser.class).getIsCreatedGroup().equals("1") || BmobUser.getCurrentUser(mycontext, MyUser.class).getIsCreatedGroup() == null) {
                                 try {
@@ -426,6 +435,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void onError(int code, String message) {
+                mycontext.toast(message + "登录环信失败");
                 Log.d("main", "登陆聊天服务器失败！");
             }
         });

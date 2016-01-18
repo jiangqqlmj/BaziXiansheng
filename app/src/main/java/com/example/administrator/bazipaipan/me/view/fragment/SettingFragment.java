@@ -19,6 +19,7 @@ import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.login.LoginContainerActivity;
 import com.example.administrator.bazipaipan.me.MeContainerActivity;
 import com.example.administrator.bazipaipan.me.view.activity.UpdateVersionActivity;
+import com.example.administrator.bazipaipan.utils.BmobUtils;
 import com.example.administrator.bazipaipan.utils.DataCleanManager;
 
 import java.io.File;
@@ -150,11 +151,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener, c
                 break;
 
             case R.id.container_logout: // 退出登录 ①提交app使用信息到服务器端 ②清除账户缓存信息
-                EMChatManager.getInstance().logout();//环信注销登陆
-                BmobUser.logOut(mycontext);   //清除缓存用户对象
-                mycontext.toast("注销成功");
-                mycontext.startActivity(new Intent(mycontext, LoginContainerActivity.class));
-                mycontext.finish();
+
+                BmobUtils.onCancelPressed(mycontext);
                 //mainactivity没有finisah
                 break;
 //意见反馈

@@ -30,7 +30,6 @@ public class BaseActivity extends AutoLayoutActivity {
 
     public void toast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        Log.d(BMOB_TAG, msg);
     }
 
     //
