@@ -181,6 +181,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         // TODO Auto-generated method stub
         toolbar_title_main = (TextView) findViewById(R.id.toolbar_title_main);
         vp = (ViewPager) findViewById(R.id.main_vp);
+//        vp.setOffscreenPageLimit(1); 不预加载
         tabs[0] = (LinearLayout) findViewById(R.id.main_tab01);
         tabs[1] = (LinearLayout) findViewById(R.id.main_tab02);
         tabs[2] = (LinearLayout) findViewById(R.id.main_tab03);

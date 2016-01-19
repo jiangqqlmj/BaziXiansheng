@@ -1,10 +1,10 @@
 /**
  * Copyright (C) 2013-2014 EaseMob Technologies. All rights reserved.
- *
+ * <p/>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,64 +19,65 @@ import com.example.administrator.bazipaipan.chat.huanxin.applib.utils.HXPreferen
 
 
 /**
- * 
+ *
  * @deprecated this class is deprecated, please use {@link HXPreferenceUtils}
  *
  */
 public class PreferenceUtils {
 
-	/**
-	 * 保存Preference的name
-	 */
-	public static final String PREFERENCE_NAME = "saveInfo";
-	private static PreferenceUtils mPreferenceUtils;
-	private PreferenceUtils() {
-	}
+    /**
+     * 保存Preference的name
+     */
+    public static final String PREFERENCE_NAME = "saveInfo";
+    private static PreferenceUtils mPreferenceUtils;
 
-	/**
-	 * 单例模式，获取instance实例
-	 * 
-	 * @param cxt
-	 * @return
-	 */
-	public synchronized static PreferenceUtils getInstance(Context cxt) {
-		if (mPreferenceUtils == null) {
-			mPreferenceUtils = new PreferenceUtils();
-			HXPreferenceUtils.init(cxt);
-		}
-		
-		return mPreferenceUtils;
-	}
+    private PreferenceUtils() {
+    }
 
-	public void setSettingMsgNotification(boolean paramBoolean) {
-		HXPreferenceUtils.getInstance().setSettingMsgNotification(paramBoolean);
-	}
+    /**
+     * 单例模式，获取instance实例
+     *
+     * @param cxt
+     * @return
+     */
+    public synchronized static PreferenceUtils getInstance(Context cxt) {
+        if (mPreferenceUtils == null) {
+            mPreferenceUtils = new PreferenceUtils();
+            HXPreferenceUtils.init(cxt);
+        }
 
-	public boolean getSettingMsgNotification() {
-		return HXPreferenceUtils.getInstance().getSettingMsgNotification();
-	}
+        return mPreferenceUtils;
+    }
 
-	public void setSettingMsgSound(boolean paramBoolean) {
-	    HXPreferenceUtils.getInstance().setSettingMsgSound(paramBoolean);
-	}
+    public void setSettingMsgNotification(boolean paramBoolean) {
+        HXPreferenceUtils.getInstance().setSettingMsgNotification(paramBoolean);
+    }
 
-	public boolean getSettingMsgSound() {
-	    return HXPreferenceUtils.getInstance().getSettingMsgSound();
-	}
+    public boolean getSettingMsgNotification() {
+        return HXPreferenceUtils.getInstance().getSettingMsgNotification();
+    }
 
-	public void setSettingMsgVibrate(boolean paramBoolean) {
-	    HXPreferenceUtils.getInstance().setSettingMsgVibrate(paramBoolean);
-	}
+    public void setSettingMsgSound(boolean paramBoolean) {
+        HXPreferenceUtils.getInstance().setSettingMsgSound(paramBoolean);
+    }
 
-	public boolean getSettingMsgVibrate() {
-		return HXPreferenceUtils.getInstance().getSettingMsgVibrate();
-	}
+    public boolean getSettingMsgSound() {
+        return HXPreferenceUtils.getInstance().getSettingMsgSound();
+    }
 
-	public void setSettingMsgSpeaker(boolean paramBoolean) {
-	    HXPreferenceUtils.getInstance().setSettingMsgSpeaker(paramBoolean);
-	}
+    public void setSettingMsgVibrate(boolean paramBoolean) {
+        HXPreferenceUtils.getInstance().setSettingMsgVibrate(paramBoolean);
+    }
 
-	public boolean getSettingMsgSpeaker() {
-		return HXPreferenceUtils.getInstance().getSettingMsgSpeaker();
-	}
+    public boolean getSettingMsgVibrate() {
+        return HXPreferenceUtils.getInstance().getSettingMsgVibrate();
+    }
+
+    public void setSettingMsgSpeaker(boolean paramBoolean) {
+        HXPreferenceUtils.getInstance().setSettingMsgSpeaker(paramBoolean);
+    }
+
+    public boolean getSettingMsgSpeaker() {
+        return HXPreferenceUtils.getInstance().getSettingMsgSpeaker();
+    }
 }

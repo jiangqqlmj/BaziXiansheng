@@ -18,11 +18,13 @@ import com.easemob.EMValueCallBack;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupInfo;
 import com.easemob.chat.EMGroupManager;
+import com.easemob.util.EMLog;
 import com.example.administrator.bazipaipan.MainActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.augur.adapter.AugurAdapter;
 import com.example.administrator.bazipaipan.augur.model.Augur;
 import com.example.administrator.bazipaipan.chat.huanxin.activity.ChatActivity;
+import com.example.administrator.bazipaipan.chat.huanxin.applib.controller.HXSDKHelper;
 import com.example.administrator.bazipaipan.widget.DividerItemDecoration;
 import com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout;
 
@@ -51,11 +53,47 @@ public class AugurFragment extends Fragment implements AugurAdapter.IClickListen
     private VerticalSwipeRefreshLayout mSwipeLayout;
     //6数据传递  item跳转
     public static final String EXTRAL_DATA = "extral_data";
-
+    //--chat
     public static final int CHATTYPE_SINGLE = 1;
     public static final int CHATTYPE_GROUP = 2;
     public static final int CHATTYPE_CHATROOM = 3;
+    HXContactInfoSyncListener contactInfoSyncListener;
 
+    class HXContactInfoSyncListener implements HXSDKHelper.HXSyncListener {
+
+        @Override
+        public void onSyncSucess(final boolean success) {
+            EMLog.d(TAG, "on contactinfo list sync success:" + success);
+            getActivity().runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+//                    progressBar.setVisibility(View.GONE);
+                    if (success) {
+                        refresh();
+                    }
+                }
+            });
+        }
+
+    }
+
+    // 刷新ui
+    public void refresh() {
+        try {
+            // 可能会在子线程中调到这方法
+            getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+//                    getContactList();
+//                    adapter.notifyDataSetChanged();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //--chat
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

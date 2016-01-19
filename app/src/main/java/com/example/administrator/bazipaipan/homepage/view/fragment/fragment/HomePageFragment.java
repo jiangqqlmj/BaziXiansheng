@@ -186,6 +186,7 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
         tv_birthday = (TextView) mycontext.findViewById(R.id.tv_homepage_birthday);
         //tabview及viewpager联动效果
         mViewPager = (ViewPager) mycontext.findViewById(R.id.vp_view);
+//        mViewPager.setOffscreenPageLimit(1);  不预加载
         mTabLayout = (TabLayout) mycontext.findViewById(R.id.tabs);
         //添加页卡视图
         mFragmentList.add(recommendLookerFragment);

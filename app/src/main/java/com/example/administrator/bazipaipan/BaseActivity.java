@@ -6,6 +6,7 @@ import android.os.PersistableBundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.administrator.bazipaipan.chat.huanxin.applib.controller.HXSDKHelper;
 import com.zhy.autolayout.AutoLayoutActivity;
 
 import butterknife.ButterKnife;
@@ -41,6 +42,16 @@ public class BaseActivity extends AutoLayoutActivity {
     protected void onResume() {
         super.onResume();
         // onresume时，取消notification显示
-//        HXSDKHelper.getInstance().getNotifier().reset();
+        if (HXSDKHelper.getInstance() == null) {
+            Log.e("data", "HXSDKHelper.getInstance() == null");
+            return;
+        } else if (HXSDKHelper.getInstance().getNotifier() == null) {
+            Log.e("data", "HXSDKHelper.getInstance().getNotifier()==null");
+            return;
+        } else {
+            HXSDKHelper.getInstance().getNotifier().reset();
+        }
+
+
     }
 }
