@@ -59,6 +59,7 @@ public class AugurFragment extends Fragment implements AugurAdapter.IClickListen
     public static final int CHATTYPE_CHATROOM = 3;
     HXContactInfoSyncListener contactInfoSyncListener;
 
+
     class HXContactInfoSyncListener implements HXSDKHelper.HXSyncListener {
 
         @Override
@@ -93,7 +94,7 @@ public class AugurFragment extends Fragment implements AugurAdapter.IClickListen
         }
     }
 
-    //--chat
+    //--chat 向上
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2013-2014 EaseMob Technologies. All rights reserved.
- * <p>
+ * <p/>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -567,6 +567,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 
     /**
      * onActivityResult
+     * 这是在哪里调用l
      */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -761,7 +762,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 
     /**
      * 事件监听
-     * <p>
+     * <p/>
      * see {@link EMNotifierEvent}
      */
     @Override
@@ -918,7 +919,6 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
             // 通知adapter有消息变动，adapter会根据加入的这条message显示消息和调用sdk的发送方法
             adapter.refreshSelectLast();
             mEditTextContent.setText("");
-
             setResult(RESULT_OK);
 
         }

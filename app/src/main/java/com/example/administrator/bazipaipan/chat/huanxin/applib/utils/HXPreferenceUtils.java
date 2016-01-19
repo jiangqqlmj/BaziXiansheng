@@ -52,8 +52,7 @@ public class HXPreferenceUtils {
     /**
      * 单例模式，获取instance实例
      *
-     * @return
-     * 走到里空针
+     * @return 走到里空针
      */
 
     public static HXPreferenceUtils getInstance() {

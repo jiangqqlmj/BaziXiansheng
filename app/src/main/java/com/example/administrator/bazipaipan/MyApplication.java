@@ -68,8 +68,7 @@ public class MyApplication extends Application {
         EMChat.getInstance().setDebugMode(true);//在做打包混淆时，要关闭debug模式，避免消耗不必要的资源
         //bmob集成
         Bmob.initialize(this, "f93db7bdfd1f0c1657b956588038115f");
-
-
+        hxSDKHelper.onInit(appContext);
     }
 
     private String getAppName(int pid) {
