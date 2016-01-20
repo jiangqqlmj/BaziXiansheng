@@ -223,35 +223,36 @@ public class AugurFragment extends Fragment implements AugurAdapter.IClickListen
         List<EMGroupInfo> list = mAdapter.getChat_mdatas();
         if (list != null && list.size() > 0) {
             //如果没有创建房间则不能跳转
-            EMGroupInfo bean = list.get(position);
+            final EMGroupInfo bean = list.get(position);
             //进入到群组
             Intent intent = new Intent(getActivity(), ChatActivity.class);
-            try {
-                EMGroupManager.getInstance().joinGroup(bean.getGroupId());//需异步处理
-                Log.e("datas", "bean.getGroupId()" + bean.getGroupId());
-            } catch (EaseMobException e) {
-                e.printStackTrace();
-            }
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        mycontext.log(bean.getGroupId() + "  加入的公开群");
+
+                        EMGroupManager.getInstance().joinGroup(bean.getGroupId());//需异步处理
+//                        EMGroupManager.getInstance().applyJoinToGroup(bean.getGroupId(), "求加入");//需异步处理
+                    } catch (EaseMobException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            Log.e("datas", "bean.getGroupId()" + bean.getGroupId());
             mycontext.log("augur groupId" + bean.getGroupId());
             Bundle bundle = new Bundle();
             bundle.putString("groupId", bean.getGroupId());
             bundle.putString("chatType", ChatActivity.CHATTYPE_GROUP + "");
             bundle.putString("a", "a");
-//                intent.putExtra("groupId", bean.getGroupId());
-//                intent.putExtra("chatType", ChatActivity.CHATTYPE_GROUP);
-//                intent.putExtra("a", "a");
             intent.putExtra("bundle", bundle);
             startActivity(intent);
-
-//            if (bean.getAugur_pointer().getIsCreatedGroup() != null && bean.getAugur_pointer().getIsCreatedGroup().equals("2")) {
-//            } else {
-//                mycontext.toast("该大师尚未创建房间");
-//            }
         }
 
     }
 
     //刷新数据相关
+
     public void setSwipeToRefreshEnabled(boolean enabled) {
         mSwipeLayout.setEnabled(enabled);
     }
@@ -269,6 +270,7 @@ public class AugurFragment extends Fragment implements AugurAdapter.IClickListen
             }
         }
     };
+
 
     @Override
     public void onStart() {

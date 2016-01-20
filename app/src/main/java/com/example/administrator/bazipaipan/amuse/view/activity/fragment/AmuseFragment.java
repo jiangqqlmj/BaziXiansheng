@@ -16,8 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.administrator.bazipaipan.MainActivity;
 import com.example.administrator.bazipaipan.BaseActivity;
+import com.example.administrator.bazipaipan.MainActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.amuse.view.activity.activity.AmuseContainerActivity;
 import com.example.administrator.bazipaipan.amuse.view.activity.adapter.AmuseAdapter;

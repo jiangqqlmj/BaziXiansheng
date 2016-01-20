@@ -36,6 +36,7 @@ import android.text.ClipboardManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -208,6 +209,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
         activityInstance = this;
         initView();
         setUpView();
+        log("cuser:" + EMChatManager.getInstance().getCurrentUser().toString());
     }
 
     /**
@@ -405,11 +407,23 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 //            }
         } else {
             // 群聊 群聊的接收方是groupid  不是某个人
-            findViewById(R.id.container_to_group).setVisibility(View.VISIBLE);
-            findViewById(R.id.container_remove).setVisibility(View.GONE);
+//            findViewById(R.id.container_to_group).setVisibility(View.VISIBLE);
+            findViewById(R.id.container_remove).setVisibility(View.VISIBLE);
             findViewById(R.id.container_voice_call).setVisibility(View.GONE);
             findViewById(R.id.container_video_call).setVisibility(View.GONE); //视频通话不需要
             toChatUsername = bundle.getString("groupId");
+            //加入到群聊
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Log.e("data", toChatUsername + "  加入的公开群");
+                        EMGroupManager.getInstance().joinGroup(toChatUsername);//需异步处理
+                    } catch (EaseMobException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
             if (toChatUsername == null) {
                 log("toChatUsername" + toChatUsername);
                 return;

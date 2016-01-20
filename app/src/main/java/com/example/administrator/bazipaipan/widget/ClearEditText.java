@@ -22,7 +22,6 @@ public class ClearEditText extends EditText implements
      */
     private Drawable mClearDrawable;
     /**
-     * �ؼ��Ƿ��н���
      */
     private boolean hasFoucs;
 
@@ -31,7 +30,6 @@ public class ClearEditText extends EditText implements
     }
 
     public ClearEditText(Context context, AttributeSet attrs) {
-        //���ﹹ�췽��Ҳ����Ҫ����������ܶ����Բ�����XML���涨��
         this(context, attrs, android.R.attr.editTextStyle);
     }
 

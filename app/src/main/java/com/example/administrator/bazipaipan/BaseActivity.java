@@ -44,10 +44,10 @@ public class BaseActivity extends AutoLayoutActivity {
         // onresume时，取消notification显示
         if (HXSDKHelper.getInstance() == null) {
             Log.e("data", "HXSDKHelper.getInstance() == null");
-            return;
+//            return;
         } else if (HXSDKHelper.getInstance().getNotifier() == null) {
             Log.e("data", "HXSDKHelper.getInstance().getNotifier()==null");
-            return;
+//            return;
         } else {
             HXSDKHelper.getInstance().getNotifier().reset();
         }

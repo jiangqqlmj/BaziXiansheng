@@ -41,23 +41,23 @@
                 android:src="@drawable/mm_title_remove" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/container_to_group"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/common_tab_bg"
-            android:onClick="toGroupDetails"
-            android:visibility="gone">
+        <!--<RelativeLayout-->
+        <!--android:id="@+id/container_to_group"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:background="@drawable/common_tab_bg"-->
+        <!--android:onClick="toGroupDetails"-->
+        <!--android:visibility="gone">-->
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/to_group_details_normal" />
-        </RelativeLayout>
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:scaleType="centerInside"-->
+        <!--android:src="@drawable/to_group_details_normal" />-->
+        <!--</RelativeLayout>-->
     </RelativeLayout>
 
     <LinearLayout

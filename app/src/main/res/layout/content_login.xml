@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/login_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="45px"
+        android:layout_height="45px"
         android:layout_margin="32px"
         android:src="@drawable/login_cancel" />
 

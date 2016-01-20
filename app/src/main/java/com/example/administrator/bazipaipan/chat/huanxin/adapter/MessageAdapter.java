@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2013-2014 EaseMob Technologies. All rights reserved.
- * <p/>
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -1400,6 +1400,7 @@ public class MessageAdapter extends BaseAdapter {
                     // }
                     // holder.staus_iv.setVisibility(View.VISIBLE);
 
+                    //发消息失败的情况
                     if (message.getError() == EMError.MESSAGE_SEND_INVALID_CONTENT) {
                         Toast.makeText(activity, activity.getString(R.string.send_fail) + activity.getString(R.string.error_send_invalid_content), Toast.LENGTH_SHORT)
                                 .show();
@@ -1481,7 +1482,7 @@ public class MessageAdapter extends BaseAdapter {
 
     /**
      * 展示视频缩略图
-     * <p/>
+     * <p>
      * 本地缩略图路径
      * 远程缩略图路径
      */

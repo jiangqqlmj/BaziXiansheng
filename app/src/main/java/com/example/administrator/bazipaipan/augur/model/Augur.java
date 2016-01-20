@@ -18,6 +18,8 @@ public class Augur extends BmobObject {
     //    private String goldNum;
     //关联关系
     private MyUser augur_pointer;
+    //关联环信的群聊id
+    private String roomId;
 
     public Augur(String userId, boolean dinivateStatus, int lookerNum, String accuracy, int focusNum, String focusFans, String divinatedNum, String goldNum) {
         this.userId = userId;
@@ -28,6 +30,15 @@ public class Augur extends BmobObject {
         this.focusFans = focusFans;
         this.divinatedNum = divinatedNum;
 //        this.goldNum = goldNum;
+    }
+
+
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
     }
 
     public Augur() {
