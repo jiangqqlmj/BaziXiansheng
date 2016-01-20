@@ -98,7 +98,7 @@ public class AmuseDetailAdapter extends RecyclerView.Adapter<AmuseDetailAdapter.
             detail_introduce = (TextView) itemView.findViewById(R.id.tv_introduce_amuse_second);
             detail_comment_num = (TextView) itemView.findViewById(R.id.tv_comment_num_amuse_second);
             detail_looker_num = (TextView) itemView.findViewById(R.id.looker_num_amuse_second);
-            container_amsue_second = (LinearLayout) itemView.findViewById(R.id.container_amsue_second);
+            container_amsue_second = (LinearLayout) itemView.findViewById(R.id.container_amuse_second);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

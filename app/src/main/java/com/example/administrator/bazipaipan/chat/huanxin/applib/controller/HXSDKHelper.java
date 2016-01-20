@@ -231,6 +231,7 @@ public abstract class HXSDKHelper {
         return hxModel;
     }
 
+    //id是从model中取得
     public String getHXId() {
         if (hxId == null) {
             hxId = hxModel.getHXId();
@@ -608,7 +609,7 @@ public abstract class HXSDKHelper {
                     if (!EMChat.getInstance().isLoggedIn()) {
                         return;
                     }
-
+                    //hxmodel是空针
                     hxModel.setBlacklistSynced(true);
 
                     isBlackListSyncedWithServer = true;
@@ -617,8 +618,7 @@ public abstract class HXSDKHelper {
                         callback.onSuccess(usernames);
                     }
                 } catch (EaseMobException e) {
-                    hxModel.setBlacklistSynced(false);
-
+                    hxModel.setBlacklistSynced(false); //空针
                     isBlackListSyncedWithServer = false;
                     isSyncingBlackListWithServer = true;
                     e.printStackTrace();

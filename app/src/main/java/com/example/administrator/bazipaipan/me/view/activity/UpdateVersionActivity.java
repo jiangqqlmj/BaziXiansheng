@@ -14,7 +14,7 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.login.LoginContainerActivity;
 import com.example.administrator.bazipaipan.me.view.model.UpdataInfo;
@@ -27,7 +27,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 
-public class UpdateVersionActivity extends MyActivity {
+public class UpdateVersionActivity extends BaseActivity {
     private LoginContainerActivity fragActivity;
     // 版本更新
     private final String TAG_VERSION = this.getClass().getName();

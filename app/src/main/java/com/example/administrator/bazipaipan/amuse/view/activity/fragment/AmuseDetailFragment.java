@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.amuse.view.activity.activity.AmuseContainerActivity;
 import com.example.administrator.bazipaipan.amuse.view.activity.adapter.AmuseDetailAdapter;
@@ -173,7 +173,7 @@ public class AmuseDetailFragment extends Fragment implements AmuseDetailAdapter.
             AmuseDetail bean = list.get(position);
             //还需要传递关联关系
             intent.putExtra(AmuseFragment.EXTRAL_DATA, bean);
-            intent.putExtra(MyActivity.PAGETO, AmuseCommentFragment.TAG);
+            intent.putExtra(BaseActivity.PAGETO, AmuseCommentFragment.TAG);
             mycontext.startActivity(intent);
         }
     }

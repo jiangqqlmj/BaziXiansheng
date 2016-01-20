@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.MenuItem;
 
 import com.example.administrator.bazipaipan.MainActivity;
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.login.fragment.LoginFragment;
 
@@ -16,7 +16,7 @@ import cn.bmob.v3.BmobUser;
 /**
  * Created by 王中阳 on 2015/12/16.`
  */
-public class LoginContainerActivity extends MyActivity {
+public class LoginContainerActivity extends BaseActivity {
     public static final String TAG = "LoginContainerActivity";
     public static final String TAG_FRAG = "LoginFragment";
     //fragment初始化及实例化

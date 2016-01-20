@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.login.model.MyUser;
 import com.example.administrator.bazipaipan.me.MeContainerActivity;
@@ -220,7 +220,7 @@ public class RechargeFragment extends Fragment implements SwipeRefreshLayout.OnR
     public void onItemClicked(int position) {
         datas = mAdapter.getMdatas();
         Intent intent = new Intent(mycontext, MeContainerActivity.class);
-        intent.putExtra(MyActivity.PAGETO, PayFragment.TAG);
+        intent.putExtra(BaseActivity.PAGETO, PayFragment.TAG);
         intent.putExtra(PAYGOODS, datas.get(position).getCoinNum());
         intent.putExtra(PAYMONEY, datas.get(position).getRechargeNum());
         getActivity().startActivity(intent);

@@ -6,15 +6,15 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
+import com.easemob.EMCallBack;
 import com.easemob.chat.EMChat;
+import com.example.administrator.bazipaipan.chat.huanxin.DemoHXSDKHelper;
 import com.example.administrator.bazipaipan.login.model.MyUser;
 
 import java.util.Iterator;
 import java.util.List;
 
 import cn.bmob.v3.Bmob;
-
-//import com.example.administrator.bazipaipan.chat.huanxinUtils.DemoHXSDKHelper;
 
 /**
  * Created by wangzhongyang on 2015/12/14.
@@ -33,6 +33,7 @@ public class MyApplication extends Application {
      * 当前用户nickname,为了苹果推送不是userid而是昵称
      */
     public static String currentUserNick = "";
+    public static DemoHXSDKHelper hxSDKHelper = new DemoHXSDKHelper();
 
 
     public static synchronized MyApplication getInstance() {
@@ -54,7 +55,6 @@ public class MyApplication extends Application {
         if (processAppName == null || !processAppName.equalsIgnoreCase("com.example.administrator.bazipaipan")) {
             Log.e(TAG, "enter the service process!");
             //"com.easemob.chatuidemo"为demo的包名，换到自己项目中要改成自己包名
-
             // 则此application::onCreate 是被service 调用的，直接返回
             return;
         }
@@ -68,8 +68,7 @@ public class MyApplication extends Application {
         EMChat.getInstance().setDebugMode(true);//在做打包混淆时，要关闭debug模式，避免消耗不必要的资源
         //bmob集成
         Bmob.initialize(this, "f93db7bdfd1f0c1657b956588038115f");
-
-
+        hxSDKHelper.onInit(appContext);
     }
 
     private String getAppName(int pid) {
@@ -83,9 +82,9 @@ public class MyApplication extends Application {
             try {
                 if (info.pid == pid) {
                     CharSequence c = pm.getApplicationLabel(pm.getApplicationInfo(info.processName, PackageManager.GET_META_DATA));
-                    // Log.d("Process", "Id: "+ info.pid +" ProcessName: "+
-                    // info.processName +"  Label: "+c.toString());
-                    // processName = c.toString();
+                    Log.d("Process", "Id: " + info.pid + " ProcessName: " +
+                            info.processName + "  Label: " + c.toString());
+                    processName = c.toString();
                     processName = info.processName;
                     return processName;
                 }
@@ -123,42 +122,42 @@ public class MyApplication extends Application {
      *
      * @return
      */
-//    public String getUserName() {
-//        return hxSDKHelper.getHXId();
-//    }
-//
-//    /**
-//     * 获取密码
-//     *
-//     * @return
-//     */
-//    public String getPassword() {
-//        return hxSDKHelper.getPassword();
-//    }
-//
-//    /**
-//     * 设置用户名
-//     */
-//    public void setUserName(String username) {
-//        hxSDKHelper.setHXId(username);
-//    }
-//
-//    /**
-//     * 设置密码 下面的实例代码 只是demo，实际的应用中需要加password 加密后存入 preference 环信sdk
-//     * 内部的自动登录需要的密码，已经加密存储了
-//     *
-//     * @param pwd
-//     */
-//    public void setPassword(String pwd) {
-//        hxSDKHelper.setPassword(pwd);
-//    }
-//
-//    /**
-//     * 退出登录,清空数据
-//     */
-//    public void logout(final boolean isGCM, final EMCallBack emCallBack) {
-//        // 先调用sdk logout，在清理app中自己的数据
-//        hxSDKHelper.logout(isGCM, emCallBack);
-//    }
+    public String getUserName() {
+        return hxSDKHelper.getHXId();
+    }
+
+    /**
+     * 获取密码
+     *
+     * @return
+     */
+    public String getPassword() {
+        return hxSDKHelper.getPassword();
+    }
+
+    /**
+     * 设置用户名
+     */
+    public void setUserName(String username) {
+        hxSDKHelper.setHXId(username);
+    }
+
+    /**
+     * 设置密码 下面的实例代码 只是demo，实际的应用中需要加password 加密后存入 preference 环信sdk
+     * 内部的自动登录需要的密码，已经加密存储了
+     *
+     * @param pwd
+     */
+    public void setPassword(String pwd) {
+        hxSDKHelper.setPassword(pwd);
+    }
+
+    /**
+     * 退出登录,清空数据 需要和bmob联动
+     */
+    public void logout(final boolean isGCM, final EMCallBack emCallBack) {
+        // 先调用sdk logout，在清理app中自己的数据
+        hxSDKHelper.logout(isGCM, emCallBack);
+    }
 
 }

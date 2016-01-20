@@ -1,6 +1,6 @@
 package com.example.administrator.bazipaipan.me.view.fragment;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,11 +14,12 @@ import android.widget.TextView;
 
 import com.bmob.BmobPro;
 import com.easemob.chat.EMChatManager;
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.login.LoginContainerActivity;
 import com.example.administrator.bazipaipan.me.MeContainerActivity;
 import com.example.administrator.bazipaipan.me.view.activity.UpdateVersionActivity;
+import com.example.administrator.bazipaipan.utils.BmobUtils;
 import com.example.administrator.bazipaipan.utils.DataCleanManager;
 
 import java.io.File;
@@ -56,9 +57,9 @@ public class SettingFragment extends Fragment implements View.OnClickListener, c
 
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        this.mycontext = (MeContainerActivity) context;
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.mycontext = (MeContainerActivity) activity;
     }
 
     @Override
@@ -150,18 +151,15 @@ public class SettingFragment extends Fragment implements View.OnClickListener, c
                 break;
 
             case R.id.container_logout: // 退出登录 ①提交app使用信息到服务器端 ②清除账户缓存信息
-                EMChatManager.getInstance().logout();//环信注销登陆
-                BmobUser.logOut(mycontext);   //清除缓存用户对象
-                mycontext.toast("注销成功");
-                mycontext.startActivity(new Intent(mycontext, LoginContainerActivity.class));
-                mycontext.finish();
+
+                BmobUtils.onCancelPressed(mycontext);
                 //mainactivity没有finisah
                 break;
 //意见反馈
             case R.id.container_suggestion:
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), MeContainerActivity.class);
-                intent.putExtra(MyActivity.PAGETO, SuggestionFragment.TAG);
+                intent.putExtra(BaseActivity.PAGETO, SuggestionFragment.TAG);
                 mycontext.startActivity(intent);
                 break;
             //关于

@@ -33,7 +33,7 @@ import java.util.Map;
  * @author easemob
  *
  */
-public class DefaultHXSDKModel extends HXSDKModel{
+public class DefaultHXSDKModel extends HXSDKModel {
     private static final String PREF_USERNAME = "username";
     private static final String PREF_PWD = "pwd";
     UserDao dao = null;

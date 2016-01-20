@@ -1,6 +1,6 @@
 package com.example.administrator.bazipaipan.homepage.view.fragment.fragment;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -50,9 +50,9 @@ public class MymazhaFragment extends Fragment implements AugurAdapter.IClickList
     ImageView bgbtn_mazha;
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        this.mycontext = (MainActivity) context;
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.mycontext = (MainActivity) activity;
     }
 
     @Override
@@ -80,7 +80,7 @@ public class MymazhaFragment extends Fragment implements AugurAdapter.IClickList
         recyclerView = (RecyclerView) view.findViewById(R.id.rv_myfocus);
         recyclerView.setLayoutManager(new FullyLinearLayoutManager(recyclerView.getContext()));
         //子布局装饰
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         //适配器未装填内容
         mAdapter = new MyfocusAdapter(mycontext, this);
         recyclerView.setAdapter(mAdapter);

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,17 +23,31 @@ import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupManager;
 import com.easemob.exceptions.EaseMobException;
 import com.example.administrator.bazipaipan.MainActivity;
+import com.example.administrator.bazipaipan.MyApplication;
 import com.example.administrator.bazipaipan.R;
+import com.example.administrator.bazipaipan.augur.model.Augur;
+import com.example.administrator.bazipaipan.chat.huanxin.Constant;
+import com.example.administrator.bazipaipan.chat.huanxin.DemoHXSDKHelper;
+import com.example.administrator.bazipaipan.chat.huanxin.applib.controller.HXSDKHelper;
+import com.example.administrator.bazipaipan.chat.huanxin.db.UserDao;
+import com.example.administrator.bazipaipan.chat.huanxin.domain.User;
 import com.example.administrator.bazipaipan.chat.receiver.MyGroupChangeListener;
 import com.example.administrator.bazipaipan.login.LoginContainerActivity;
 import com.example.administrator.bazipaipan.login.model.MyUser;
 import com.example.administrator.bazipaipan.utils.BmobUtils;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobSMS;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.RequestSMSCodeListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
@@ -58,6 +73,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private String groupName, desc;
     //验证码
     private TextView getverification_login;
+    //关闭
+    private ImageView login_cancel;
 
     public LoginFragment() {
 
@@ -92,6 +109,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
 
     private void initviews() {
+        login_cancel = (ImageView) mycontext.findViewById(R.id.login_cancel);
 //        EditText input_phone, input_password, input_verification;
 //        Button btn_getverification;
 //        RadioButton rb_guest, rb_augur;
@@ -108,7 +126,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         btn_login.setOnClickListener(this);
         btn_login_sign = (Button) mycontext.findViewById(R.id.btn_login_sign);
         btn_login_sign.setOnClickListener(this);
-
     }
 
     //关闭登录
@@ -125,10 +142,21 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         password = "123123";  //暂时写死
         //假类型，暂时测试
         user_type = "1";
+
         switch (v.getId()) {
+            //关闭按钮
+            case R.id.login_cancel:
+                mycontext.finish();
+                break;
 
             //验证码一键登录
             case R.id.btn_login_sign:
+                if (phone_num.equals("")) {
+                    mycontext.toast("请输入手机号");
+                    return;
+                } else if (verification.equals("")) {
+                    mycontext.toast("请输入验证码");
+                }
                 //传入其他参数
                 MyUser user = new MyUser();
                 user.setMobilePhoneNumber(phone_num);//设置手机号码（必填）
@@ -140,7 +168,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                         Log.i("smile", "用户登陆成功");
                         mycontext.toast("用户登录成功");
                         mycontext.startActivity(new Intent(mycontext, MainActivity.class));
-
                         bmobObjectId = BmobUser.getCurrentUser(mycontext, MyUser.class).getObjectId();
                         groupName = bmobObjectId + "房间";
                         desc = "八字先生聊天室: " + bmobObjectId;
@@ -174,8 +201,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                         // TODO Auto-generated method stub
                         mycontext.toast("错误码：" + code + ",错误原因：" + msg);
                     }
-
-
                 });
                 break;
 
@@ -334,59 +359,64 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             public void onSuccess() {
                 mycontext.runOnUiThread(new Runnable() {
                     public void run() {
+                        // 登陆成功，保存用户名密码
+                        MyApplication.getInstance().setUserName(bmobObjectId);
+                        MyApplication.getInstance().setPassword(password);
+                        // ** 第一次登录或者之前logout后再登录，加载所有本地群和回话
+                        // ** manually load all local groups and
                         EMGroupManager.getInstance().loadAllGroups();
                         EMChatManager.getInstance().loadAllConversations();
+                        // 处理好友和群组
+                        initializeContacts();
+                        // 更新当前用户的nickname 此方法的作用是在ios离线推送时能够显示用户nick
+                        boolean updatenick = EMChatManager.getInstance().updateCurrentUserNick(
+                                MyApplication.currentUserNick.trim());
+                        if (!updatenick) {
+                            Log.e("LoginActivity", "update current user nick fail");
+                        }
                         Log.d("main", "登陆聊天服务器成功！");
                         mycontext.toast("环信登录成功");
+
                         //大师身份登录创建聊天室
-                        if (BmobUser.getCurrentUser(mycontext, MyUser.class).getType().equals("2")) {
-                            //groupName：要创建的群聊的名称
-                            //desc：群聊简介
-                            //members：群聊成员,为空时这个创建的群组只包含自己
-                            //needApprovalRequired:如果创建的公开群用需要户自由加入，就传false。否则需要申请，等群主批准后才能加入，传true
-                            //2000为最大的群聊人数
-                            //不重复创建房间
-                            if (BmobUser.getCurrentUser(mycontext, MyUser.class).getIsCreatedGroup() == null) {
-                                //更新信息
+                        if (BmobUser.getCurrentUser(mycontext, MyUser.class).getType() != null && BmobUser.getCurrentUser(mycontext, MyUser.class).getType().equals("2")) {
+
+                            Log.e("data", BmobUser.getCurrentUser(mycontext, MyUser.class).getIsCreatedGroup() + "isCreatedGroup");
+                            if (BmobUser.getCurrentUser(mycontext, MyUser.class).getIsCreatedGroup().equals("1") || BmobUser.getCurrentUser(mycontext, MyUser.class).getIsCreatedGroup() == null) {
+                                Log.e("data", "创建群组");
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            //groupName：要创建的群聊的名称
+                                            //desc：群聊简介
+                                            //members：群聊成员,为空时这个创建的群组只包含自己
+                                            //needApprovalRequired:如果创建的公开群用需要户自由加入，就传false。否则需要申请，等群主批准后才能加入，传true
+                                            //2000为最大的群聊人数
+                                            EMGroupManager.getInstance().createPublicGroup(groupName, desc, null, false, 2000);//需异步处理
+                                            mycontext.toast(BmobUser.getCurrentUser(mycontext, MyUser.class).getObjectId() + "大师，已为您创建聊天室");
+                                            updateAugurRoomId();
+                                        } catch (EaseMobException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                                EMGroupManager.getInstance().addGroupChangeListener(new MyGroupChangeListener());  //监听
+                                //创建好房间将标记位设置为2
                                 MyUser myUser = new MyUser();
-                                myUser.setIsCreatedGroup("1");
+                                myUser.setIsCreatedGroup("2");
                                 myUser.update(mycontext, BmobUser.getCurrentUser(mycontext, MyUser.class).getObjectId(), new UpdateListener() {
                                     @Override
                                     public void onSuccess() {
-                                        BmobUtils.log("login 更新 setIsCreatedGroup(1)");
+                                        Log.e("data", "登录时修改isCreadtedGroup为2");
+
+
                                     }
 
                                     @Override
                                     public void onFailure(int i, String s) {
                                     }
                                 });
-                            }
-                            Log.e("data", BmobUser.getCurrentUser(mycontext, MyUser.class).getIsCreatedGroup() + "isCreatedGroup");
-                            if (BmobUser.getCurrentUser(mycontext, MyUser.class).getIsCreatedGroup().equals("1") || BmobUser.getCurrentUser(mycontext, MyUser.class).getIsCreatedGroup() == null) {
-                                try {
-                                    Log.e("data", "创建群组");
-                                    EMGroupManager.getInstance().createPublicGroup(groupName, desc, null, false, 2000);//需异步处理
-                                    mycontext.toast(BmobUser.getCurrentUser(mycontext, MyUser.class).getObjectId() + "大师，已为您创建聊天室");
-                                    EMGroupManager.getInstance().addGroupChangeListener(new MyGroupChangeListener());  //监听
-                                    //创建好房间将标记位设置为2
-                                    MyUser myUser = new MyUser();
-                                    myUser.setIsCreatedGroup("2");
-                                    myUser.update(mycontext, BmobUser.getCurrentUser(mycontext, MyUser.class).getObjectId(), new UpdateListener() {
-                                        @Override
-                                        public void onSuccess() {
-                                            Log.e("data", "登录时修改isCreadtedGroup为2");
-
-                                        }
-
-                                        @Override
-                                        public void onFailure(int i, String s) {
-
-                                        }
-                                    });
-
-                                } catch (EaseMobException e) {
-                                    e.printStackTrace();
-                                }
+                                //augur表里设置roomid  更新字段值
 
                             }
 
@@ -397,14 +427,94 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void onProgress(int progress, String status) {
-
             }
 
             @Override
             public void onError(int code, String message) {
+                mycontext.toast(message + "登录环信失败");
                 Log.d("main", "登陆聊天服务器失败！");
             }
         });
     }
 
+    private void updateAugurRoomId() {
+        //augur表里设置roomid
+        //获取到正确的augurid
+        final String currentUserId = BmobUtils.getCurrentId(mycontext);
+        BmobQuery<Augur> query = new BmobQuery<>();
+        final String[] augurId = new String[1];
+        query.findObjects(mycontext, new FindListener<Augur>() {
+            @Override
+            public void onSuccess(List<Augur> list) {
+                for (int i = 0; i < list.size(); i++) {
+                    if (list.get(i).getAugur_pointer().getObjectId().equals(currentUserId)) {
+                        //取出当前的augurId
+                        augurId[0] = list.get(i).getObjectId();
+                    }
+                }
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                mycontext.log("roomid" + s);
+            }
+        });
+
+        Augur augur = new Augur();
+        try {
+            final String roomId = EMGroupManager.getInstance().getGroupFromServer(bmobObjectId).getGroupId();
+            augur.setRoomId(roomId);
+            augur.update(mycontext, String.valueOf(augurId), new UpdateListener() {
+                @Override
+                public void onSuccess() {
+                    mycontext.toast("augur表" + roomId + "成功");
+                    mycontext.log("augur表" + roomId + "成功");
+                }
+
+                @Override
+                public void onFailure(int i, String s) {
+                    mycontext.toast("登录augur表" + s);
+                    mycontext.log("登录augur表" + s);
+
+                }
+            });
+        } catch (EaseMobException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 处理好友和群组
+    private void initializeContacts() {
+        Map<String, User> userlist = new HashMap<String, User>();
+        // 添加user"申请与通知"
+        User newFriends = new User();
+        newFriends.setUsername(Constant.NEW_FRIENDS_USERNAME);
+        String strChat = getResources().getString(
+                R.string.Application_and_notify);
+        newFriends.setNick(strChat);
+
+        userlist.put(Constant.NEW_FRIENDS_USERNAME, newFriends);
+        // 添加"群聊"
+        User groupUser = new User();
+        String strGroup = getResources().getString(R.string.group_chat);
+        groupUser.setUsername(Constant.GROUP_USERNAME);
+        groupUser.setNick(strGroup);
+        groupUser.setHeader("");
+        userlist.put(Constant.GROUP_USERNAME, groupUser);
+
+        // 添加"Robot"
+        User robotUser = new User();
+        String strRobot = getResources().getString(R.string.robot_chat);
+        robotUser.setUsername(Constant.CHAT_ROBOT);
+        robotUser.setNick(strRobot);
+        robotUser.setHeader("");
+        userlist.put(Constant.CHAT_ROBOT, robotUser);
+
+        // 存入内存
+        ((DemoHXSDKHelper) HXSDKHelper.getInstance()).setContactList(userlist);
+        // 存入db
+        UserDao dao = new UserDao(mycontext);
+        List<User> users = new ArrayList<User>(userlist.values());
+        dao.saveContactList(users);
+    }
 }

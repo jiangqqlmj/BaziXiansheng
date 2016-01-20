@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.me.view.fragment.EditInfoFragment;
 import com.example.administrator.bazipaipan.me.view.fragment.MeFragment;
@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 /**
  * Created by 王中阳 on 2015/12/16.
  */
-public class MeContainerActivity extends MyActivity {
+public class MeContainerActivity extends BaseActivity {
     public static final String TAG = "MeContainerActivity";
     //fragment初始化及实例化
     MeFragment meFragment;

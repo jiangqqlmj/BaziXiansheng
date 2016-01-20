@@ -18,10 +18,14 @@ import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.easemob.EMEventListener;
+import com.easemob.EMNotifierEvent;
 import com.easemob.chat.EMChat;
+import com.easemob.chat.EMMessage;
 import com.example.administrator.bazipaipan.amuse.view.activity.fragment.AmuseFragment;
 import com.example.administrator.bazipaipan.augur.fragment.AugurFragment;
 import com.example.administrator.bazipaipan.chat.ChatContainerActivity;
+import com.example.administrator.bazipaipan.chat.huanxin.applib.controller.HXSDKHelper;
 import com.example.administrator.bazipaipan.homepage.view.fragment.fragment.HomePageFragment;
 import com.example.administrator.bazipaipan.me.MeContainerActivity;
 import com.example.administrator.bazipaipan.me.view.fragment.MeFragment;
@@ -38,7 +42,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import cn.bmob.v3.Bmob;
 
-public class MainActivity extends MyActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener, ViewPager.OnPageChangeListener, EMEventListener {
 
     private String content[];
     private int img[];
@@ -73,7 +77,7 @@ public class MainActivity extends MyActivity implements View.OnClickListener, Vi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mymain);
         mycontext = this;
         showmenu = true;
         Bmob.initialize(this, "f93db7bdfd1f0c1657b956588038115f");
@@ -144,7 +148,7 @@ public class MainActivity extends MyActivity implements View.OnClickListener, Vi
                 Intent intent = new Intent();
                 intent.setClass(mycontext, MeContainerActivity.class);
                 if (position == 0) {
-                    intent.putExtra(MyActivity.PAGETO, RechargeFragment.TAG);
+                    intent.putExtra(BaseActivity.PAGETO, RechargeFragment.TAG);
                     startActivity(intent);
                 } else if (position == 1) {
                     changeItem(3);
@@ -181,6 +185,7 @@ public class MainActivity extends MyActivity implements View.OnClickListener, Vi
         // TODO Auto-generated method stub
         toolbar_title_main = (TextView) findViewById(R.id.toolbar_title_main);
         vp = (ViewPager) findViewById(R.id.main_vp);
+//        vp.setOffscreenPageLimit(1); 不预加载
         tabs[0] = (LinearLayout) findViewById(R.id.main_tab01);
         tabs[1] = (LinearLayout) findViewById(R.id.main_tab02);
         tabs[2] = (LinearLayout) findViewById(R.id.main_tab03);
@@ -307,4 +312,55 @@ public class MainActivity extends MyActivity implements View.OnClickListener, Vi
         myadapter.setDatas(list_frags);
     }
 
-}
+    /**
+     * 以下是聊天
+     */
+
+    /**
+     * 监听事件
+     */
+    @Override
+    public void onEvent(EMNotifierEvent event) {
+        switch (event.getEvent()) {
+            case EventNewMessage: // 普通消息
+            {
+                EMMessage message = (EMMessage) event.getData();
+
+                // 提示新消息
+                HXSDKHelper.getInstance().getNotifier().onNewMsg(message);
+
+                refreshUI();
+                break;
+            }
+
+            case EventOfflineMessage: {
+                refreshUI();
+                break;
+            }
+
+            case EventConversationListChanged: {
+                refreshUI();
+                break;
+            }
+
+            default:
+                break;
+        }
+    }
+
+    private void refreshUI() {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                // 刷新bottom bar消息未读数  未读通知
+//                updateUnreadLabel();
+//                if (currentTabIndex == 0) {
+//                    // 当前页面如果为聊天历史页面，刷新此页面
+//                    if (chatHistoryFragment != null) {
+//                        chatHistoryFragment.refresh();
+//                    }
+//                }
+            }
+        });
+    }
+
+ }

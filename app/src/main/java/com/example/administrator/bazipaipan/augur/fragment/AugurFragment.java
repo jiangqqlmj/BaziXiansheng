@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +20,13 @@ import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupInfo;
 import com.easemob.chat.EMGroupManager;
 import com.easemob.exceptions.EaseMobException;
+import com.easemob.util.EMLog;
 import com.example.administrator.bazipaipan.MainActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.augur.adapter.AugurAdapter;
 import com.example.administrator.bazipaipan.augur.model.Augur;
-import com.example.administrator.bazipaipan.chat.ChatContainerActivity;
-import com.example.administrator.bazipaipan.utils.BmobUtils;
+import com.example.administrator.bazipaipan.chat.huanxin.activity.ChatActivity;
+import com.example.administrator.bazipaipan.chat.huanxin.applib.controller.HXSDKHelper;
 import com.example.administrator.bazipaipan.widget.DividerItemDecoration;
 import com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout;
 
@@ -53,7 +55,48 @@ public class AugurFragment extends Fragment implements AugurAdapter.IClickListen
     private VerticalSwipeRefreshLayout mSwipeLayout;
     //6数据传递  item跳转
     public static final String EXTRAL_DATA = "extral_data";
+    //--chat
+    public static final int CHATTYPE_SINGLE = 1;
+    public static final int CHATTYPE_GROUP = 2;
+    public static final int CHATTYPE_CHATROOM = 3;
+    HXContactInfoSyncListener contactInfoSyncListener;
 
+
+    class HXContactInfoSyncListener implements HXSDKHelper.HXSyncListener {
+
+        @Override
+        public void onSyncSucess(final boolean success) {
+            EMLog.d(TAG, "on contactinfo list sync success:" + success);
+            getActivity().runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+//                    progressBar.setVisibility(View.GONE);
+                    if (success) {
+                        refresh();
+                    }
+                }
+            });
+        }
+
+    }
+
+    // 刷新ui
+    public void refresh() {
+        try {
+            // 可能会在子线程中调到这方法
+            getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+//                    getContactList();
+//                    adapter.notifyDataSetChanged();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //--chat 向上
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -180,28 +223,36 @@ public class AugurFragment extends Fragment implements AugurAdapter.IClickListen
         List<EMGroupInfo> list = mAdapter.getChat_mdatas();
         if (list != null && list.size() > 0) {
             //如果没有创建房间则不能跳转
-            EMGroupInfo bean = list.get(position);
-            //添加一个标记位，在activity中据此做switch case的区分(多个数据引入bundle)
-            Intent intent = new Intent(mycontext, ChatContainerActivity.class);
+            final EMGroupInfo bean = list.get(position);
             //进入到群组
-            try {
-                EMGroupManager.getInstance().joinGroup(bean.getGroupId());//需异步处理
-                intent.putExtra(AUGURID, bean.getGroupId());
-                BmobUtils.log("聊天跳转" + EMGroupManager.getInstance().getGroup(bean.getGroupId()).getOwner());
-            } catch (EaseMobException e) {
-                e.printStackTrace();
-            }
-            mycontext.startActivity(intent);
+            Intent intent = new Intent(getActivity(), ChatActivity.class);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        mycontext.log(bean.getGroupId() + "  加入的公开群");
 
-//            if (bean.getAugur_pointer().getIsCreatedGroup() != null && bean.getAugur_pointer().getIsCreatedGroup().equals("2")) {
-//            } else {
-//                mycontext.toast("该大师尚未创建房间");
-//            }
+                        EMGroupManager.getInstance().joinGroup(bean.getGroupId());//需异步处理
+//                        EMGroupManager.getInstance().applyJoinToGroup(bean.getGroupId(), "求加入");//需异步处理
+                    } catch (EaseMobException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            Log.e("datas", "bean.getGroupId()" + bean.getGroupId());
+            mycontext.log("augur groupId" + bean.getGroupId());
+            Bundle bundle = new Bundle();
+            bundle.putString("groupId", bean.getGroupId());
+            bundle.putString("chatType", ChatActivity.CHATTYPE_GROUP + "");
+            bundle.putString("a", "a");
+            intent.putExtra("bundle", bundle);
+            startActivity(intent);
         }
 
     }
 
     //刷新数据相关
+
     public void setSwipeToRefreshEnabled(boolean enabled) {
         mSwipeLayout.setEnabled(enabled);
     }
@@ -219,6 +270,7 @@ public class AugurFragment extends Fragment implements AugurAdapter.IClickListen
             }
         }
     };
+
 
     @Override
     public void onStart() {

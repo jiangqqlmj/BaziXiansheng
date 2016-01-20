@@ -1,5 +1,7 @@
 package com.example.administrator.bazipaipan.login.model;
 
+import com.example.administrator.bazipaipan.augur.model.Augur;
+
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 
@@ -21,6 +23,16 @@ public class MyUser extends BmobUser {
     private Boolean onlineStatus;  //在线状态  上线通知用
     //    聊天相关
     private String isCreatedGroup; //1没创建聊天室  2创建了聊天室
+    //关联聊过的大师
+    private Augur talkedAugur;
+
+    public Augur getTalkedAugur() {
+        return talkedAugur;
+    }
+
+    public void setTalkedAugur(Augur talkedAugur) {
+        this.talkedAugur = talkedAugur;
+    }
 
     public String getIsCreatedGroup() {
         return isCreatedGroup;

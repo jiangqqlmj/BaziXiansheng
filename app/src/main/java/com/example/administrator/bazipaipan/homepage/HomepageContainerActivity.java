@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.example.administrator.bazipaipan.MyActivity;
+import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
 import com.example.administrator.bazipaipan.homepage.view.fragment.fragment.MingpanFragment;
 import com.example.administrator.bazipaipan.me.view.fragment.EditInfoFragment;
@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 /**
  * Created by 王中阳 on 2015/12/16.
  */
-public class HomepageContainerActivity extends MyActivity {
+public class HomepageContainerActivity extends BaseActivity {
     public static final String TAG = "HomepageContainerActivity";
     //fragment初始化及实例化
     MingpanFragment mingpanFragment;
