@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.easemob.EMValueCallBack;
 import com.easemob.chat.EMChatManager;
 import com.easemob.chat.EMGroupInfo;
 import com.easemob.chat.EMGroupManager;
+import com.easemob.exceptions.EaseMobException;
 import com.easemob.util.EMLog;
 import com.example.administrator.bazipaipan.MainActivity;
 import com.example.administrator.bazipaipan.R;
@@ -222,18 +224,24 @@ public class AugurFragment extends Fragment implements AugurAdapter.IClickListen
         if (list != null && list.size() > 0) {
             //如果没有创建房间则不能跳转
             EMGroupInfo bean = list.get(position);
-            Intent intent = new Intent(mycontext, ChatActivity.class);
             //进入到群组
-//            try {
-//                EMGroupManager.getInstance().joinGroup(bean.getGroupId());//需异步处理
-            intent.putExtra("groupId", bean.getGroupId());
-            intent.putExtra("chatType", CHATTYPE_GROUP);
-//            BmobUtils.log("聊天跳转" + EMGroupManager.getInstance().getGroup(bean.getGroupId()).getOwner());
-//            }
-//            catch (EaseMobException e) {
-//                e.printStackTrace();
-//            }
-            mycontext.startActivity(intent);
+            Intent intent = new Intent(getActivity(), ChatActivity.class);
+            try {
+                EMGroupManager.getInstance().joinGroup(bean.getGroupId());//需异步处理
+                Log.e("datas", "bean.getGroupId()" + bean.getGroupId());
+            } catch (EaseMobException e) {
+                e.printStackTrace();
+            }
+            mycontext.log("augur groupId" + bean.getGroupId());
+            Bundle bundle = new Bundle();
+            bundle.putString("groupId", bean.getGroupId());
+            bundle.putString("chatType", ChatActivity.CHATTYPE_GROUP + "");
+            bundle.putString("a", "a");
+//                intent.putExtra("groupId", bean.getGroupId());
+//                intent.putExtra("chatType", ChatActivity.CHATTYPE_GROUP);
+//                intent.putExtra("a", "a");
+            intent.putExtra("bundle", bundle);
+            startActivity(intent);
 
 //            if (bean.getAugur_pointer().getIsCreatedGroup() != null && bean.getAugur_pointer().getIsCreatedGroup().equals("2")) {
 //            } else {

@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2013-2014 EaseMob Technologies. All rights reserved.
- * <p/>
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -315,7 +315,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
             }
         });
 
-        //刷新列表
+        //刷新列表  聊天的列表
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.chat_swipe_layout);
 
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
@@ -374,8 +374,19 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
         wakeLock = ((PowerManager) getSystemService(Context.POWER_SERVICE)).newWakeLock(
                 PowerManager.SCREEN_DIM_WAKE_LOCK, "demo");
         // 判断单聊还是群聊
-        chatType = getIntent().getIntExtra("chatType", CHATTYPE_GROUP);
+        Bundle bundle = ChatActivity.this.getIntent().getBundleExtra("bundle");
+        if (bundle == null) {
+            this.log("bundle" + bundle.toString());
+            return;
+        }
 
+        chatType = Integer.valueOf(bundle.getString("chatType"));
+//        chatType = getIntent().getIntExtra("chatType", CHATTYPE_GROUP);
+        log("chatType" + chatType);
+        //群聊
+        toChatUsername = bundle.getString("groupId");
+//        toChatUsername = getIntent().getStringExtra("groupId");
+        log("a:" + bundle.getString("a"));
         if (chatType == CHATTYPE_SINGLE) { // 单聊
             toChatUsername = getIntent().getStringExtra("userId");
             //环信小助手
@@ -398,8 +409,12 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
             findViewById(R.id.container_remove).setVisibility(View.GONE);
             findViewById(R.id.container_voice_call).setVisibility(View.GONE);
             findViewById(R.id.container_video_call).setVisibility(View.GONE); //视频通话不需要
-            toChatUsername = getIntent().getStringExtra("groupId");
-
+            toChatUsername = bundle.getString("groupId");
+            if (toChatUsername == null) {
+                log("toChatUsername" + toChatUsername);
+                return;
+            }
+            log("toChatUsername" + toChatUsername);
             if (chatType == CHATTYPE_GROUP) {
                 onGroupViewCreation();
             } else {
@@ -762,7 +777,7 @@ public class ChatActivity extends BaseActivity implements OnClickListener, EMEve
 
     /**
      * 事件监听
-     * <p/>
+     * <p>
      * see {@link EMNotifierEvent}
      */
     @Override
