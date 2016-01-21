@@ -2,6 +2,8 @@ package com.example.administrator.bazipaipan.homepage.view.fragment.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,17 +70,27 @@ public class RecommendLookerAdapter extends RecyclerView.Adapter<RecommendLooker
         } else {
             holder.augur_name.setText(bean.getUserId());  //关联取值
         }
+        if (TextUtils.isEmpty(bean.getAccuracy())) {
+            holder.accuracy.setText("0");
+        } else {
 
+            holder.accuracy.setText(bean.getAccuracy());
+        }
 
-        holder.accuracy.setText(bean.getAccuracy());
-        holder.init_divination.setText(bean.getDivinatedNum());
+        if (TextUtils.isEmpty(bean.getDivinatedNum())) {
+            holder.init_divination.setText("0");
+        } else {
+            holder.init_divination.setText(bean.getDivinatedNum());
+        }
         //图片暂时写死
+        if (bean.getAugur_pointer() == null) {
+            Log.e("data", bean.getAugur_pointer().toString());
+        }
         if (bean.getAugur_pointer() != null && bean.getAugur_pointer().getAvatar() != null) {
             bean.getAugur_pointer().getAvatar().loadImageThumbnail(mContext, holder.augur_head, 186, 186, 100);
         } else {
             holder.augur_head.setImageResource(R.drawable.augur_head);
         }
-
     }
 
     @Override

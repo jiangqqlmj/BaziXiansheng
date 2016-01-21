@@ -43,8 +43,8 @@
                     android:layout_width="510px"
                     android:layout_height="88px"
                     android:layout_margin="20px"
-                    android:background="@drawable/shape_container"
-                    android:hint="请输入你的名字"
+                    android:background="@drawable/shape_container_homepageinput"
+                    android:hint="请输入你的名字/时辰"
                     android:padding="20px"
                     android:singleLine="true"
                     android:textColorHint="@color/tv_grayc3"
@@ -79,112 +79,183 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:id="@+id/container_homepage_sex"
+                    <RelativeLayout
                         android:layout_width="0dp"
-                        android:layout_height="88px"
-                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/shape_container"
                         android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:id="@+id/container_homepage_sex"
+                            android:layout_width="fill_parent"
+                            android:layout_height="88px"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/shape_container"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="20px"
+                                android:gravity="center_vertical"
+                                android:text="性别："
+                                android:textColor="@color/tv_gray9"
+                                android:textSize="28px" />
+
+                            <TextView
+                                android:id="@+id/tv_homepage_sex"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="男"
+                                android:textColor="#000"
+                                android:textSize="28px" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="13px"
+                            android:layout_height="24px"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="20px"
+                            android:src="@drawable/edittext_right" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/dimen_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:id="@+id/container_homepage_datetype"
+                            android:layout_width="fill_parent"
+                            android:layout_height="88px"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="20px"
+                            android:background="@drawable/shape_container"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="20px"
+                                android:text="日期类型："
+                                android:textColor="@color/tv_gray9"
+                                android:textSize="28px" />
+
+                            <TextView
+                                android:id="@+id/tv_homepage_datetype"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="阳历"
+                                android:textColor="#000"
+                                android:textSize="28px" />
+                        </LinearLayout>
+
+
+                        <ImageView
+                            android:layout_width="13px"
+                            android:layout_height="24px"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="20px"
+                            android:src="@drawable/edittext_right" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20px">
+
+                    <LinearLayout
+                        android:id="@+id/container_homepage_birthday"
+                        android:layout_width="fill_parent"
+                        android:layout_height="88px"
+                        android:background="@drawable/shape_container"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="20px"
                             android:gravity="center_vertical"
-                            android:text="性别："
+                            android:text="出生时间："
                             android:textColor="@color/tv_gray9"
                             android:textSize="28px" />
 
                         <TextView
-                            android:id="@+id/tv_homepage_sex"
+                            android:id="@+id/tv_homepage_birthday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="男"
-                            android:textColor="#000"
+                            android:text="@string/default_date"
+                            android:textColor="@color/tv_black"
                             android:textSize="28px" />
+
                     </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="13px"
+                        android:layout_height="24px"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20px"
+                        android:src="@drawable/edittext_right" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20px">
 
 
                     <LinearLayout
-                        android:id="@+id/container_homepage_datetype"
-                        android:layout_width="@dimen/weight_dimen"
+                        android:id="@+id/container_homepage_birthtime"
+                        android:layout_width="fill_parent"
                         android:layout_height="88px"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="20px"
-                        android:layout_weight="1"
+
                         android:background="@drawable/shape_container"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="20px"
-                            android:text="日期类型："
+                            android:gravity="center_vertical"
+                            android:text="时辰："
                             android:textColor="@color/tv_gray9"
                             android:textSize="28px" />
 
                         <TextView
-                            android:id="@+id/tv_homepage_datetype"
+                            android:id="@+id/tv_homepage_birthtime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="阳历"
-                            android:textColor="#000"
+                            android:text="@string/default_birthtime"
+                            android:textColor="@color/tv_black"
                             android:textSize="28px" />
+
                     </LinearLayout>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/container_homepage_birthday"
-                    android:layout_width="fill_parent"
-                    android:layout_height="88px"
-                    android:layout_margin="20px"
-                    android:background="@drawable/shape_container"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:text="出生时间："
-                        android:textColor="@color/tv_gray9"
-                        android:textSize="28px" />
-
-                    <TextView
-                        android:id="@+id/tv_homepage_birthday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/container_homepage_birthtime"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_container"
-                    android:orientation="horizontal"
-                    android:padding="10dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="时辰：" />
-
-                    <TextView
-                        android:id="@+id/tv_homepage_birthtime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
+                    <ImageView
+                        android:layout_width="13px"
+                        android:layout_height="24px"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20px"
+                        android:src="@drawable/edittext_right" />
+                </RelativeLayout>
 
                 <Button
                     android:id="@+id/btn_homepage_divinate"
@@ -194,8 +265,10 @@
                     android:layout_marginLeft="10px"
                     android:layout_marginRight="10px"
                     android:layout_marginTop="10px"
-                    android:background="@drawable/selector_btn_small"
-                    android:text="立即排盘" />
+                    android:background="@drawable/selector_btn_small_bluepaipan"
+                    android:text="立即排盘"
+                    android:textColor="@color/tv_white"
+                    android:textSize="32px" />
             </LinearLayout>
             <!--以上是输入测算信息  以下是测算历史-->
             <LinearLayout
@@ -226,63 +299,73 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-
-                        <Button
+                        <TextView
                             android:id="@+id/btn_history1"
                             android:layout_width="wrap_content"
-                            android:layout_height="48px"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="18px"
                             android:background="@drawable/shape_btn_history"
+                            android:clickable="true"
                             android:gravity="center"
+                            android:padding="15px"
                             android:textColor="@color/tv_gray6"
                             android:textSize="24px"
                             android:visibility="gone" />
 
-                        <Button
+
+                        <TextView
                             android:id="@+id/btn_history2"
                             android:layout_width="wrap_content"
-                            android:layout_height="48px"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="18px"
                             android:background="@drawable/shape_btn_history"
+                            android:clickable="true"
                             android:gravity="center"
+                            android:padding="15px"
                             android:textColor="@color/tv_gray6"
                             android:textSize="24px"
                             android:visibility="gone" />
 
-                        <Button
+                        <TextView
                             android:id="@+id/btn_history3"
                             android:layout_width="wrap_content"
-                            android:layout_height="48px"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="18px"
                             android:background="@drawable/shape_btn_history"
+                            android:clickable="true"
                             android:gravity="center"
+                            android:padding="15px"
                             android:textColor="@color/tv_gray6"
                             android:textSize="24px"
                             android:visibility="gone" />
 
-                        <Button
+                        <TextView
                             android:id="@+id/btn_history4"
                             android:layout_width="wrap_content"
-                            android:layout_height="48px"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="18px"
                             android:background="@drawable/shape_btn_history"
+                            android:clickable="true"
                             android:gravity="center"
+                            android:padding="15px"
                             android:textColor="@color/tv_gray6"
                             android:textSize="24px"
                             android:visibility="gone" />
 
-                        <Button
+                        <TextView
                             android:id="@+id/btn_history5"
                             android:layout_width="wrap_content"
-                            android:layout_height="48px"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="18px"
                             android:background="@drawable/shape_btn_history"
+                            android:clickable="true"
                             android:gravity="center"
+                            android:padding="15px"
                             android:textColor="@color/tv_gray6"
                             android:textSize="24px"
                             android:visibility="gone" />
@@ -327,8 +410,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
             android:orientation="vertical">
-
 
             <RelativeLayout
                 android:id="@+id/container_toamuse"
@@ -376,7 +459,6 @@
                 android:id="@+id/rv_amusenews_list"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10px"
                 android:visibility="visible" />
 
             <!--</com.example.administrator.bazipaipan.widget.VerticalSwipeRefreshLayout>-->

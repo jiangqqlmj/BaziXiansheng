@@ -344,5 +344,7 @@
     <string name="chatlooker">围观区</string>
     <string name="chatqueue">排队</string>
     <string name="chatcontribute">贡献</string>
+    <string name="default_date">1990年1月1日</string>
+    <string name="default_birthtime">00:00分</string>
 
 </resources>

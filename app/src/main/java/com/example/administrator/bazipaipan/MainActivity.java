@@ -110,7 +110,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         if (showmenu) {
 
             content = new String[]{"充值金币", "个人中心", "开始测算"};
-            img = new int[]{R.drawable.item_recharge, R.drawable.item_personal, R.drawable.item_divinate};
+            img = new int[]{R.drawable.menu_recharge, R.drawable.item_personal, R.drawable.item_divinate};
             layout = (LinearLayout) getLayoutInflater().inflate(R.layout.action_popuwindow, null);
             mListView = (ListView) layout.findViewById(R.id.lv_popu);
             List<Map<String, Object>> mList = new ArrayList<Map<String, Object>>();
@@ -363,4 +363,4 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         });
     }
 
- }
+}

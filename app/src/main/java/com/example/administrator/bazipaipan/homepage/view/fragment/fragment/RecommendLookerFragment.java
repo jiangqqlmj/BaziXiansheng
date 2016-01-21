@@ -106,12 +106,12 @@ public class RecommendLookerFragment extends Fragment implements RecommendLooker
 //        } else {
 //            query.setCachePolicy(BmobQuery.CachePolicy.NETWORK_ELSE_CACHE);    // 如果没有缓存的话，则设置策略为NETWORK_ELSE_CACHE
 //        }
-        query.setCachePolicy(BmobQuery.CachePolicy.CACHE_ELSE_NETWORK);    // 如果有缓存的话，则设置策略为CACHE_ELSE_NETWORK
+//        query.setCachePolicy(BmobQuery.CachePolicy.CACHE_ELSE_NETWORK);    // 如果有缓存的话，则设置策略为CACHE_ELSE_NETWORK
         query.findObjects(mycontext, new FindListener<Augur>() {
             @Override
             public void onSuccess(List<Augur> object) {
                 // TODO Auto-generated method stub
-                datas.clear();
+//                datas.clear();
                 for (Augur augurbean : object) {
                     datas.add(augurbean);
                 }
