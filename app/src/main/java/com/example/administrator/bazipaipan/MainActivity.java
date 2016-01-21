@@ -2,7 +2,6 @@ package com.example.administrator.bazipaipan;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -125,9 +124,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
             pw = new PopupWindow(layout, 316, 316);
             pw.setFocusable(true);
-            ColorDrawable cd = new ColorDrawable(Color.parseColor("#00b58043"));
-            pw.setBackgroundDrawable(cd);
-            pw.showAsDropDown(icon_menu, 280, 80);
+//            ColorDrawable cd = new ColorDrawable(Color.parseColor("#b58043"));
+//            pw.setBackgroundDrawable(cd);
+            pw.showAsDropDown(icon_menu, 200, 35);
             //点击跳转
             MyClick();
         } else {

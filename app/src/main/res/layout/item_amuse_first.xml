@@ -3,11 +3,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10px"
-    android:layout_marginLeft="20px"
-    android:layout_marginRight="20px"
+    android:layout_marginLeft="10px"
+    android:layout_marginRight="10px"
     android:layout_marginTop="20px"
     android:gravity="center"
-
     android:orientation="vertical">
 
     <RelativeLayout
@@ -27,12 +26,14 @@
             android:layout_width="wrap_content"
             android:layout_height="30px"
             android:scaleType="fitXY"
-            android:src="@drawable/item_amuse_bg" />
+            android:src="@drawable/item_amuse_bg"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="30px"
-            android:gravity="center">
+            android:gravity="center"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/head_amuse"

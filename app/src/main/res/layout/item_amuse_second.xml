@@ -14,6 +14,7 @@
         android:layout_marginRight="20px"
         android:layout_marginTop="40px"
         android:background="@color/bg_green"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
@@ -23,11 +24,11 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="65px"
             android:ellipsize="end"
-            android:padding="@dimen/dimen_5dp"
+            android:padding="5px"
             android:singleLine="true"
             android:text="国民老公的八字是什么样的？"
             android:textColor="@color/bg_white"
-            android:textSize="@dimen/dimen_22sp" />
+            android:textSize="44px" />
 
 
         <TextView
@@ -37,11 +38,11 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30px"
             android:ellipsize="end"
-            android:padding="@dimen/dimen_5dp"
+            android:padding="5px"
             android:singleLine="true"
             android:text="这位单生汪，上辈子是平西王府二公子，风流倜傥，气宇轩昂。"
-            android:textColor="@color/bg_gray"
-            android:textSize="@dimen/dimen_12sp" />
+            android:textColor="@color/tv_white_alpha"
+            android:textSize="24px" />
 
         <!--
         <View
@@ -56,8 +57,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20px"
-            android:layout_marginLeft="@dimen/dimen_20dp"
-            android:layout_marginRight="@dimen/dimen_20dp"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="20px"
             android:layout_marginTop="34px"
             android:gravity="center"
             android:orientation="horizontal">
@@ -69,17 +70,21 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="9px"
+                    android:src="@drawable/comment" />
+
                 <TextView
                     android:id="@+id/tv_comment_num_amuse_second"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:drawableLeft="@drawable/comment"
-                    android:drawablePadding="9px"
                     android:gravity="center"
                     android:text="256"
                     android:textColor="@color/bg_white"
-                    android:textSize="@dimen/dimen_12sp" />
+                    android:textSize="24px" />
 
             </LinearLayout>
 
@@ -90,16 +95,20 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="11px"
+                    android:src="@drawable/head_amuse" />
+
                 <TextView
                     android:id="@+id/looker_num_amuse_second"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/head_amuse"
-                    android:drawablePadding="11px"
                     android:gravity="center"
                     android:text="2563"
                     android:textColor="@color/bg_white"
-                    android:textSize="@dimen/dimen_12sp" />
+                    android:textSize="24px" />
 
 
                 <TextView
@@ -109,7 +118,7 @@
                     android:gravity="center"
                     android:text="人围观过"
                     android:textColor="@color/bg_white"
-                    android:textSize="@dimen/dimen_12sp" />
+                    android:textSize="24px" />
 
 
             </LinearLayout>

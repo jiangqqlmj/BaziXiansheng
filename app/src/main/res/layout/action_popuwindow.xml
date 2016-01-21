@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/menu_bg"
     android:orientation="vertical">
 
     <ListView
@@ -9,5 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_container_brown"
+        android:divider="#b58043"
         android:dividerHeight="1dp" />
 </LinearLayout>

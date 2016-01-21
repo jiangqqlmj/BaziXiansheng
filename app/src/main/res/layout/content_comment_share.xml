@@ -71,20 +71,22 @@
         android:layout_height="99px"
         android:layout_gravity="bottom"
         android:background="@color/bg_white"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
 
         <EditText
             android:id="@+id/et_my_comment"
             android:layout_width="571px"
-            android:layout_height="66px"
-            android:layout_marginBottom="17px"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10px"
             android:layout_marginLeft="20px"
             android:layout_marginTop="14px"
             android:background="@drawable/shape_container"
             android:hint="我来评论两句....."
             android:imeOptions="actionSend"
             android:maxLines="2"
+            android:padding="20px"
             android:paddingLeft="20px"
             android:singleLine="true"
 
@@ -99,7 +101,17 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="33px"
             android:clickable="true"
-            android:src="@drawable/share" />
+            android:src="@drawable/share"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_send_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_btn_small"
+            android:text="发送"
+            android:textColor="@color/tv_white"
+            android:textSize="28px" />
 
     </LinearLayout>
 </LinearLayout>

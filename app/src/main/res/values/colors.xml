@@ -60,12 +60,15 @@
     <color name="bg_gray">#EFEEEC</color>
     <color name="bg_pay">#EFEEED</color>
     <color name="bg_white">#FFFFFF</color>
+    <color name="tv_white_alpha">#aaFFFFFF</color>
     <color name="bg_purple">#9195C2</color>
     <color name="bg_black">#030305</color>
     <color name="bg_green">#8FC4A6</color>
+    <color name="bg_green_alpha">#aa8FC4A6</color>
 
 
     <color name="tv_black">#000000</color>
+    <color name="line_color">#DCDCDC</color>
     <color name="hint_input_gray">#c4c4c4</color>
     <color name="tv_blue">#244C7D</color>
     <color name="tv_gray">#929292</color>

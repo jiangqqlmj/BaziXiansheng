@@ -7,6 +7,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -66,8 +67,8 @@
 
         <LinearLayout
             android:id="@+id/item_augur_right_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="20px"
             android:orientation="vertical">
 
@@ -102,6 +103,61 @@
 
             </RelativeLayout>
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="关注："
+                        android:textSize="@dimen/dimen_12dp" />
+
+                    <TextView
+                        android:id="@+id/augur_focus_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10005"
+                        android:textColor="@color/brown"
+                        android:textSize="@dimen/dimen_12dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="金币："
+                        android:textSize="@dimen/dimen_12dp" />
+
+                    <TextView
+                        android:id="@+id/augur_gold_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="201555"
+                        android:textColor="@color/brown"
+                        android:textSize="@dimen/dimen_12dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -128,27 +184,6 @@
                         android:text="95%"
                         android:textColor="@color/brown"
                         android:textSize="@dimen/dimen_20dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="关注："
-                        android:textSize="@dimen/dimen_12dp" />
-
-                    <TextView
-                        android:id="@+id/augur_focus_num"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10005"
-                        android:textColor="@color/brown"
-                        android:textSize="@dimen/dimen_12dp" />
 
                 </LinearLayout>
 
@@ -184,26 +219,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="金币："
-                        android:textSize="@dimen/dimen_12dp" />
-
-                    <TextView
-                        android:id="@+id/augur_gold_num"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="201555"
-                        android:textColor="@color/brown"
-                        android:textSize="@dimen/dimen_12dp" />
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -217,6 +232,6 @@
         android:layout_marginLeft="20px"
         android:layout_marginRight="20px"
         android:layout_marginTop="20px"
-        android:background="@color/tv_gray6" />
+        android:background="@color/line_color" />
 
 </LinearLayout>

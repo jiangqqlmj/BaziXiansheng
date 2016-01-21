@@ -144,19 +144,13 @@ public class AugurAdapter extends RecyclerView.Adapter<AugurAdapter.RecyclerHold
                 //图片暂时写死
                 holder.iv_bg.setImageResource(R.drawable.augur_head);
             } else {
-                //加载网络图片  没写
+                //加载网络图片
                 bean.getAugur_pointer().getAvatar().loadImageThumbnail(mContext, holder.iv_bg, 150, 150, 100);
             }
         }
         //测算状态标记为判断  ing done
-        if (bean.getAugur_pointer() != null) {
-            if (bean.getAugur_pointer().getOnlineStatus() != null) {
-                if (bean.getAugur_pointer().getOnlineStatus()) {
-                    holder.is_divinating.setImageResource(R.drawable.augur_status);
-                } else {
-                    holder.is_divinating.setImageResource(R.drawable.augur_status_nor);
-                }
-            }
+        if (bean.isDivinateStatus()) {
+            holder.is_divinating.setImageResource(R.drawable.augur_status);
         } else {
             holder.is_divinating.setImageResource(R.drawable.augur_status_nor);
         }
