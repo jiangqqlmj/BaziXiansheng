@@ -13,18 +13,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bmob.BmobPro;
-import com.easemob.chat.EMChatManager;
 import com.example.administrator.bazipaipan.BaseActivity;
 import com.example.administrator.bazipaipan.R;
-import com.example.administrator.bazipaipan.login.LoginContainerActivity;
 import com.example.administrator.bazipaipan.me.MeContainerActivity;
 import com.example.administrator.bazipaipan.me.view.activity.UpdateVersionActivity;
 import com.example.administrator.bazipaipan.utils.BmobUtils;
 import com.example.administrator.bazipaipan.utils.DataCleanManager;
 
 import java.io.File;
-
-import cn.bmob.v3.BmobUser;
 
 /**
  * Created by 王中阳 on 2015/12/16.
@@ -150,7 +146,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener, c
                         UpdateVersionActivity.class));
                 break;
 
-            case R.id.container_logout: // 退出登录 ①提交app使用信息到服务器端 ②清除账户缓存信息
+            case R.id.container_logout: // 退出登录 ①提交app使用信息到服务器端 ②清除账户缓存信息  注销
 
                 BmobUtils.onCancelPressed(mycontext);
                 //mainactivity没有finisah

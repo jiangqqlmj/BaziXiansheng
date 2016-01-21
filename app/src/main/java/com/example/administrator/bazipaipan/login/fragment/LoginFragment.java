@@ -156,6 +156,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                     return;
                 } else if (verification.equals("")) {
                     mycontext.toast("请输入验证码");
+                    return;
                 }
                 //传入其他参数
                 MyUser user = new MyUser();

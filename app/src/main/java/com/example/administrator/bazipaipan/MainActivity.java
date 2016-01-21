@@ -1117,7 +1117,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 changeItem(3);
                 vp.setCurrentItem(3);
                 toolbar_title_main.setText("个人中心");
-                icon_menu.setImageResource(R.drawable.icon_menu);
+                icon_menu.setVisibility(View.GONE);
                 showmenu = true;
                 list_frags.clear();
                 initDatas();
@@ -1167,6 +1167,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         changeItem(arg0);
         //viewpager滑动切换标题栏
         toolbar_title_main.setText(titles[arg0]);
+        if (arg0 == 3) {
+            icon_menu.setVisibility(View.GONE);
+        }
         if (arg0 == 1 || arg0 == 2) {
             icon_menu.setImageResource(R.drawable.menu_search);
             showmenu = false;

@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="@dimen/dimen_16dp">
 
-    <com.example.administrator.bazipaipan.utils.MyImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_chatqueue_head"
         android:layout_width="100px"
         android:layout_height="100px"

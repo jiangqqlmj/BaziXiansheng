@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20px"
+        android:background="@color/bg_white"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -47,8 +48,8 @@
 
             <CheckBox
                 android:id="@+id/push_checkbox"
-                android:layout_width="102px"
-                android:layout_height="38px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20px"
@@ -61,7 +62,7 @@
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="100px"
-            android:background="#c2c2c2" />
+            android:background="@color/line_color" />
 
         <RelativeLayout
             android:id="@+id/container_clean_cash"
@@ -102,14 +103,16 @@
                 android:paddingRight="@dimen/dimen_5dp"
                 android:text="0.0B"
                 android:textColor="@color/tv_black"
-                android:textSize="28px" />
-            <!--<ImageView
+                android:textSize="28px"
+                android:visibility="gone" />
+
+            <ImageView
                 android:layout_width="12px"
                 android:layout_height="22px"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20px"
-                android:background="@drawable/getmore" />-->
+                android:background="@drawable/getmore" />
 
 
         </RelativeLayout>
@@ -119,7 +122,7 @@
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="100px"
-            android:background="#c2c2c2" />
+            android:background="@color/line_color" />
 
         <RelativeLayout
             android:id="@+id/container_version_update"
@@ -165,7 +168,7 @@
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="100px"
-            android:background="#c2c2c2" />
+            android:background="@color/line_color" />
 
         <RelativeLayout
             android:id="@+id/container_logout"
@@ -205,11 +208,16 @@
 
         </RelativeLayout>
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="20px"
+            android:background="@color/bg_gray" />
+
         <RelativeLayout
             android:id="@+id/container_suggestion"
             android:layout_width="fill_parent"
             android:layout_height="88px"
-            android:layout_marginTop="20px"
+
             android:background="@color/bg_white"
             android:gravity="center_vertical">
 
@@ -248,7 +256,7 @@
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="100px"
-            android:background="#c2c2c2" />
+            android:background="@color/line_color" />
 
         <RelativeLayout
             android:id="@+id/container_about"

@@ -41,7 +41,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="订购商品"
+            android:text="购买金币"
             android:textColor="@color/tv_black"
             android:textSize="30px" />
 
@@ -51,12 +51,16 @@
             android:layout_alignParentRight="true"
             android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="26px"
+                android:layout_height="26px"
+                android:layout_marginRight="20px"
+                android:src="@drawable/recharge_money" />
+
             <TextView
                 android:id="@+id/tv_currentpaygoods"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/recharge_money"
-                android:drawablePadding="20px"
                 android:text="100"
                 android:textColor="@color/tv_brown"
                 android:textSize="28px" />
@@ -133,8 +137,8 @@
 
         <ImageView
             android:id="@+id/weixinpay"
-            android:layout_width="83px"
-            android:layout_height="82px"
+            android:layout_width="80px"
+            android:layout_height="71px"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20px"
             android:src="@drawable/weixinpay" />
@@ -147,14 +151,26 @@
             android:layout_toRightOf="@+id/weixinpay"
             android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawablePadding="10px"
-                android:drawableRight="@drawable/recommentpay"
-                android:text="微信支付"
-                android:textColor="@color/tv_black"
-                android:textSize="30px" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="微信支付"
+                    android:textColor="@color/tv_black"
+                    android:textSize="30px" />
+
+                <ImageView
+                    android:layout_width="64px"
+                    android:layout_height="28px"
+                    android:layout_marginLeft="10px"
+                    android:src="@drawable/recommentpay" />
+
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -167,8 +183,8 @@
 
         <ImageView
             android:id="@+id/weixin_gou_iv"
-            android:layout_width="63px"
-            android:layout_height="63px"
+            android:layout_width="60px"
+            android:layout_height="60px"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20px"
@@ -186,8 +202,8 @@
 
         <ImageView
             android:id="@+id/zhifubaopay"
-            android:layout_width="83px"
-            android:layout_height="82px"
+            android:layout_width="79px"
+            android:layout_height="79px"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20px"
             android:src="@drawable/zhifubaopay" />
@@ -218,8 +234,8 @@
 
         <ImageView
             android:id="@+id/zhifubao_gou_iv"
-            android:layout_width="63px"
-            android:layout_height="63px"
+            android:layout_width="60px"
+            android:layout_height="60px"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20px"
@@ -235,6 +251,8 @@
         android:layout_marginRight="20px"
         android:layout_marginTop="34px"
         android:background="@drawable/selector_btn_small"
-        android:text="下一步" />
+        android:text="下一步"
+        android:textColor="@color/tv_white"
+        android:textSize="30px" />
 
 </LinearLayout>

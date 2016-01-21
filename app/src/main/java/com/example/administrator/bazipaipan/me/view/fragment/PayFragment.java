@@ -434,6 +434,8 @@ public class PayFragment extends Fragment implements SwipeRefreshLayout.OnRefres
         return sb.toString();
     }
 
+    String prepay_id;
+
     private class GetPrepayIdTask extends AsyncTask<Void, Void, Map<String, String>> {
 
         private ProgressDialog dialog;
@@ -451,7 +453,7 @@ public class PayFragment extends Fragment implements SwipeRefreshLayout.OnRefres
             }
             sb.append("prepay_id\n" + result.get("prepay_id") + "\n\n");
             show.setText(sb.toString());
-
+            prepay_id = sb.toString();
             resultunifiedorder = result;
 
         }
@@ -571,13 +573,15 @@ public class PayFragment extends Fragment implements SwipeRefreshLayout.OnRefres
     }
 
     //获得签名参数
+    String genpaySign;
+
     private void genPayReq() {
         //生成prepay_id
         getprepay_id();
         req.appId = Constants.APP_ID;
         req.partnerId = Constants.MCH_ID;
-        req.prepayId = resultunifiedorder.get("prepay_id");
-        req.packageValue = "prepay_id=" + resultunifiedorder.get("prepay_id");
+        req.prepayId = prepay_id;
+        req.packageValue = "prepay_id=" + prepay_id;
         req.nonceStr = genNonceStr();
         req.timeStamp = String.valueOf(genTimeStamp());
 
@@ -594,14 +598,13 @@ public class PayFragment extends Fragment implements SwipeRefreshLayout.OnRefres
 
         sb.append("sign\n" + req.sign + "\n\n");
 
-        show.setText(sb.toString());
-
+//        show.setText(sb.toString());
+        genpaySign = sb.toString();
         Log.e("orion", "----" + signParams.toString());
 
     }
 
     private void sendPayReq() {
-
         msgApi.registerApp(Constants.APP_ID);
         msgApi.sendReq(req);
     }
@@ -666,34 +669,10 @@ public class PayFragment extends Fragment implements SwipeRefreshLayout.OnRefres
     private void wechatOncreate() {
         req = new PayReq();
         sb = new StringBuffer();
-
-
-//        payBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                GetPrepayIdTask getPrepayId = new GetPrepayIdTask();
-//                getPrepayId.execute();
-//            }
-//        });
-
         //生成签名参数
         genPayReq();
-//        appay_pre_btn.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                genPayReq();
-//            }
-//        });
         //		调起微信支付
         sendPayReq();
-//        appayBtn.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                sendPayReq();
-//            }
-//        });
     }
 
     @OnClick(R.id.paycontainer_weixin)
@@ -725,6 +704,7 @@ public class PayFragment extends Fragment implements SwipeRefreshLayout.OnRefres
 
     //微信支付
     private void wechatpaymain() {
+        //我的方法
         sendPayReq();
     }
 
