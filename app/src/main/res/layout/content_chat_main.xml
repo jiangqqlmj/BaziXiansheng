@@ -6,7 +6,7 @@
     android:background="@color/bg_gray"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_chat">
+    tools:showIn="@layout/activity_mychat">
     <!--测算过-->
     <FrameLayout
         android:id="@+id/fl_container_chatmain_history"

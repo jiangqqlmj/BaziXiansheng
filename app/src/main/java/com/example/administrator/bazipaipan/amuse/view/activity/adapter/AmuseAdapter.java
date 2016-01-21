@@ -1,7 +1,6 @@
 package com.example.administrator.bazipaipan.amuse.view.activity.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,12 +65,12 @@ public class AmuseAdapter extends RecyclerView.Adapter<AmuseAdapter.RecyclerHold
         }
         holder.amuse_category_look_num.setText(bean.getAmuseLookerNum());
         holder.amuse_title.setText(bean.getAmuseTitle());
-        imageUrl = bean.getAmuseImage().getUrl();
+//        imageUrl = bean.getAmuseImage().getUrl();
         //网络请求
         if (bean.getAmuseImage() != null) {
-            if (holder.amuse_bg_img.getTag() != null && imageUrl.equals(holder.amuse_bg_img.getTag())) {
-                bean.getAmuseImage().loadImageThumbnail(mContext, holder.amuse_bg_img, 80, 80, 100);
-            }
+//            if (holder.amuse_bg_img.getTag() != null && imageUrl.equals(holder.amuse_bg_img.getTag())) {
+            bean.getAmuseImage().loadImageThumbnail(mContext, holder.amuse_bg_img, 80, 80, 100);
+//            }
         } else {
             holder.amuse_bg_img.setImageResource(R.drawable.amuse_category_bg);
         }

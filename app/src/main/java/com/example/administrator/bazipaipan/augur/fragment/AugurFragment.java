@@ -225,13 +225,11 @@ public class AugurFragment extends Fragment implements AugurAdapter.IClickListen
             //如果没有创建房间则不能跳转
             final EMGroupInfo bean = list.get(position);
             //进入到群组
-            Intent intent = new Intent(getActivity(), ChatActivity.class);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
                         mycontext.log(bean.getGroupId() + "  加入的公开群");
-
                         EMGroupManager.getInstance().joinGroup(bean.getGroupId());//需异步处理
 //                        EMGroupManager.getInstance().applyJoinToGroup(bean.getGroupId(), "求加入");//需异步处理
                     } catch (EaseMobException e) {
@@ -239,6 +237,7 @@ public class AugurFragment extends Fragment implements AugurAdapter.IClickListen
                     }
                 }
             });
+            Intent intent = new Intent(getActivity(), ChatActivity.class);
             Log.e("datas", "bean.getGroupId()" + bean.getGroupId());
             mycontext.log("augur groupId" + bean.getGroupId());
             Bundle bundle = new Bundle();
