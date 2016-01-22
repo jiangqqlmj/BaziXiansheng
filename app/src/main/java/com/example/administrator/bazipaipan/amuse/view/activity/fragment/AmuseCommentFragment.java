@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -62,6 +63,7 @@ public class AmuseCommentFragment extends Fragment implements AugurAdapter.IClic
     private ImageView iv_back;
     private TextView tv_comment_num;
     private EditText et_my_comment;
+    Button btn_send_comment;
 
     public static AmuseCommentFragment newInstance() {
         AmuseCommentFragment fragment = new AmuseCommentFragment();
@@ -82,6 +84,9 @@ public class AmuseCommentFragment extends Fragment implements AugurAdapter.IClic
     }
 
     private void initviews() {
+        //发送评论按钮
+        btn_send_comment = (Button) mycontext.findViewById(R.id.btn_send_comment);
+        btn_send_comment.setOnClickListener(this);
         //进行评论
         et_my_comment = (EditText) mycontext.findViewById(R.id.et_my_comment);
         et_my_comment.setOnEditorActionListener(this);
@@ -98,11 +103,12 @@ public class AmuseCommentFragment extends Fragment implements AugurAdapter.IClic
 
     }
 
+    String sendmsg;
+
     //评论
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         //监听键盘发送功能
-        String sendmsg;
         sendmsg = et_my_comment.getText().toString().trim();
         if (actionId == EditorInfo.IME_ACTION_SEND || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
             if (TextUtils.isEmpty(sendmsg)) {
@@ -209,6 +215,17 @@ public class AmuseCommentFragment extends Fragment implements AugurAdapter.IClic
     public void onClick(View v) {
 
         switch (v.getId()) {
+            //发送按钮
+            case R.id.btn_send_comment:
+                sendmsg = et_my_comment.getText().toString().trim();
+                if (TextUtils.isEmpty(sendmsg)) {
+                    mycontext.toast("请输入内容");
+                    return;
+                } else {
+                    mycontext.toast("发送：" + sendmsg);
+                    et_my_comment.setText("");
+                }
+                break;
             case R.id.iv_share_btn:
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);

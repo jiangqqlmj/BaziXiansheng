@@ -2,7 +2,10 @@ package com.example.administrator.bazipaipan.homepage.view.fragment.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -68,17 +71,27 @@ public class RecommendLookerAdapter extends RecyclerView.Adapter<RecommendLooker
         } else {
             holder.augur_name.setText(bean.getUserId());  //关联取值
         }
+        if (TextUtils.isEmpty(bean.getAccuracy())) {
+            holder.accuracy.setText("0");
+        } else {
 
+            holder.accuracy.setText(bean.getAccuracy());
+        }
 
-        holder.accuracy.setText(bean.getAccuracy());
-        holder.init_divination.setText(bean.getDivinatedNum());
+        if (TextUtils.isEmpty(bean.getDivinatedNum())) {
+            holder.init_divination.setText("0");
+        } else {
+            holder.init_divination.setText(bean.getDivinatedNum());
+        }
         //图片暂时写死
+        if (bean.getAugur_pointer() == null) {
+            Log.e("data", bean.getAugur_pointer().toString());
+        }
         if (bean.getAugur_pointer() != null && bean.getAugur_pointer().getAvatar() != null) {
             bean.getAugur_pointer().getAvatar().loadImageThumbnail(mContext, holder.augur_head, 186, 186, 100);
         } else {
             holder.augur_head.setImageResource(R.drawable.augur_head);
         }
-
     }
 
     @Override
@@ -91,7 +104,7 @@ public class RecommendLookerAdapter extends RecyclerView.Adapter<RecommendLooker
 
     class RecyclerHolder extends RecyclerView.ViewHolder {
         TextView looker_num, augur_name, accuracy, init_divination;
-        ImageView augur_head;
+        ImageView augur_head, homepage_augur_forepic;
 
         public RecyclerHolder(View itemView) {
             super(itemView);
@@ -100,10 +113,30 @@ public class RecommendLookerAdapter extends RecyclerView.Adapter<RecommendLooker
             accuracy = (TextView) itemView.findViewById(R.id.tv_recommend_looker_accuracy);
             init_divination = (TextView) itemView.findViewById(R.id.tv_recommend_looker_init_divination);
             augur_head = (ImageView) itemView.findViewById(R.id.iv_recommend_augur_head);
+            homepage_augur_forepic = (ImageView) itemView.findViewById(R.id.homepage_augur_forepic);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mCallBack.onItemClicked(getAdapterPosition());
+                }
+            });
+
+            //点击交互效果
+            itemView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            homepage_augur_forepic.setVisibility(View.VISIBLE);
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+                            homepage_augur_forepic.setVisibility(View.GONE);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            homepage_augur_forepic.setVisibility(View.GONE);
+                            break;
+                    }
+                    return false;
                 }
             });
         }

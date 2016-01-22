@@ -103,7 +103,6 @@ public class AmuseFragment extends Fragment implements AmuseAdapter.IClickListen
         mSwipeLayout.setOnRefreshListener(this);
         onRefresh();
     }
-
     //耗时操作抓取数据需要用handler机制
 
     @Override

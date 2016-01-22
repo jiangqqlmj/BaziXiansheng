@@ -39,6 +39,7 @@ public class BmobUtils {
                         EMChatManager.getInstance().logout();//环信注销登陆
                         BmobUser.logOut(context);   //清除缓存用户对象
                         Intent intent = new Intent(context, LoginContainerActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);  //注意本行的FLAG设置
                         context.startActivity(intent);
                         context.finish();

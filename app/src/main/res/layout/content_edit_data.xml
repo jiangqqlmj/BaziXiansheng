@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -22,17 +22,27 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <com.example.administrator.bazipaipan.utils.MyImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_edit_change_myhead"
                 android:layout_width="168px"
                 android:layout_height="160px"
                 android:layout_gravity="center"
-                android:src="@drawable/change_head"/>
-        </LinearLayout>
+                android:src="@drawable/change_head" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/iv_edit_change_myhead"
+                android:layout_alignParentBottom="true"
+                android:layout_alignRight="@+id/iv_edit_change_myhead"
+                android:src="@drawable/user_camera" />
+        </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_20dp">
+            android:layout_marginTop="30px">
+
             <EditText
                 android:id="@+id/et_edit_username"
                 android:layout_width="fill_parent"
@@ -42,19 +52,22 @@
                 android:hint="输入用户名"
                 android:singleLine="true"
                 android:textColor="@color/tv_black" />
+
             <ImageView
                 android:layout_width="13px"
                 android:layout_height="24px"
-                android:src="@drawable/jiantou"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="32px"
                 android:layout_marginRight="30px"
-                android:visibility="invisible"/>
+                android:layout_marginTop="32px"
+                android:src="@drawable/jiantou"
+                android:visibility="visible" />
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_20dp">
+            android:layout_marginTop="20px">
+
             <TextView
                 android:id="@+id/tv_edit_sex"
                 android:layout_width="fill_parent"
@@ -63,20 +76,17 @@
                 android:gravity="center"
                 android:hint="性别"
                 android:singleLine="true"
-                android:textColor="@color/tv_black"
-                android:textSize="14sp"/>
+                android:textColor="@color/tv_chat_black3"
+                android:textSize="28px" />
+
             <ImageView
                 android:layout_width="13px"
                 android:layout_height="24px"
-                android:src="@drawable/jiantou"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="32px"
                 android:layout_marginRight="30px"
-                />
+                android:layout_marginTop="32px"
+                android:src="@drawable/jiantou" />
         </RelativeLayout>
-
-
-
 
 
         <RadioGroup
@@ -115,50 +125,55 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/tv_editdata_birthday"
                     android:layout_width="fill_parent"
                     android:layout_height="86px"
                     android:background="@color/bg_white"
                     android:gravity="center"
-                    android:hint="出生日期"
+                    android:hint="出生 1991-04-30"
                     android:singleLine="true"
-                    android:textColor="@color/tv_black"
-                    android:textSize="14sp"/>
+                    android:textColor="@color/tv_chat_black3"
+                    android:textSize="28px" />
+
                 <ImageView
                     android:layout_width="13px"
                     android:layout_height="24px"
-                    android:src="@drawable/jiantou"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="32px"
                     android:layout_marginRight="30px"
-                    />
+                    android:layout_marginTop="32px"
+                    android:src="@drawable/jiantou" />
             </RelativeLayout>
 
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@color/line_color" />
 
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/tv_editdata_city"
                     android:layout_width="fill_parent"
                     android:layout_height="86px"
                     android:background="@color/bg_white"
                     android:gravity="center"
-                    android:hint="出生日期"
+                    android:hint="北京市"
                     android:singleLine="true"
-                    android:textColor="@color/tv_black"
-                    android:textSize="14sp"/>
+                    android:textColor="@color/tv_chat_black3"
+                    android:textSize="28px" />
+
                 <ImageView
                     android:layout_width="13px"
                     android:layout_height="24px"
-                    android:src="@drawable/jiantou"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="32px"
                     android:layout_marginRight="30px"
-                    />
+                    android:layout_marginTop="32px"
+                    android:src="@drawable/jiantou" />
             </RelativeLayout>
-
 
 
         </LinearLayout>
@@ -170,10 +185,13 @@
             android:layout_height="108px"
             android:layout_marginTop="20px"
             android:background="@color/bg_white"
-            android:gravity="center"
-            android:hint="在这里输入个性签名"
+            android:gravity="left"
+            android:hint="个性签名,写点呗~"
             android:maxLength="200"
-            android:maxLines="3"/>
+            android:maxLines="3"
+            android:padding="15px"
+            android:textColor="@color/tv_chat_black3"
+            android:textSize="28px" />
 
         <Button
             android:id="@+id/btn_edit_updateinfo"
@@ -182,7 +200,8 @@
             android:layout_marginTop="20px"
             android:textColor="@color/tv_white"
             android:background="@drawable/selector_btn_small"
-            android:text="保存修改" />
+            android:text="保存修改"
+            android:visibility="visible" />
 
     </LinearLayout>
 

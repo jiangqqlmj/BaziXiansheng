@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- 微信支付-->
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="blue">#ffccddff</color>
+    <color name="grey">#58616d</color>
+    <color name="darkgrey">#ff404040</color>
+    <color name="toasterro">#9fd524</color>
+    <color name="lightgrey">#ff888888</color>
+    <color name="semitransparent">#80000000</color>
+    <color name="lightransparent">#a0000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="navpage">#FFE1E8EB</color>
     <!-- 环信-->
     <color name="common_top_bar_blue">#4ebcd3</color>
     <color name="btn_login_normal">#00acff</color>
@@ -48,12 +60,15 @@
     <color name="bg_gray">#EFEEEC</color>
     <color name="bg_pay">#EFEEED</color>
     <color name="bg_white">#FFFFFF</color>
+    <color name="tv_white_alpha">#aaFFFFFF</color>
     <color name="bg_purple">#9195C2</color>
     <color name="bg_black">#030305</color>
     <color name="bg_green">#8FC4A6</color>
+    <color name="bg_green_alpha">#aa8FC4A6</color>
 
 
     <color name="tv_black">#000000</color>
+    <color name="line_color">#DCDCDC</color>
     <color name="hint_input_gray">#c4c4c4</color>
     <color name="tv_blue">#244C7D</color>
     <color name="tv_gray">#929292</color>

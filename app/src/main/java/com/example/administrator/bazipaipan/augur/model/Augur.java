@@ -9,7 +9,7 @@ import cn.bmob.v3.BmobObject;
  */
 public class Augur extends BmobObject {
     private String userId;
-    private boolean dinivateStatus;
+    private boolean divinateStatus;
     private int lookerNum;
     private String accuracy;
     private int focusNum;
@@ -21,17 +21,15 @@ public class Augur extends BmobObject {
     //关联环信的群聊id
     private String roomId;
 
-    public Augur(String userId, boolean dinivateStatus, int lookerNum, String accuracy, int focusNum, String focusFans, String divinatedNum, String goldNum) {
-        this.userId = userId;
-        this.dinivateStatus = dinivateStatus;
-        this.lookerNum = lookerNum;
-        this.accuracy = accuracy;
-        this.focusNum = focusNum;
-        this.focusFans = focusFans;
-        this.divinatedNum = divinatedNum;
-//        this.goldNum = goldNum;
+
+
+    public boolean isDivinateStatus() {
+        return divinateStatus;
     }
 
+    public void setDivinateStatus(boolean divinateStatus) {
+        this.divinateStatus = divinateStatus;
+    }
 
     public String getRoomId() {
         return roomId;
@@ -59,14 +57,6 @@ public class Augur extends BmobObject {
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public boolean isDinivateStatus() {
-        return dinivateStatus;
-    }
-
-    public void setDinivateStatus(boolean dinivateStatus) {
-        this.dinivateStatus = dinivateStatus;
     }
 
     public int getLookerNum() {

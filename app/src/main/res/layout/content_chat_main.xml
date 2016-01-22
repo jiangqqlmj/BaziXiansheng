@@ -1,12 +1,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_chat">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <!--tools:showIn="@layout/activity_mychat"-->
+
     <!--测算过-->
     <FrameLayout
         android:id="@+id/fl_container_chatmain_history"

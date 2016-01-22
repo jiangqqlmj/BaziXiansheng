@@ -54,7 +54,12 @@
 
         </RelativeLayout>
 
-
+        <ImageView
+            android:id="@+id/homepage_augur_forepic"
+            android:layout_width="186px"
+            android:layout_height="186px"
+            android:src="@drawable/homepage_augur_forepic"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <TextView
@@ -78,7 +83,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="关注数:"
+            android:text="关注数："
             android:textColor="@color/tv_gray6"
             android:textSize="20px" />
 

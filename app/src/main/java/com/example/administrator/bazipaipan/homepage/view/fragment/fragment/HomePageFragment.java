@@ -81,9 +81,9 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
     private String initEndDateTime = "2000年1月1日 0:00"; // 初始化时间
     LinearLayout con_sex, con_datetype, con_birthday;
     //测算信息弹出框逻辑
-    LinearLayout container_popup, container_birthday, container_datetype, container_sex;
+    LinearLayout container_popup, container_homepage_birthtime, container_birthday, container_datetype, container_sex;
     EditText input_name;
-    TextView input_sex, input_datetype, input_date;
+    TextView input_sex, input_datetype, input_date, tv_homepage_birthtime;
     Button btn_divination_homepage;
     boolean ispop = false;
     //笑傲江湖
@@ -94,7 +94,7 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
     //测算历史
     LinearLayout container_history_recorder;
     int cesuanNum;
-    Button btn_history1, btn_history2, btn_history3, btn_history4, btn_history5;
+    TextView btn_history1, btn_history2, btn_history3, btn_history4, btn_history5;
     //断网提醒
     ImageView btn_nonet;
 
@@ -146,25 +146,30 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
     }
 
     private void initviews() {
+
         //断网提醒
         btn_nonet = (ImageView) mycontext.findViewById(R.id.btn_nonet);
         btn_nonet.setOnClickListener(this);
         //测算历史
         container_history_recorder = (LinearLayout) mycontext.findViewById(R.id.container_history_recorder);
         container_history_recorder.setOnClickListener(this);
-        btn_history1 = (Button) mycontext.findViewById(R.id.btn_history1);
+        btn_history1 = (TextView) mycontext.findViewById(R.id.btn_history1);
         btn_history1.setOnClickListener(this);
-        btn_history2 = (Button) mycontext.findViewById(R.id.btn_history2);
+        btn_history2 = (TextView) mycontext.findViewById(R.id.btn_history2);
         btn_history2.setOnClickListener(this);
-        btn_history3 = (Button) mycontext.findViewById(R.id.btn_history3);
+        btn_history3 = (TextView) mycontext.findViewById(R.id.btn_history3);
         btn_history3.setOnClickListener(this);
-        btn_history4 = (Button) mycontext.findViewById(R.id.btn_history4);
+        btn_history4 = (TextView) mycontext.findViewById(R.id.btn_history4);
         btn_history4.setOnClickListener(this);
-        btn_history5 = (Button) mycontext.findViewById(R.id.btn_history5);
+        btn_history5 = (TextView) mycontext.findViewById(R.id.btn_history5);
         btn_history5.setOnClickListener(this);
         //笑傲江湖
         container_toamuse = (RelativeLayout) mycontext.findViewById(R.id.container_toamuse);
         container_toamuse.setOnClickListener(this);
+        //时辰
+        container_homepage_birthtime = (LinearLayout) mycontext.findViewById(R.id.container_homepage_birthtime);
+        container_homepage_birthtime.setOnClickListener(this);
+        tv_homepage_birthtime = (TextView) mycontext.findViewById(R.id.tv_homepage_birthtime);
         //测算信息弹出
         btn_divination_homepage = (Button) mycontext.findViewById(R.id.btn_divination_homepage);
         btn_divination_homepage.setOnClickListener(this);
@@ -256,6 +261,7 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
             intent.putExtra(AmuseFragment.EXTRAL_DATA, bean);
             intent.putExtra(BaseActivity.PAGETO, AmuseCommentFragment.TAG);
             mycontext.startActivity(intent);
+
         }
     }
 
@@ -326,6 +332,12 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            //出生时辰
+            case R.id.container_homepage_birthtime:
+                DateTimePickDialogUtil dateTimePicKDialog = new DateTimePickDialogUtil(
+                        mycontext, initEndDateTime);
+                dateTimePicKDialog.dateTimePicKDialog(tv_homepage_birthtime);
+                break;
             //跳转到江湖
             case R.id.container_toamuse:
                 Intent intentamuse = new Intent(mycontext, MainActivity.class);
@@ -362,11 +374,11 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
                 toMingpan();
                 break;
 
-            //出生时辰
+            //出生年月
             case R.id.container_homepage_birthday:
-                DateTimePickDialogUtil dateTimePicKDialog = new DateTimePickDialogUtil(
+                DateTimePickDialogUtil dateTimePicKDialog1 = new DateTimePickDialogUtil(
                         mycontext, initEndDateTime);
-                dateTimePicKDialog.dateTimePicKDialog(tv_birthday);
+                dateTimePicKDialog1.dateTimePicKDialog(tv_birthday);
                 break;
 //            性别
             case R.id.container_homepage_sex:
@@ -423,10 +435,9 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
 
             case R.id.btn_homepage_divinate:
                 //传值
-                String username = null, sex = null, datetype = null, birthday = null;
+                String username = null, sex = null, datetype = null, birthday = null, birthtime = null;
                 if (TextUtils.isEmpty(input_name.getText().toString().trim())) {
-                    mycontext.toast("请输入测算姓名");
-                    return;
+                    username = "某人";
                 } else {
                     username = input_name.getText().toString().trim();
                 }
@@ -452,7 +463,15 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
                         birthday = tv_birthday.getText().toString().trim();
                     }
                 }
-                Log.e("cesuan", "立即排盘传值" + username + sex + datetype + birthday);
+                if (tv_homepage_birthtime != null) {
+                    if (TextUtils.isEmpty(tv_homepage_birthtime.getText().toString().trim())) {
+                        mycontext.toast("请选择出生时辰");
+                        return;
+                    } else {
+                        birthtime = tv_homepage_birthtime.getText().toString().trim();
+                    }
+                }
+                Log.e("cesuan", "立即排盘传值" + username + sex + datetype + birthday + birthtime);
                 toMingpan(); //跳转
                 container_popup.setVisibility(View.GONE);
                 //显示测算历史
@@ -462,14 +481,19 @@ public class HomePageFragment extends Fragment implements NewsAmuseAdapter.IClic
                 btnCesuan(msg, cesuanNum, username);
                 //清空测算过的人
                 break;
+            //测算按钮
             case R.id.btn_divination_homepage:
                 if (!ispop) {
                     container_popup.setVisibility(View.VISIBLE);
                     btn_divination_homepage.setText("收起");
+                    input_name.setBackgroundResource(R.drawable.shape_container);
+                    input_name.setHint("请输入你的名字");
                     ispop = !ispop;
                 } else if (ispop) {
                     btn_divination_homepage.setText("测算");
                     container_popup.setVisibility(View.GONE);
+                    input_name.setBackgroundResource(R.drawable.shape_container_homepageinput);
+                    input_name.setHint("请输入你的名字/时辰");
                     ispop = !ispop;
                 }
                 break;

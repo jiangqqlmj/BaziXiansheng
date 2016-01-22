@@ -58,8 +58,10 @@
         <!--android:scaleType="centerInside"-->
         <!--android:src="@drawable/to_group_details_normal" />-->
         <!--</RelativeLayout>-->
+
     </RelativeLayout>
 
+    <!--以下是  发送消息框-->
     <LinearLayout
         android:id="@+id/bar_bottom"
         android:layout_width="match_parent"
@@ -457,6 +459,7 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+    <!-- 以上  是发送消息框-->
 
     <RelativeLayout
         android:layout_width="match_parent"

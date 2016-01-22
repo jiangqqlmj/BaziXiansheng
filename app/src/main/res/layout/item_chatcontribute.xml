@@ -31,7 +31,7 @@
             android:layout_height="28px"
             android:layout_marginRight="18px"
             android:scaleType="fitXY"
-            android:src="@drawable/id01" />
+            android:src="@drawable/king1" />
 
         <TextView
             android:id="@+id/tv_chatcontribute_username"
