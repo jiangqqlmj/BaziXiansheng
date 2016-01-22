@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -180,7 +181,7 @@ public class AugurAdapter extends RecyclerView.Adapter<AugurAdapter.RecyclerHold
 
     class RecyclerHolder extends RecyclerView.ViewHolder {
         TextView looker_num, augur_name, focus_num, gold_num;
-        ImageView iv_bg, is_divinating;
+        ImageView iv_bg, is_divinating, augur_forepic;
 
         public RecyclerHolder(View itemView) {
             super(itemView);
@@ -191,11 +192,31 @@ public class AugurAdapter extends RecyclerView.Adapter<AugurAdapter.RecyclerHold
             gold_num = (TextView) itemView.findViewById(R.id.augur_gold_num);
             iv_bg = (ImageView) itemView.findViewById(R.id.item_augur_left_imageview);
             is_divinating = (ImageView) itemView.findViewById(R.id.augur_status);
+            augur_forepic = (ImageView) itemView.findViewById(R.id.augur_forepic);
             //点击回调的聊天逻辑
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mCallBack.onItemClicked(getAdapterPosition());
+                }
+            });
+
+            //点击交互效果
+            itemView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            augur_forepic.setVisibility(View.VISIBLE);
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+                            augur_forepic.setVisibility(View.GONE);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            augur_forepic.setVisibility(View.GONE);
+                            break;
+                    }
+                    return false;
                 }
             });
         }

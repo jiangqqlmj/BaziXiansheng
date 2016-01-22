@@ -21,6 +21,13 @@
             android:scaleType="fitXY"
             android:src="@drawable/amuse_first_pic" />
 
+        <ImageView
+            android:id="@+id/amuse_forebg"
+            android:layout_width="290px"
+            android:layout_height="290px"
+            android:src="@drawable/amuse_forebg"
+            android:visibility="gone" />
+
 
         <ImageView
             android:layout_width="wrap_content"

@@ -54,7 +54,12 @@
 
         </RelativeLayout>
 
-
+        <ImageView
+            android:id="@+id/homepage_augur_forepic"
+            android:layout_width="186px"
+            android:layout_height="186px"
+            android:src="@drawable/homepage_augur_forepic"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <TextView

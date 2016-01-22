@@ -62,6 +62,12 @@
             </RelativeLayout>
 
 
+            <ImageView
+                android:id="@+id/augur_forepic"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:src="@drawable/augur_forepic"
+                android:visibility="gone" />
         </RelativeLayout>
 
 

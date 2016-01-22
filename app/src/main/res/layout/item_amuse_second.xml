@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
 
     <LinearLayout
         android:id="@+id/container_amuse_second"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="320px"
         android:layout_marginLeft="20px"
         android:layout_marginRight="20px"
         android:layout_marginTop="40px"
@@ -126,4 +127,14 @@
         </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
+
+    <ImageView
+        android:id="@+id/amuse_sec_forepic"
+        android:layout_width="fill_parent"
+        android:layout_height="320px"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="40px"
+        android:visibility="gone"
+        android:src="@drawable/amuse_sec_forepic" />
+</RelativeLayout>

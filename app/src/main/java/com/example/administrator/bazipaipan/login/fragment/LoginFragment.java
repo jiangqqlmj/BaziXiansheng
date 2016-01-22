@@ -368,7 +368,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                         EMGroupManager.getInstance().loadAllGroups();
                         EMChatManager.getInstance().loadAllConversations();
                         // 处理好友和群组
-                        initializeContacts();
+//                        initializeContacts();
                         // 更新当前用户的nickname 此方法的作用是在ios离线推送时能够显示用户nick
                         boolean updatenick = EMChatManager.getInstance().updateCurrentUserNick(
                                 MyApplication.currentUserNick.trim());

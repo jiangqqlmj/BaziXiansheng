@@ -4,8 +4,10 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -90,6 +92,7 @@ public class AmuseDetailAdapter extends RecyclerView.Adapter<AmuseDetailAdapter.
     class RecyclerHolder extends RecyclerView.ViewHolder {
         TextView detail_title, detail_introduce, detail_comment_num, detail_looker_num;
         LinearLayout container_amsue_second;
+        ImageView amuse_sec_forepic;
         //背景色待优化
 
         public RecyclerHolder(View itemView) {
@@ -99,11 +102,29 @@ public class AmuseDetailAdapter extends RecyclerView.Adapter<AmuseDetailAdapter.
             detail_comment_num = (TextView) itemView.findViewById(R.id.tv_comment_num_amuse_second);
             detail_looker_num = (TextView) itemView.findViewById(R.id.looker_num_amuse_second);
             container_amsue_second = (LinearLayout) itemView.findViewById(R.id.container_amuse_second);
-
+            amuse_sec_forepic = (ImageView) itemView.findViewById(R.id.amuse_sec_forepic);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mCallBack.onItemClicked(getAdapterPosition());
+                }
+            });
+            //点击交互效果
+            itemView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            amuse_sec_forepic.setVisibility(View.VISIBLE);
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+                            amuse_sec_forepic.setVisibility(View.GONE);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            amuse_sec_forepic.setVisibility(View.GONE);
+                            break;
+                    }
+                    return false;
                 }
             });
         }

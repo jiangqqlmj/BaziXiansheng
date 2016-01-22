@@ -3,6 +3,7 @@ package com.example.administrator.bazipaipan.amuse.view.activity.adapter;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -87,18 +88,38 @@ public class AmuseAdapter extends RecyclerView.Adapter<AmuseAdapter.RecyclerHold
 
     class RecyclerHolder extends RecyclerView.ViewHolder {
         TextView amuse_title, amuse_category_look_num;
-        ImageView amuse_bg_img;
+        ImageView amuse_bg_img, amuse_forebg;
 
         public RecyclerHolder(View itemView) {
             super(itemView);
             amuse_title = (TextView) itemView.findViewById(R.id.tv_amuse_title_category);
             amuse_category_look_num = (TextView) itemView.findViewById(R.id.looker_num);
             amuse_bg_img = (ImageView) itemView.findViewById(R.id.iv_bg_amuse_category);
+            amuse_forebg = (ImageView) itemView.findViewById(R.id.amuse_forebg);
             amuse_bg_img.setTag(imageUrl);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mCallBack.onItemClicked(getAdapterPosition());
+                }
+            });
+
+            //点击交互效果
+            itemView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            amuse_forebg.setVisibility(View.VISIBLE);
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+                            amuse_forebg.setVisibility(View.GONE);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            amuse_forebg.setVisibility(View.GONE);
+                            break;
+                    }
+                    return false;
                 }
             });
         }
