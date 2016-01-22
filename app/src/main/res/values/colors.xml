@@ -78,5 +78,8 @@
     <color name="bg_chatgray">#999999</color>
     <color name="bg_alpha_tophistory">#000000</color>
 
-
+    <color name="color_mColorSelected">#FF8400</color>
+    <color name="gray_light_s">#EDEDED</color>
+    <color name="transparent">#ffffffff</color>
+    <color name="color_main_tv_title">#595757</color>
 </resources>

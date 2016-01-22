@@ -257,4 +257,9 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="animation_receive_site_window">
+        <item name="android:windowEnterAnimation">@anim/window_scale_in</item>
+        <item name="android:windowExitAnimation">@anim/window_scale_out</item>
+    </style>
 </resources>

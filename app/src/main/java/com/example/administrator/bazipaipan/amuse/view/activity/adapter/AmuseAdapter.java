@@ -66,14 +66,16 @@ public class AmuseAdapter extends RecyclerView.Adapter<AmuseAdapter.RecyclerHold
         }
         holder.amuse_category_look_num.setText(bean.getAmuseLookerNum());
         holder.amuse_title.setText(bean.getAmuseTitle());
-        imageUrl = bean.getAmuseImage().getUrl();
-        //网络请求
-        if (bean.getAmuseImage() != null) {
-            if (holder.amuse_bg_img.getTag() != null && imageUrl.equals(holder.amuse_bg_img.getTag())) {
-                bean.getAmuseImage().loadImageThumbnail(mContext, holder.amuse_bg_img, 80, 80, 100);
+        if(bean.getAmuseImage()!=null) {
+            imageUrl = bean.getAmuseImage().getUrl();
+            //网络请求
+            if (imageUrl != null) {
+                if (holder.amuse_bg_img.getTag() != null && imageUrl.equals(holder.amuse_bg_img.getTag())) {
+                    bean.getAmuseImage().loadImageThumbnail(mContext, holder.amuse_bg_img, 80, 80, 100);
+                }
+            } else {
+                holder.amuse_bg_img.setImageResource(R.drawable.amuse_category_bg);
             }
-        } else {
-            holder.amuse_bg_img.setImageResource(R.drawable.amuse_category_bg);
         }
         //通过viewholder设置属性值
     }

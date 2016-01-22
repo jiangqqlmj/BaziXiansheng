@@ -318,4 +318,7 @@
     <string name="chatqueue">排队</string>
     <string name="chatcontribute">贡献</string>
 
+    <!--城市选择器相关-->
+    <string name="string_tv_receive_address_info">请选择地址</string>
+    <string name="string_bt_receive_address_back">上一步</string>
 </resources>

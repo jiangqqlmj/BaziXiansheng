@@ -3,6 +3,7 @@ package com.example.administrator.bazipaipan;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.ViewGroup;
 
 import java.util.List;
 
@@ -43,4 +44,19 @@ public class MyPagerFragmentAdapter extends FragmentStatePagerAdapter {
         return datas.size();
     }
 
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        Fragment fragment=null;
+        try {
+            fragment=(Fragment)super.instantiateItem(container,position);
+        }catch (Exception e){
+
+        }
+        return fragment;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+
+    }
 }

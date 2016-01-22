@@ -19,14 +19,24 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.bazipaipan.R;
+import com.example.administrator.bazipaipan.adapter.ReceiveSiteSelectListAdapter;
+import com.example.administrator.bazipaipan.db.AddressDAO;
+import com.example.administrator.bazipaipan.entity.address.CityByProModel;
+import com.example.administrator.bazipaipan.entity.address.ProvinceModel;
+import com.example.administrator.bazipaipan.entity.address.ZoneByCityModel;
 import com.example.administrator.bazipaipan.login.model.MyUser;
 import com.example.administrator.bazipaipan.me.MeContainerActivity;
 import com.example.administrator.bazipaipan.utils.changehead.Tools;
@@ -36,6 +46,7 @@ import com.example.administrator.bazipaipan.widget.WheelView;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.List;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.UpdateListener;
@@ -77,6 +88,18 @@ public class EditInfoFragment extends Fragment implements View.OnClickListener {
     //用户名
     private EditText et_username, et_sign;
 
+    //=====城市选择器======
+    // 地址选择窗口
+    RelativeLayout add_layout_back;
+    ListView lv_addr;
+    private AlertDialog addrDialog;
+    private ReceiveSiteSelectListAdapter listAdapter;
+    private List<Object> addrList;
+    private AddressDAO addressDAO;
+    private int addrIndex = 1;
+    private String provinceStr, cityStr, districtStr;// 地址名称
+    private String proID, cityID, districtID;// 地址ID
+    private int proIndex, cityIndex;
 
     public EditInfoFragment() {
 
@@ -104,6 +127,8 @@ public class EditInfoFragment extends Fragment implements View.OnClickListener {
 
     //为控件赋初值
     private void initDatas() {
+        //初始化城市数据
+        addressDAO = new AddressDAO(mycontext);
         //BmobUser中的特定属性
         int gold_num;
         String username = (String) BmobUser.getObjectByKey(mycontext, "username");
@@ -255,7 +280,9 @@ public class EditInfoFragment extends Fragment implements View.OnClickListener {
                 break;
             //选择城市
             case R.id.tv_editdata_city:
-                showPopWindow(v);
+                //showPopWindow(v);
+                //修改城市弹出框
+                showAddressSelect();
                 break;
             //换头像
             case R.id.iv_edit_change_myhead:
@@ -294,6 +321,25 @@ public class EditInfoFragment extends Fragment implements View.OnClickListener {
                         mycontext.toast("修改失败");
                     }
                 });
+                break;
+            case R.id.layout_receive_site_add_close: // 关闭所在地区弹出框
+                addrDialog.dismiss();
+                break;
+            case R.id.tv_receive_site_back:
+                if (addrIndex == 3) {
+                    addrIndex = 2;
+                    addrList = addressDAO.getAllCityByProvince(proID);
+                    listAdapter.setNewData(2, addrList);
+                    listAdapter.notifyDataSetChanged();
+                    lv_addr.setSelection(cityIndex);
+                } else if (addrIndex == 2) {
+                    add_layout_back.setVisibility(View.GONE);
+                    addrIndex = 1;
+                    addrList = (List<Object>) addressDAO.getAllProvince();
+                    listAdapter.setNewData(1, addrList);
+                    listAdapter.notifyDataSetChanged();
+                    lv_addr.setSelection(proIndex);
+                }
                 break;
         }
     }
@@ -477,7 +523,6 @@ public class EditInfoFragment extends Fragment implements View.OnClickListener {
     }
 
     //    以上是修改头像方法
-
     private void showPopWindow(View view) {
         if (areaPopWindow == null) {
             initPupupWindow();
@@ -506,6 +551,118 @@ public class EditInfoFragment extends Fragment implements View.OnClickListener {
     public void dismissPopWindow() {
         if (areaPopWindow != null && areaPopWindow.isShowing()) {
             areaPopWindow.dismiss();
+        }
+    }
+
+
+    //============地区弹出框=================
+    private void showAddressSelect(){
+        if (addrDialog == null) {
+            addrDialog = new AlertDialog.Builder(mycontext).create();
+            View contentView = LayoutInflater.from(
+                    mycontext).inflate(
+                    R.layout.receive_site_add_addrselect_dialog_layout,
+                    null);
+            lv_addr = (ListView) contentView
+                    .findViewById(R.id.lv_receive_site_add);
+            RelativeLayout img_close = (RelativeLayout) contentView
+                    .findViewById(R.id.layout_receive_site_add_close);
+            add_layout_back = (RelativeLayout) contentView
+                    .findViewById(R.id.layout_receive_site_back);
+            TextView bt_back = (TextView) contentView
+                    .findViewById(R.id.tv_receive_site_back);
+            addrList = (List<Object>) addressDAO.getAllProvince();
+            listAdapter = new ReceiveSiteSelectListAdapter(
+                    getActivity(), addrList, 1);
+            lv_addr.setAdapter(listAdapter);
+            lv_addr.setOnItemClickListener(new MyOnItemClickListener());
+            img_close.setOnClickListener(this);
+            bt_back.setOnClickListener(this);
+            addrDialog.show();
+            Window window = addrDialog.getWindow();
+            window.setWindowAnimations(R.style.animation_receive_site_window);
+            window.setGravity(Gravity.BOTTOM);
+            WindowManager.LayoutParams lp = window.getAttributes();
+            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+            lp.height = dip2px(mycontext, 450);
+            window.setAttributes(lp);
+            addrDialog.setContentView(contentView);
+            addrDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+
+                }
+            });
+        } else {
+            if (addrDialog.isShowing()) {
+                addrDialog.dismiss();
+            } else {
+                addrDialog.show();
+            }
+        }
+    }
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     */
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+    class MyOnItemClickListener implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position,
+                                long id) {
+            lv_addr.setSelection(0);
+            if (addrIndex == 1) {
+                addrIndex = 2;
+                add_layout_back.setVisibility(View.VISIBLE);
+                proIndex = (int) id;
+                ProvinceModel model = (ProvinceModel) addrList.get(proIndex);
+                provinceStr = model.getProName();
+                proID = model.getProSort();
+                addrList = addressDAO.getAllCityByProvince(proID);
+                listAdapter.setNewData(2, addrList);
+                listAdapter.notifyDataSetChanged();
+                lv_addr.setSelection(0);
+            } else if (addrIndex == 2) {
+                addrIndex = 3;
+                cityIndex = (int) id;
+                CityByProModel model = (CityByProModel) addrList.get(cityIndex);
+                cityStr = model.getCityName();
+                cityID = model.getCitySort();
+                addrList = addressDAO.getAllDistrictByCity(cityID);
+                if (addrList.size() == 0) {
+                    districtStr = "";
+                    districtID = cityID;
+                    addrDialog.dismiss();
+                    tv_city.setText(provinceStr + "," + cityStr);
+                    proIndex = 0;
+                    cityIndex = 0;
+                    addrIndex = 1;
+                    addrList = addressDAO.getAllProvince();
+                    listAdapter.setNewData(1, addrList);
+                } else {
+                    listAdapter.setNewData(3, addrList);
+                }
+                listAdapter.notifyDataSetChanged();
+                lv_addr.setSelection(0);
+            } else {
+                addrIndex = 1;
+                ZoneByCityModel model = (ZoneByCityModel) addrList
+                        .get((int) id);
+                districtStr = model.getZoneName();
+                districtID = model.getZoneID();
+                addrDialog.dismiss();
+                tv_city.setText(provinceStr + "," + cityStr + ","
+                        + districtStr);
+                add_layout_back.setVisibility(View.GONE);
+                proIndex = 0;
+                cityIndex = 0;
+                addrList = addressDAO.getAllProvince();
+                listAdapter.setNewData(1, addrList);
+                listAdapter.notifyDataSetChanged();
+                lv_addr.setSelection(0);
+            }
         }
     }
 }

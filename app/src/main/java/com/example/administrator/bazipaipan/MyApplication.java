@@ -10,6 +10,7 @@ import com.easemob.EMCallBack;
 import com.easemob.chat.EMChat;
 import com.example.administrator.bazipaipan.chat.huanxin.DemoHXSDKHelper;
 import com.example.administrator.bazipaipan.login.model.MyUser;
+import com.example.administrator.bazipaipan.utils.DBFileUtil;
 
 import java.util.Iterator;
 import java.util.List;
@@ -69,6 +70,7 @@ public class MyApplication extends Application {
         //bmob集成
         Bmob.initialize(this, "f93db7bdfd1f0c1657b956588038115f");
         hxSDKHelper.onInit(appContext);
+        copyCityDB();
     }
 
     private String getAppName(int pid) {
@@ -158,6 +160,13 @@ public class MyApplication extends Application {
     public void logout(final boolean isGCM, final EMCallBack emCallBack) {
         // 先调用sdk logout，在清理app中自己的数据
         hxSDKHelper.logout(isGCM, emCallBack);
+    }
+
+    /**
+     * 进行复制城市信息
+     */
+    private void copyCityDB(){
+        DBFileUtil.writeSD(this);
     }
 
 }

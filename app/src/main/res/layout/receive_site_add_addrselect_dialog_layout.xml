@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    android:background="@color/tv_white" >
+
+    <LinearLayout
+        android:id="@+id/layout_site"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/string_tv_receive_address_info"
+                android:textColor="@color/color_main_tv_title"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:id="@+id/layout_receive_site_add_close"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_close" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <include layout="@layout/line_option_layout" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_receive_site_back"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/tv_white"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/tv_receive_site_back"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/string_bt_receive_address_back"
+            android:textColor="@color/color_mColorSelected"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_receive_site_add"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/layout_receive_site_back"
+        android:layout_below="@id/layout_site"
+        android:cacheColorHint="#ffffffff"
+        android:divider="@color/gray_light_s"
+        android:dividerHeight="0.5sp"
+        android:listSelector="@drawable/search_hot_tv_selector"
+        android:scrollbars="none" >
+    </ListView>
+
+</RelativeLayout>
